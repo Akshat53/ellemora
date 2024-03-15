@@ -1,0 +1,12 @@
+.scroll-container {
+    display: flex;
+    flex-wrap: nowrap;
+  }
+  
+  .scroll-container::-webkit-scrollbar {
+    display: none;
+  }
+  
+  .scroll-container {
+    scrollbar-width: none; 
+  }

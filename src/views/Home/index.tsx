@@ -3,7 +3,7 @@ import Categories from "../../components/Categories";
 
 const Home = () => {
   return (
-    <div className="w-">
+    <div className="w-full">
      <Categories />
     </div>
   );

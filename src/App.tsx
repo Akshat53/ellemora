@@ -6,6 +6,7 @@ import ROUTES from "./routes/index";
 import Header from "./layout/Header";
 import Footer from "./layout/Footer";
 import Product from "./views/Product";
+import ProductList from "./views/ProductList";
 
 const App: React.FC = () => {
   return (
@@ -14,6 +15,7 @@ const App: React.FC = () => {
       <Routes>
         <Route path={ROUTES.HOME} element={<Home />} />
         <Route path={ROUTES.PRODUCT} element={<Product />} />
+        <Route path={ROUTES.PRODUCTS} element={<ProductList />} />
       </Routes>
       <Footer />
     </BrowserRouter>
