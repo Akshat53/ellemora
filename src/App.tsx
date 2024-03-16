@@ -4,7 +4,7 @@ import { BrowserRouter, Route, Routes } from "react-router-dom";
 import Home from "./views/Home";
 import ROUTES from "./routes/index";
 import Header from "./layout/Header";
-import Footer from "./layout/Footer";
+import Footer from "./layout/Footer/Footer";
 import Product from "./views/Product";
 import ProductList from "./views/ProductList";
 import Main from "./layout/Main";

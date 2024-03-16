@@ -1,0 +1,15 @@
+.footer {
+  box-shadow: 0 -5px 5px -5px rgba(0, 0, 0, 0.2);
+  border-color: white;
+  height: 474px;
+  max-width: 600px;
+ 
+}
+.speciality p{
+    font-size: 10px;
+    line-height: 15px;
+    font-family: "Poppins", sans-serif;
+}
+.spec{
+    border-bottom: 2px solid rgba(241, 241, 241, 1);
+}
