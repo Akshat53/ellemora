@@ -1,10 +1,10 @@
 import React from "react";
 import CategoryAvtar from "./CategoryAvtar";
-import "./categories.css"
-import Sale from "../../assets/images/item1.png"
-import Lehengas from "../../assets/images/item3.png"
-import Dresses from "../../assets/images/item5.png"
-import BestSeller from "../../assets/images/item6.png"
+import "./categories.css";
+import Sale from "../../assets/images/demo-product-images/item1.png";
+import Lehengas from "../../assets/images/demo-product-images/item3.png";
+import Dresses from "../../assets/images/demo-product-images/item5.png";
+import BestSeller from "../../assets/images/demo-product-images/item6.png";
 
 const categoriesOptions = [
   {
@@ -31,13 +31,14 @@ const categoriesOptions = [
 
 const Categories: React.FC = () => {
   return (
-    <div className="w-auto scroll-container" style={{ width: "100%", overflowX: "auto", whiteSpace: "nowrap" }}>
-   
+    <div
+      className="w-auto scroll-container"
+      style={{ width: "100%", overflowX: "auto", whiteSpace: "nowrap" }}
+    >
       {categoriesOptions.map((category, index) => (
         <CategoryAvtar key={index} data={category} />
       ))}
-
-  </div>
+    </div>
   );
 };
 

@@ -12,15 +12,17 @@ import Main from "./layout/Main";
 const App: React.FC = () => {
   return (
     <BrowserRouter>
+    <Main>
       <Header />
-      <Main>
+      
       <Routes>
         <Route path={ROUTES.HOME} element={<Home />} />
         <Route path={ROUTES.PRODUCT} element={<Product />} />
         <Route path={ROUTES.PRODUCTS} element={<ProductList />} />
       </Routes>
-      </Main>
+      
       <Footer />
+      </Main>
     </BrowserRouter>
   );
 };

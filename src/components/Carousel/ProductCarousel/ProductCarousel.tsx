@@ -1,30 +1,27 @@
 import React from "react";
 import { Carousel } from "antd";
 
-const contentStyle: React.CSSProperties = {
-  margin: 0,
-  height: "443px",
-  color: "#fff",
-  lineHeight: "160px",
-  textAlign: "center",
-  background: "#364d79",
-};
+interface ProductCarouselProps {
+  images: string[]; 
+}
 
-const ProductCarousel: React.FC = () => {
+const ProductCarousel: React.FC<ProductCarouselProps> = ({ images }) => {
   return (
     <Carousel className="">
-      <div>
-        <h3 style={contentStyle}>1</h3>
-      </div>
-      <div>
-        <h3 style={contentStyle}>2</h3>
-      </div>
-      <div>
-        <h3 style={contentStyle}>3</h3>
-      </div>
-      <div>
-        <h3 style={contentStyle}>4</h3>
-      </div>
+      {images.map((image, index) => (
+        <div key={index}>
+          <img
+            src={image}
+            alt=""
+            style={{
+              aspectRatio: "2/3",
+              objectFit: "cover",
+              height: "auto",
+              width: "100%",
+            }}
+          />
+        </div>
+      ))}
     </Carousel>
   );
 };

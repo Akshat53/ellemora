@@ -1,11 +1,22 @@
 import React, { useState } from "react";
+import PropTypes from "prop-types";
 import FilterIcon from "../../assets/svg/filter.svg";
 import Styles from "./filterbox.module.css";
 import SingleView from "../../assets/svg/singleView.svg";
 import GridView from "../../assets/svg/gridView.svg";
 
-const FilterBox: React.FC = ( ) => {
-  const [selectedOption, setSelectedOption] = useState<string | null>(null);
+interface FilterBoxProps {
+  view: string;
+  viewChange: (view: string) => void;
+}
+
+const FilterBox: React.FC<FilterBoxProps> = ({ viewChange }) => {
+  const [selectedOption, setSelectedOption] = useState("singleView");
+
+  const handleViewChange = (viewType: string) => {
+    setSelectedOption(viewType);
+    viewChange(viewType === "singleView" ? "list" : "grid");
+  };
 
   return (
     <div className={`d-flex justify-content-between ${Styles.filterBox}`}>
@@ -20,7 +31,7 @@ const FilterBox: React.FC = ( ) => {
           className={`w-100 ${
             selectedOption === "singleView" ? Styles.selected : ""
           }`}
-          onClick={() => setSelectedOption("singleView")}
+          onClick={() => handleViewChange("singleView")}
         >
           <img
             src={SingleView}
@@ -33,13 +44,18 @@ const FilterBox: React.FC = ( ) => {
           className={`w-100 ${
             selectedOption === "gridView" ? Styles.selected : ""
           }`}
-          onClick={() => setSelectedOption("gridView")}
+          onClick={() => handleViewChange("gridView")}
         >
           <img src={GridView} alt="grid view icon" aria-label="Grid View" />
         </div>
       </div>
     </div>
   );
+};
+
+FilterBox.propTypes = {
+  view: PropTypes.string.isRequired,
+  viewChange: PropTypes.func.isRequired,
 };
 
 export default FilterBox;
