@@ -1,13 +1,17 @@
 import React from "react";
 import { Carousel } from "antd";
+// import Styles from "./productCarousel.module.css";
 
 interface ProductCarouselProps {
-  images: string[]; 
+  images: string[];
 }
 
 const ProductCarousel: React.FC<ProductCarouselProps> = ({ images }) => {
+
+
   return (
-    <Carousel className="">
+    <Carousel 
+    >
       {images.map((image, index) => (
         <div key={index}>
           <img

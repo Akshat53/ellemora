@@ -2,8 +2,8 @@ import React from "react";
 import ProductCarousel from "../Carousel/ProductCarousel/ProductCarousel";
 import Styles from "./productCard.module.css";
 import demoImages from "../../assets/images/demo-product-images";
-import cartIcon from "../../assets/svg/bag.svg"
-import cartIcon2 from "../../assets/svg/cart.svg"
+import cartIcon from "../../assets/svg/bag.svg";
+import cartIcon2 from "../../assets/svg/cart.svg";
 
 interface ProductCardProps {
   data: {
@@ -26,15 +26,29 @@ const ProductCard: React.FC<ProductCardProps> = ({ data, view }) => (
         <img src={demoImages.img1} alt="product" />
       )}
       <div className={`${Styles.productContent} p-2 py-2 `}>
-        <p className={`${Styles.title} fw-normal fs-6`}>
+        <p
+          className={
+            view == "list"
+              ? `${Styles.title} fw-normal fs-6`
+              : `${Styles.titleGrid}`
+          }
+        >
           {data.title}
-          <span className={`${Styles.discount} border border-1 p-1 px-2 m-3`}>
+          <span
+            className={
+              view == "list"
+                ? `${Styles.discount} border border-1 p-1 px-2 m-3`
+                : `${Styles.gridDiscount} border border-1 p-1 px-2 m-1`
+            }
+          >
             {data.discount}
           </span>
         </p>
+        {view == "grid" ? null : (
+          <p className={`${Styles.discription} fw-light`}>{data.description}</p>
+        )}
 
-        <p className={`${Styles.discription} fw-light`}>{data.description}</p>
-        <p className={`${Styles.discountedPrice} fw-medium`}>
+        <p className={`${Styles.discountedPrice} fw-medium mt-2`}>
           ₹ {data.discountedPrice}
           <span
             className={`${Styles.price} px-2 text-decoration-line-through `}
@@ -49,12 +63,12 @@ const ProductCard: React.FC<ProductCardProps> = ({ data, view }) => (
             <button
               className={` ${Styles.addToBag} fw-normal border-0 p-2 w-100 `}
             >
-             <img src={cartIcon} /> Add to bag
+              <img src={cartIcon} /> Add to bag
             </button>
           ) : (
             <>
               <button className="fw-normal border-0 p-2 w-50">
-              <img src={cartIcon2} className="text-light"/>  Add to bag
+                <img src={cartIcon2} className="text-light" /> Add to bag
               </button>
               <button className="fw-normal border-0 w-50">colors</button>
             </>

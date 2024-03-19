@@ -2,6 +2,9 @@
   font-family: "Poppins", sans-serif;
   line-height: 22.5px;
 }
+.titleGrid{
+  font-size: 11px !important;
+}
 .productContent {
   font-family: "Poppins", sans-serif;
   padding-bottom: 20px;
@@ -47,4 +50,8 @@ max-width: 600px;
 .addToBag{
   background-color: rgba(241, 238, 238, 1) !important;
   color: rgba(42, 42, 42, 1) !important;
+}
+.gridDiscount{
+  font-size: 8px !important;
+  color: #ffae81;
 }

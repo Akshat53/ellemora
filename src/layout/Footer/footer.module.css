@@ -1,7 +1,6 @@
 .footer {
   box-shadow: 0 -5px 5px -5px rgba(0, 0, 0, 0.2);
   border-color: white;
-
 }
 .speciality p {
   font-size: 10px;
@@ -26,6 +25,6 @@
 .fs1 {
   font-size: 11px !important;
 }
-.fs3{
+.fs3 {
   font-size: 6px;
 }

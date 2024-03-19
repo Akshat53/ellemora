@@ -10,6 +10,8 @@ import paypalIcon from "../../assets/svg/paypal.svg";
 import facebookIcon from "../../assets/svg/facebook.svg";
 import twitterIcon from "../../assets/svg/twitter.svg";
 import instagramIcon from "../../assets/svg/instagram.svg";
+import playStoreIcon from "../../assets/svg/playstore.png";
+import appStoreIcon from "../../assets/svg/appstore.png";
 
 import type { CollapseProps } from "antd";
 import { Collapse } from "antd";
@@ -26,6 +28,17 @@ const socialOptions = [
   {
     icon: instagramIcon,
     link: "https://www.instagram.com/",
+  },
+];
+
+const downloadOptions = [
+  {
+    link: "",
+    icon: playStoreIcon,
+  },
+  {
+    link: "",
+    icon: appStoreIcon,
   },
 ];
 const paymentOptions = [visaIcon, masterCardIcon, paypalIcon];
@@ -90,7 +103,7 @@ const specialityOptions = [
     label: (
       <>
         24 x 7 <br />
-        CUSTOMER <br /> SUPPORT{" "}
+        CUSTOMER <br /> SUPPORT
       </>
     ),
   },
@@ -99,7 +112,7 @@ const specialityOptions = [
     label: (
       <>
         PREMIUM <br />
-        QUALITY <br /> DESIGNS{" "}
+        QUALITY <br /> DESIGNS
       </>
     ),
   },
@@ -120,7 +133,7 @@ const Footer: React.FC = () => {
     console.log(key);
   };
   return (
-    <div className="d-flex justify-content-center w-100 py-5">
+    <div className="d-flex justify-content-center w-100 ">
       <div className={`py-3 ${Styles.footer} mt-5 w-100`}>
         <div className={`d-flex justify-content-between px-3 ${Styles.spec}`}>
           {specialityOptions.map((item, i) => (
@@ -162,19 +175,28 @@ const Footer: React.FC = () => {
             <br /> We also accept orders with cash payment.
           </p>
           <div className="d-flex justify-content-center gap-4 mt-4">
-            {paymentOptions.map((icon) => (
-              <img src={icon} />
+            {paymentOptions.map((icon, i) => (
+              <img src={icon} key={i} />
+            ))}
+          </div>
+          <div className="d-flex justify-content-center gap-4 mt-3">
+            {downloadOptions.map((item, key) => (
+              <a href={item.link} key={key}>
+                <img src={item.icon} height={"28px"} width={"92px"} />
+              </a>
             ))}
           </div>
           <p className={`${Styles.fs2} fw-normal mt-4`}>Follow Us</p>
-          <div className="d-flex justify-content-center gap-4">
-            {socialOptions.map((social) => (
-              <a href={social.link}>
+          <div className="d-flex justify-content-center gap-3">
+            {socialOptions.map((social, i) => (
+              <a href={social.link} key={i}>
                 <img src={social.icon} width={"30px"} height={"16px"} />
               </a>
             ))}
           </div>
-          <p className={`fw-normal ${Styles.fs3} mt-2`}>© 2024 Ellemora - All rights reserved.</p>
+          <p className={`fw-normal ${Styles.fs3} mt-2`}>
+            © 2024 Ellemora - All rights reserved.
+          </p>
         </div>
       </div>
     </div>
