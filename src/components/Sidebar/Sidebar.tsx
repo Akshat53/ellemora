@@ -3,6 +3,9 @@ import { CloseOutlined } from "@ant-design/icons";
 
 import { Link } from "react-router-dom";
 import Styles from "./sidebar.module.css";
+import signIcon from "../../assets/svg/signin.svg";
+import wishlistIcon from "../../assets/svg/fav.svg";
+import helpIcon from "../../assets/svg/help.svg";
 
 interface SidebarProps {
   onClick: () => void;
@@ -27,6 +30,27 @@ const sidebarOptions = [
   {
     path: "/products",
     style: Styles.drape,
+  },
+];
+
+const sidebarBottomOptions = [
+  {
+    icon: signIcon,
+    label: "Sign in  / Create account ",
+    link: "/signin",
+    signedIn: true,
+  },
+  {
+    icon: wishlistIcon,
+    label: "Wishlist",
+    link: "/wishlist",
+    signedIn: true,
+  },
+  {
+    icon: helpIcon,
+    label: "Help",
+    link: "/help",
+    signedIn: true,
   },
 ];
 
@@ -55,10 +79,16 @@ const Sidebar: React.FC<SidebarProps> = ({ onClick }) => {
         </div>
         {/* footer  */}
         <div>
-          <div>acihduh</div>
-          <div>acihduh</div>
-          <div>acihduh</div>
-          <div>acihduh</div>
+          {sidebarBottomOptions.map((item, i) => (
+            <Link to={item.link} key={i} style={{ textDecoration: "none" }}>
+              <div className="d-flex  align-items-center gap-4 m-3  ">
+                <img src={item.icon} height={"12px"} width={"12px"} />
+                <p className={`${Styles.sidebarOptions} text-center p-0 m-0 fs-light`}>
+                  {item.label}
+                </p>
+              </div>
+            </Link>
+          ))}
         </div>
       </div>
       <div
