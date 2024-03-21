@@ -58,7 +58,7 @@ const Sidebar: React.FC<SidebarProps> = ({ onClick }) => {
   return (
     <>
       <div
-        className={` position-fixed bg-white h-100 d-flex flex-column text-dark align-items-between justify-content-between w-75 ${Styles.sidebar}`}
+        className={`position-fixed bg-white h-100 d-flex flex-column text-dark align-items-between justify-content-between w-75 ${Styles.sidebar}`}
         style={{
           top: 0,
           left: 0,
@@ -83,7 +83,9 @@ const Sidebar: React.FC<SidebarProps> = ({ onClick }) => {
             <Link to={item.link} key={i} style={{ textDecoration: "none" }}>
               <div className="d-flex  align-items-center gap-4 m-3  ">
                 <img src={item.icon} height={"12px"} width={"12px"} />
-                <p className={`${Styles.sidebarOptions} text-center p-0 m-0 fs-light`}>
+                <p
+                  className={`${Styles.sidebarOptions} text-center p-0 m-0 fs-light`}
+                >
                   {item.label}
                 </p>
               </div>

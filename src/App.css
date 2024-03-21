@@ -11,3 +11,12 @@
     height: 100%;
     background-color: rgba(0, 0, 0, 0.25); /* Black color with 25% opacity */
   }
+  .default-border{
+    border: 1px solid #5C5C5C;
+  }
+  .btn-color{
+    background-color: #2C2C2C;
+    color: white;
+    letter-spacing: 1px;
+    word-spacing: 2PX;
+  }
