@@ -1,35 +1,60 @@
 import React from "react";
-import type { CollapseProps } from "antd";
-import { Collapse } from "antd";
+import { Col, Collapse, Row } from "antd";
+import Tag from "../Tag/Tag";
+import Styles from "./collapse.module.css";
 
-const text = (
-  <p style={{ paddingLeft: 24 }}>
-    A dog is a type of domesticated animal. Known for its loyalty and
-    faithfulness, it can be found as a welcome guest in many households across
-    the world.
-  </p>
-);
+const { Panel } = Collapse;
 
-const items: CollapseProps["items"] = [
-  {
-    key: "1",
-    label: "This is panel header 1",
-    children: text,
-  },
-  {
-    key: "2",
-    label: "This is panel header 2",
-    children: text,
-  },
-  {
-    key: "3",
-    label: "This is panel header 3",
-    children: text,
-  },
-];
+interface CollapseOption {
+  header: string;
+  discription?: string;
+  content: { title: string | null; subContent: string }[];
+  categories?: string[];
+}
 
-const App: React.FC = () => (
-  <Collapse items={items} bordered={false} defaultActiveKey={["1"]} />
-);
+interface CustomCollapseProps {
+  collapseOptions: CollapseOption[];
+}
 
-export default App;
+const CustomCollapse: React.FC<CustomCollapseProps> = ({ collapseOptions }) => {
+  const transformToUppercase = (str: string | null) => {
+    return str ? str.toUpperCase() : ""; 
+  };
+ 
+
+  return (
+    <Collapse bordered={false} expandIconPosition="end" className="bg-white" defaultActiveKey={0}>
+      {collapseOptions.map((item, i) => (
+        
+        <Panel header={item.header} key={i} className={`${Styles.panel}`}>
+            
+          {item.discription && (
+            <p className={`${Styles.fs10}`}>{item.discription}</p>
+            
+          ) }
+          <Row gutter={[16, 16]}>
+            {item.content.map((contentItem, j) => (
+             <Col key={j} span={i === 1 ? 12 : (item.content.length > 4 ? 12 : 24)}>
+                {contentItem.title && (
+                  <h1 className={`${Styles.fs12} p-0 m-0`}>
+                    {transformToUppercase(contentItem.title)} 
+                  </h1>
+                )}
+                <p className={`${Styles.fs10} p-0 m-0`}>
+                  {contentItem.subContent}
+                </p>
+              </Col>
+            ))}
+          </Row>
+          <Col className="d-flex gap-2 py-3">
+            {item.categories?.map((cat, index) => (
+              <Tag key={index} label={[cat]} />
+            ))}
+          </Col>
+        </Panel>
+      ))}
+    </Collapse>
+  );
+};
+
+export default CustomCollapse;
