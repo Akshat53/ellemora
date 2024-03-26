@@ -1,0 +1,30 @@
+.footer {
+  box-shadow: 0 -5px 5px -5px rgba(0, 0, 0, 0.2);
+  border-color: white;
+}
+.speciality p {
+  font-size: 10px;
+  line-height: 15px;
+  font-family: "Poppins", sans-serif;
+}
+.spec,
+.quickLinks {
+  border-bottom: 3px solid rgba(241, 241, 241, 1);
+}
+.bottomMid {
+  font-size: 9px;
+  color: rgba(87, 87, 87, 1);
+}
+.bottomUpper {
+  font-size: 11px;
+}
+.fs2 {
+  font-size: 8px;
+  line-height: 12px;
+}
+.fs1 {
+  font-size: 11px !important;
+}
+.fs3 {
+  font-size: 6px;
+}

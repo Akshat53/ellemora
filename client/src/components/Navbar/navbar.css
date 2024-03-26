@@ -1,0 +1,47 @@
+@font-face {
+    font-family: "Nexa";
+    src: local("Nexa"),
+      url(../../../../../assets/fonts/NexaText-Trial-ExtraLight.otf)
+        format("embedded-opentype");
+  }
+  
+  .ellemora {
+    font-family: "Nexa";
+    font-size: 15.33;
+    color: #000000;
+    font-weight: 300;
+  }
+  .logo {
+    height: 30;
+    width: 130;
+    border-radius: 5;
+  }
+  
+  .appbar {
+    box-shadow: 0px 4px 8.100000381469727px -2px #00000040;
+    height: 50px;
+    align-items: center;
+    display: flex;
+    flex-direction: row;
+    background-color: white;
+    justify-content: space-between;
+  }
+  
+  .top-icon {
+    margin-left: 8px;
+    margin-right: 8px;
+  }
+  .sidebar{
+    z-index: 16;
+  }
+
+  @keyframes slideIn {
+    from {
+      transform: translateX(-100%);
+    }
+    to {
+      transform: translateX(0);
+    }
+  }
+
+  

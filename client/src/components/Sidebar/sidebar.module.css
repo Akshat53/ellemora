@@ -1,0 +1,56 @@
+.newNow,
+.palazzo,
+.lehenga,
+.saree,
+.drape {
+  position: relative;
+  width: 100%;
+  background-size: cover;
+  background-position: center;
+  height: auto;
+}
+
+.newNow::before,
+.palazzo::before,
+.lehenga::before,
+.saree::before,
+.drape::before {
+  content: "";
+  display: block;
+  padding-bottom: 25%; 
+}
+
+.newNow {
+  background-image: url("../../assets/images/categories/new.png");
+}
+
+.palazzo {
+  background-image: url("../../assets/images/categories/palazzo.png");
+}
+
+.lehenga {
+  background-image: url("../../assets/images/categories/lehenga.png");
+}
+
+.saree {
+  background-image: url("../../assets/images/categories/saree.png");
+}
+
+.drape {
+  background-image: url("../../assets/images/categories/drape.png");
+}
+
+.sidebar {
+  max-height: 100vh;
+  overflow-y: auto; /* Allow vertical scrolling within the sidebar */
+}
+
+.main-content {
+  padding-right: 75%; /* Equal to the width of the sidebar when it's open */
+}
+
+.sidebarOptions{
+  font-size: 11px;
+  text-decoration: none;
+  color: black;
+}
