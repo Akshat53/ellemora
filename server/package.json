@@ -1,0 +1,14 @@
+{
+  "name": "ellemora",
+  "version": "1.0.0",
+  "description": "",
+  "main": "server.tsx",
+  "scripts": {
+    "test": "npm run dev"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.19.2"
+  }
+}
