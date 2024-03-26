@@ -2,13 +2,22 @@
   "name": "ellemora",
   "version": "1.0.0",
   "description": "",
-  "main": "server.tsx",
+  "main": "server.ts",
   "scripts": {
-    "test": "npm run dev"
+    "start": "ts-node server.ts",
+    "dev": "nodemon server.ts"
   },
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "express": "^4.19.2"
+    "dotenv": "^16.4.5",
+    "express": "^4.19.2",
+    "mongodb": "^6.5.0",
+    "mongoose": "^8.2.3",
+    "nodemon": "^3.1.0"
+  },
+  "devDependencies": {
+    "@types/express": "^4.17.21",
+    "@types/node": "^20.11.30"
   }
 }
