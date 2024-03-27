@@ -1,9 +1,11 @@
 import React from "react";
-import { Col, Collapse, Row } from "antd";
+import {  Col, Collapse, Row } from "antd";
 import ProductCard from "../../../components/ProductCard/ProductCard";
 import demoImages from "../../../assets/images/demo-product-images";
 import Styles from "./product.module.css";
 import CustomCollapse from "../../../components/Collapse/Collapse";
+import ProductCarousel from "../../../components/Carousel/ProductCarousel/ProductCarousel";
+
 
 const data = [
   {
@@ -96,6 +98,7 @@ const collapseOptions = [
     ],
   },
 ];
+const images= [demoImages.img1, demoImages.img2, demoImages.img3] ;
 
 const Product: React.FC = () => {
   const handleColor = (clicked: string) => {
@@ -119,6 +122,10 @@ const Product: React.FC = () => {
       <Col span={24} className="border-top border-1 border-bottom">
         <CustomCollapse collapseOptions={collapseOptions} />
       </Col>
+    <Col>
+     <ProductCarousel images={images} />
+     </Col>
+     
     </Row>
   );
 };

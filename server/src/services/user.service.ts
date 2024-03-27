@@ -9,6 +9,13 @@ class UserService {
     const newUser = new User(userData);
     return newUser.save();
   }
+  static async updateUser(
+    userId: string,
+    userData: UserType
+  ): Promise<UserType | null> {
+    console.log(userId);
+    return User.findByIdAndUpdate(userId, userData, { new: true });
+  }
 }
 
 export default UserService;

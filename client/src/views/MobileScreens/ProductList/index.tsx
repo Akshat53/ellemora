@@ -28,7 +28,7 @@ const data = [
     discountedPrice: "24000",
     originalPrice: "140,000",
     img: [demoImages.img1, demoImages.img2, demoImages.img3],
-    colors : []
+    colors: [],
   },
 ];
 const ProductList: React.FC = () => {
@@ -70,11 +70,11 @@ const ProductList: React.FC = () => {
               data={product}
               view={view}
               onClick={() => handleProductClick(product)}
-          
             />
           </Col>
         ))}
       </Row>
+      
     </div>
   );
 };
