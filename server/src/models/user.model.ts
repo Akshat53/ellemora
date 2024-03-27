@@ -1,7 +1,6 @@
 import mongoose, { Schema, Document } from "mongoose";
 
 export interface User extends Document {
-  _id: number;
   username: string;
   firstName: string;
   lastName: string;
@@ -17,7 +16,6 @@ export interface User extends Document {
 
 const userSchema = new Schema<User>(
   {
-    _id: { type: Number, required: true },
     username: { type: String, required: true },
     firstName: { type: String, required: true },
     lastName: { type: String, required: true },
