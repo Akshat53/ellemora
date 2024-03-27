@@ -6,7 +6,7 @@ interface ProductCarouselProps {
   images: string[];
 }
 
-const ProductCarousel: React.FC<ProductCarouselProps> = ({ images }) => {
+const ProductCarousel: React.FC<ProductCarouselProps> = ({ images  }) => {
 
 
   return (
