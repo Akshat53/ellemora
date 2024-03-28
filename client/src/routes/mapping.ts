@@ -26,26 +26,7 @@ export const authorizedWebRoutes = [
 
 export const unauthorizedWebRoutes = [];
 
-export const authorizedMobileRoutes = [
-  {
-    path: Constants.ROUTES.HOME,
-    Component: Home,
-    exact: true,
-    title: Constants.HEADERS.HOME,
-  },
-  {
-    path: Constants.ROUTES.PRODUCT,
-    Component: Product,
-    exact: true,
-    title: Constants.HEADERS.PRODUCT,
-  },
-  {
-    path: Constants.ROUTES.PRODUCTS,
-    Component: ProductList,
-    exact: true,
-    title: Constants.HEADERS.PRODUCTS,
-  },
-];
+export const authorizedMobileRoutes = [];
 
 export const unauthorizedMobileRoutes = [];
 
