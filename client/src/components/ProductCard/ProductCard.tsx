@@ -2,13 +2,11 @@ import React from "react";
 import ProductCarousel from "../Carousel/ProductCarousel/ProductCarousel";
 import Styles from "./productCard.module.css";
 import shareIcon from "../../assets/svg/share.svg";
-import AddToBag from "../Buttons/AddToBag/AddToBag";
-import BuyNow from "../Buttons/BuyNow/BuyNow";
-import ProductColors from "../Buttons/ProductColors/ProductColors";
-import ProductSize from "../Buttons/Size/ProductSize";
+
 import wishlistIcon from "../../assets/svg/fav.svg";
-import { Button } from "antd";
+
 import AppButton from "../Buttons/Button";
+import ProductColors from "../Buttons/ProductColors/ProductColors";
 
 interface ProductCardProps {
   data: {
@@ -128,7 +126,14 @@ const ProductCard: React.FC<ProductCardProps> = ({
           >
             <div className="d-flex flex-column w-100 gap-2 ">
               <div className="w-100 d-flex gap-2  ">
-                <ProductSize />
+              <AppButton
+              label="Size"
+              className="w-100 border-0 p-2"
+              onClick={""}
+              bgColor="white"
+              color="black"
+              border="1px solid #5C5C5C" 
+            />
                 <button className="bg-white p-2 default-border">
                   <img src={shareIcon} />
                 </button>
@@ -137,8 +142,18 @@ const ProductCard: React.FC<ProductCardProps> = ({
                 </button>
               </div>
               <div className="d-flex gap-2 w-100 ">
-                <AddToBag />
-                <BuyNow />
+              <AppButton
+              label="Add to bag"
+              className="w-100 border-0 p-2"
+              onClick={""}
+              bgColor="#2C2C2C"
+            />
+                 <AppButton
+              label="Buy Now "
+              className="w-100 border-0 p-2"
+              onClick={""}
+              bgColor="#2C2C2C"
+            />
               </div>
             </div>
           </div>
@@ -187,7 +202,14 @@ const ProductCard: React.FC<ProductCardProps> = ({
           <div
             className={`${Styles.btn} d-flex justify-content-evenly gap-1 py-2`}
           >
-            <AddToBag view={"grid"} />
+            <AppButton
+              label="Add to Bag "
+              className="w-100 border-0 p-2"
+              onClick={""}
+              bgColor="#FBFBFB"
+              color="#2A2A2A"
+              border="1px solid #5C5C5C"
+            />
           </div>
         </div>
       </>

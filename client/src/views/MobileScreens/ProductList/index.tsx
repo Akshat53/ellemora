@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import FilterBox from "../../../components/FilterBox";
 import ProductCard from "../../../components/ProductCard/ProductCard";
 import { Col, Row } from "antd";
-import demoImages from "../../../assets/images/demo-product-images";
+import demoImages from "../../../assets/images/demo-product-images/index";
 
 const data = [
   {
