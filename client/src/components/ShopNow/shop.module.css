@@ -1,0 +1,22 @@
+.text{
+    color: rgba(180, 180, 180, 1);
+    font-size: 8px;
+    font-weight: 500;
+    line-height: 8.34px;
+    letter-spacing: 0.1em;
+
+}
+
+.btn{
+    background: rgba(216, 216, 216, 1);
+    color: rgba(41, 41, 41, 1);
+    font-weight: 600;
+    letter-spacing: 0.1em;
+    
+    width: 31px;
+}
+
+.shop{
+    top: 10px;
+    
+}

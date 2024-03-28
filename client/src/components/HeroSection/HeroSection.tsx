@@ -7,9 +7,8 @@ const HeroSection: React.FC = () => {
     <Row>
       <Col className={` ${Styles.img} position-relative`}>
         <div
-          className={`${Styles.overlayBox} d-flex h-100 w-100 align-items-end justify-content-center`}
-        >
-          <p className="text-light heading">TAILORED DEISGNING JUST FOR YOU</p>
+          className={`${Styles.overlayBox} d-flex h-100 w-100 align-items-end justify-content-center`}>
+          <p className={`${Styles.tc} heading`}>TAILORED DEISGNING JUST FOR YOU</p>
         </div>
       </Col>
     </Row>
