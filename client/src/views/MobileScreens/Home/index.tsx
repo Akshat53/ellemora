@@ -1,11 +1,9 @@
 import { connect } from "react-redux";
 import Categories from "../../../components/Categories";
 import { getProductListAction } from "../../../store/products/products.actions";
-<<<<<<< HEAD
-import BgImg from "../../../components/bgimg/BgImg";
-=======
+
 import HeroSection from "../../../components/HeroSection/HeroSection";
->>>>>>> main
+
 
 const Home = (props: any) => {
   const { productStore, productActions } = props;
@@ -14,11 +12,9 @@ const Home = (props: any) => {
   return (
     <div className="w-full">
       <Categories />
-<<<<<<< HEAD
-      <BgImg/>
-=======
+
       <HeroSection />
->>>>>>> main
+
     </div>
   );
 };
