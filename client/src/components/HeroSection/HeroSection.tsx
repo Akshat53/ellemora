@@ -1,5 +1,5 @@
 import React from "react";
-import { Row, Col, Image } from "antd";
+import { Row, Col } from "antd";
 import Styles from "./hero.module.css";
 
 const HeroSection: React.FC = () => {

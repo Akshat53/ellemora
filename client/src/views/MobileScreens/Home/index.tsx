@@ -3,6 +3,7 @@ import Categories from "../../../components/Categories";
 import { getProductListAction } from "../../../store/products/products.actions";
 import HeroSection from "../../../components/HeroSection/HeroSection";
 
+
 const Home = (props: any) => {
   const { productStore, productActions } = props;
 
@@ -11,6 +12,7 @@ const Home = (props: any) => {
     <div className="w-full">
       <Categories />
       <HeroSection />
+     
     </div>
   );
 };
