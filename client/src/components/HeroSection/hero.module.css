@@ -1,0 +1,14 @@
+
+.img {
+  background-image: url("../../assets/images/home/img1.png");
+  height: 382px;
+  width: 100%;
+  object-fit: cover;
+  background-size: cover;
+
+ 
+}
+.overlayBox {
+  background-color: #00000099;
+  z-index: 1000;
+}
