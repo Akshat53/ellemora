@@ -13,16 +13,16 @@ const Home = (props: any) => {
   );
 };
 
-const mapStateToProps = (state) => {
+const mapStateToProps = (state:any) => {
   return {
     productStore: state.productStore,
   };
 };
 
-const mapDispatchToProps = (dispatch) => {
+const mapDispatchToProps = (dispatch:any) => {
   return {
     productActions: {
-      getProductListAction: (params) => dispatch(getProductListAction(params)),
+      getProductListAction: (params:any) => dispatch(getProductListAction(params)),
     },
   };
 };
