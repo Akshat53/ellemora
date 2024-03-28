@@ -1,6 +1,7 @@
 import { connect } from "react-redux";
 import Categories from "../../../components/Categories";
 import { getProductListAction } from "../../../store/products/products.actions";
+import BgImg from "../../../components/bgimg/BgImg";
 
 const Home = (props: any) => {
   const { productStore, productActions } = props;
@@ -9,6 +10,7 @@ const Home = (props: any) => {
   return (
     <div className="w-full">
       <Categories />
+      <BgImg/>
     </div>
   );
 };
