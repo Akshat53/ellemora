@@ -17,7 +17,7 @@ const FilterBox: React.FC<FilterBoxProps> = ({ viewChange }) => {
     setSelectedOption(viewType);
     viewChange(viewType === "singleView" ? "list" : "grid");
   };
-
+  
   return (
     <div className={`d-flex justify-content-between ${Styles.filterBox}`}>
       <div className={`${Styles.filter} p-2 px-3 `}>
