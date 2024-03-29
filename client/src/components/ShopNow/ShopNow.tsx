@@ -1,20 +1,19 @@
-import { Row, Col } from "antd";
+// import { Row, Col } from "antd";
 import React from "react";
 import Styles from "./shop.module.css";
+import img1 from "../../assets/images/home/img2.png"
 
 const ShopNow: React.FC = () => {
   return (
-    <Row>
-      <Col className={`${Styles.img2} mt-2 w-100 h-25 position-relative`}>
-        <img src="/src/assets/images/home/img2.png" className="w-100" />
-        <div className={`${Styles.shop} position-absolute d-flex flex-column justify-content-between w-100  h-75`}>
-          <div className={`${Styles.text}`}>
-            <p className={`${Styles.text} text-centre`}><span>10 %</span> ON YOUR FIRST PURCHASE</p>
-          </div>
-          <button className={`${Styles.btn} text-center w-25 f-p`}>SHOP NOW</button>
-        </div>
-      </Col>
-    </Row>
+<div className="">
+  <div className="position-relative w-100">
+    <img src={img1} className="img-fluid" alt="Image" />
+    <div className={`${Styles.shop} position-absolute top-50 w-75 h-100 translate-middle d-flex flex-column justify-content-around align-items-center`}>
+      <p className={`text-center`}><span>10% OFF</span><br/>ON YOUR FIRST PURCHASE</p>
+      <button className="btn ">SHOP NOW</button>
+    </div>
+  </div>
+</div>
   );
 };
 
