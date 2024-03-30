@@ -1,5 +1,5 @@
 .shop{
-    left: 75%
+left : 75%;
 }
 .shop p{
     font-size: 9px;
@@ -17,6 +17,7 @@
     font-weight: 600;
     line-height: 5px;
     letter-spacing: 0.1em;
+  
 }
 
 .shop span{

@@ -3,6 +3,8 @@ import Categories from "../../../components/Categories";
 import { getProductListAction } from "../../../store/products/products.actions";
 import HeroSection from "../../../components/HeroSection/HeroSection";
 import ShopNow from "../../../components/ShopNow/ShopNow";
+import Heading from "../../../components/Headings/Heading";
+import Swiper from "../../../components/Swiper/Swiper";
 
 interface homeProps{
   
@@ -17,6 +19,11 @@ const Home: React.FC <homeProps> = (props: any) => {
       <Categories />
       <HeroSection />
       <ShopNow/>
+      <Heading title="New Arrivals"/>
+     
+      <Swiper />
+      
+      
     </div>
   );
 };
