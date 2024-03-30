@@ -6,6 +6,7 @@ export interface User extends Document {
   firstName: string;
   lastName: string;
   email: string;
+  mobile : string;
   password: string;
   softDelete: boolean;
   isActive: boolean;
@@ -36,6 +37,10 @@ const userSchema: Schema<User> = new Schema(
       type: String,
       required: true,
       unique: true,
+    },
+   mobile: {
+    type: String,
+    required : true
     },
     password: {
       type: String,

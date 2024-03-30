@@ -1,21 +1,31 @@
-import User, { User as UserType } from "../models/user.model";
+import userModel, { User as UserModel } from "../models/user.model";
+
+
+type UserType = UserModel & { _id: string };
 
 class UserService {
   static async getAllUsers(): Promise<UserType[]> {
-    return User.find();
+    return userModel.find();
   }
 
-  static async createUser(userData: UserType): Promise<UserType> {
-    const newUser = new User(userData);
+  static async createUser(userData: Partial<UserType>): Promise<UserType> {
+    const newUser = new userModel(userData);
     return newUser.save();
   }
-  static async updateUser(
-    userId: string,
-    userData: UserType
-  ): Promise<UserType | null> {
+  static async updateUser(userId: string, userData: UserType): Promise<UserType | null> {
     console.log(userId);
-    return User.findByIdAndUpdate(userId, userData, { new: true });
+    return userModel.findByIdAndUpdate(userId, userData, { new: true });
   }
+
+  static async getUserById(userId: string): Promise<UserType | null> {
+    return userModel.findById(userId);
+  }
+
+  static async findUserByEmail(email: string): Promise<UserType | null> {
+    return userModel.findOne({ email });
+  }
+
+
 }
 
 export default UserService;
