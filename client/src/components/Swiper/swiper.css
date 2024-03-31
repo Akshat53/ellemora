@@ -3,18 +3,26 @@
   height: auto;
   display: block;
   margin: 0 auto;
-  
 }
 
 .slide {
-  transform: scale(0.5); 
+  position: relative;
   transition: transform 300ms;
-  opacity: 0.8; 
+  opacity: 0.8;
 }
 
-
 .activeSlide {
-  transform: scale(1.0); 
+  transform: scale(1.1) translateX(0%);
   opacity: 1;
+}
 
+.slide p {
+  position: relative;
+  bottom: 18px;
+  font-weight: 500;
+  line-height: 15px;
+  letter-spacing: 1.5px;
+  text-align: center;
+  color: rgba(0, 0, 0, 0.5);
+  padding: 14px; 
 }
