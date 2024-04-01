@@ -3,12 +3,10 @@ import img2 from "./img2.png";
 import img3 from "./img3.png";
 import img4 from "./img4.png";
 import img5 from "./img5.png";
-
-
-interface Images {
+interface ImageData {
   [key: string]: string;
 }
 
-const img: Images = { img1, img2, img3, img4, img5 };
+const gridImages: ImageData = { img1,img2,img3,img4,img5 };
 
-export default img;
+export default gridImages;

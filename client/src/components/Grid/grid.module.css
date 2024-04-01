@@ -1,0 +1,32 @@
+.gridContainer {
+  padding: 8px;
+  position: relative;
+}
+
+.overlay {
+  padding: 15px;
+  font-weight: 400;
+  font-size: large;
+  letter-spacing: 6px;
+  color: white;
+  text-align: center;
+  z-index: 1000;
+  background: linear-gradient(180deg, rgba(0, 0, 0, 0) -25.66%, rgba(0, 0, 0, 0.6) 89.95%);
+}
+
+.mainImage,
+.subImage {
+  width: 100%;
+  height: auto;
+}
+
+.mainImageContainer,
+.subImageContainer {
+  position: relative;
+  margin-bottom: 8px;
+}
+
+.mainImageContainer .overlay,
+.subImageContainer .overlay {
+  z-index: 1000;
+}

@@ -7,13 +7,13 @@ interface homeCarouselProps {
   data: {
     img: string;
     text: string;
-    link: string;
+    link : string
   };
 }
 
 const HomeCarousel: React.FC<homeCarouselProps> = ({ data }) => {
   const [imageIndex, setImageIndex] = useState(0);
-  const [isActive, setIsActive] = useState(false);
+  const [isActive,setIsActive] = useState(false);
   // console.log(imageIndex);
 
   const settings = {
@@ -50,15 +50,16 @@ const HomeCarousel: React.FC<homeCarouselProps> = ({ data }) => {
     <div className="w-100">
       <Slider {...settings}>
         {data.map((item, idx) => (
-          <Link to={idx == imageIndex ? item.link : isActive} key={idx}>
-            <div
-              className={
-                idx === imageIndex ? "slide activeSlide" : "slide slideImg"
-              }
-            >
-              <img src={item.img} alt={item.text} />
-              <p className="text-center">{item.text}</p>
-            </div>
+          <Link to={idx==imageIndex ? item.link: isActive} key={idx} className="text-decoration-none">
+          <div
+            className={
+              idx === imageIndex ? "slide activeSlide" : "slide slideImg"
+            }
+          
+          >
+            <img src={item.img} alt={item.text} />
+            <p className="text-center">{item.text}</p>
+          </div>
           </Link>
         ))}
       </Slider>

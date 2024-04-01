@@ -1,4 +1,3 @@
-// demo-product-images/index.tsx
 
 import img1 from "./item1.png";
 import img2 from "./item2.png";
