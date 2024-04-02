@@ -11,6 +11,7 @@ import AppButton from "../../../components/Buttons/Button";
 import img1 from "../../../assets/images/home/img1.png";
 import img2 from "../../../assets/images/home/img3.png";
 import Styles from "./index.module.css";
+import ProductCard from "../../../components/ProductCard/ProductCard";
 
 interface homeProps {}
 
@@ -49,7 +50,7 @@ const Home: React.FC<homeProps> = (props: any) => {
         children={<p className={`text-light heading`}>TAILORED DEISGNING JUST FOR YOU</p>}/>
       <ShopNow />
       <Heading title="New Arrivals" />
-      <HomeCarousel data={data} />
+      {/* <HomeCarousel data={data} /> */}
       <Heading title="Shop by Occasion" />
       <Grid />
       <Heading title="A tale of tailormade dreams" />
@@ -58,7 +59,7 @@ const Home: React.FC<homeProps> = (props: any) => {
         children={
           <AppButton
             label="Customization"
-            className={`${Styles.AppButton} `}
+            className={`${Styles.AppButton} `} 
             bgColor="rgba(35, 35, 35, 1)"
             color="rgba(255, 255, 255, 1)"
             border="0.5px solid rgba(169, 169, 169, 1)"
@@ -66,11 +67,16 @@ const Home: React.FC<homeProps> = (props: any) => {
         }
       />
       <Heading title="Shop by style" />
-      
+      {/* <ProductCard /> */}
+      <div className="d-flex flex-column p-2 ">
+      <AppButton label="EXPLORE ALL" className={`${Styles.Explore} `}/>
+      </div>
       <Heading title="Festive special" />
-      <HomeCarousel data={data} />
+      {/* <HomeCarousel data={data} /> */}
       <Heading title="Sale" />
-
+     
+      
+      {/* <ProductCard /> */}
     </div>
   );
 };

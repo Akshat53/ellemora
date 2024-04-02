@@ -28,14 +28,15 @@ const data = [
 
 const Grid: React.FC = () => {
   return (
-    <div className={`styles.gridContainer position-relative`}>
+    <div className={`${styles.gridContainer}`}>
       <Row justify="center" gutter={[8, 8]}>
         {data.map((item, i) => (
-          <Col className={`styles.mainImageContainer position-relative`} span={i == 0 ? 24 : 12}>
-            <div className={`${styles.overlay} d-flex justify-content-center align-items-end w-100 h-100 position-absolute`}>
+          <Col className={`${styles.mainImageContainer}  position-relative  w-100`} span={i == 0 ? 24 : 12}>
+           
+            <img src={item.img} className={`${styles.mainImage} w-100 w-100 `} />
+            <div className={`${styles.overlay} d-flex justify-content-center align-items-end w-75  position-absolute h-100`}>
               {item.text}
             </div>
-            <img src={item.img} className={`${styles.mainImage} w-100 img-fluid`} />
           </Col>
         ))}
       </Row>

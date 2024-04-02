@@ -1,9 +1,11 @@
-.gridContainer {
-  padding: 8px;
+.mainImageContainer {
+  position: relative; /* Ensure the container is positioned */
 }
 
 .overlay {
-  padding: 15px;
+ 
+  bottom: 0; /* Position the overlay at the bottom of the container */
+ 
   font-weight: 400;
   font-size: large;
   letter-spacing: 6px;
@@ -15,12 +17,5 @@
 
 .mainImage {
   height: auto;
-}
-
-.mainImageContainer{
-  margin-bottom: 8px;
-}
-
-.mainImageContainer .overlay {
-  z-index: 1000;
+  width: 100%; /* Ensure the image fills the container */
 }

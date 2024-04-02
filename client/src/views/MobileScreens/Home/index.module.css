@@ -7,4 +7,10 @@
     cursor: pointer;
     margin-bottom: 20px;
   }
+
+  .Explore{
+    color: rgba(233, 233, 233, 1);
+    background-color: rgba(157, 0, 0, 1);
+    border: 0.5px solid rgba(128, 128, 128, 1)
+  }
   
