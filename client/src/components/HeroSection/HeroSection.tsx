@@ -11,10 +11,14 @@ const HeroSection: React.FC<HeroSectionProps> = ({ img,children }) => {
   return (
     <Row>
       <Col
-        className={`${Styles.img} position-relative`}
-        style={{ backgroundImage: `url(${img})` }}>
+        className={`${Styles.img} w-100 h-100  `}
+        >
+          <div className="w-full position-relative">
+          <img  src={img} alt="project" width={"100%"}/>
+          </div>
+          
         <div
-          className={`${Styles.overlayBox} d-flex h-100 w-100 align-items-end justify-content-center`}>
+          className={`${Styles.overlayBox} d-flex h-100 w-100 align-items-end justify-content-center position-absolute top-0`}>
           {children}
         </div>
       </Col>

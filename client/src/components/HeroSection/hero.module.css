@@ -1,11 +1,11 @@
-.img {
+/* .img {
   height: 382px;
   width: 100%;
   object-fit: cover;
   background-size: cover;
   max-width: 750px ;
   min-width: 200px;
-}
+} */
 .overlayBox {
   z-index: 1000;
   background: linear-gradient(180deg, rgba(0, 0, 0, 0) -25.66%, rgba(0, 0, 0, 0.6) 89.95%);

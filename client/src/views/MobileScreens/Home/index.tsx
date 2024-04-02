@@ -12,8 +12,23 @@ import img1 from "../../../assets/images/home/img1.png";
 import img2 from "../../../assets/images/home/img3.png";
 import Styles from "./index.module.css";
 import ProductCard from "../../../components/ProductCard/ProductCard";
+import demoImages from "../../../assets/images/demo-product-images";
+import CustomCarousel from "../../../components/Carousel/CustomCarousel/CustomCarousel";
 
 interface homeProps {}
+
+const cardData = [
+  {
+    title: "Europe Street beat",
+    discount: "20% off",
+    description: "Pink Cascade set with red velvet touch",
+    discountedPrice: "24000",
+    originalPrice: "140,000",
+    img: [demoImages.img1 ],
+  
+  },
+];
+
 
 const data = [
   {
@@ -43,14 +58,14 @@ const Home: React.FC<homeProps> = (props: any) => {
 
   console.log(productActions, productStore, "state with actions");
   return (
-    <div className="w-full">
+    <div className="">
       <Categories />
       <HeroSection
         img={img1}
         children={<p className={`text-light heading`}>TAILORED DEISGNING JUST FOR YOU</p>}/>
       <ShopNow />
       <Heading title="New Arrivals" />
-      {/* <HomeCarousel data={data} /> */}
+      <HomeCarousel data={data} />
       <Heading title="Shop by Occasion" />
       <Grid />
       <Heading title="A tale of tailormade dreams" />
@@ -67,16 +82,21 @@ const Home: React.FC<homeProps> = (props: any) => {
         }
       />
       <Heading title="Shop by style" />
-      {/* <ProductCard /> */}
+
+      
+      {cardData.map((item,i)=>(
+         <ProductCard data={item} view="home"/>
+      ))}
+     
       <div className="d-flex flex-column p-2 ">
       <AppButton label="EXPLORE ALL" className={`${Styles.Explore} `}/>
       </div>
       <Heading title="Festive special" />
-      {/* <HomeCarousel data={data} /> */}
+      <HomeCarousel data={data} />
       <Heading title="Sale" />
-     
+      <ProductCard data={""}/>
+      <CustomCarousel data={data}/>
       
-      {/* <ProductCard /> */}
     </div>
   );
 };

@@ -126,14 +126,14 @@ const ProductCard: React.FC<ProductCardProps> = ({
           >
             <div className="d-flex flex-column w-100 gap-2 ">
               <div className="w-100 d-flex gap-2  ">
-              <AppButton
-              label="Size"
-              className="w-100 border-0 p-2"
-              onClick={""}
-              bgColor="white"
-              color="black"
-              border="1px solid #5C5C5C" 
-            />
+                <AppButton
+                  label="Size"
+                  className="w-100 border-0 p-2"
+                  onClick={""}
+                  bgColor="white"
+                  color="black"
+                  border="1px solid #5C5C5C"
+                />
                 <button className="bg-white p-2 default-border">
                   <img src={shareIcon} />
                 </button>
@@ -142,18 +142,18 @@ const ProductCard: React.FC<ProductCardProps> = ({
                 </button>
               </div>
               <div className="d-flex gap-2 w-100 ">
-              <AppButton
-              label="Add to bag"
-              className="w-100 border-0 p-2"
-              onClick={""}
-              bgColor="#2C2C2C"
-            />
-                 <AppButton
-              label="Buy Now "
-              className="w-100 border-0 p-2"
-              onClick={""}
-              bgColor="#2C2C2C"
-            />
+                <AppButton
+                  label="Add to bag"
+                  className="w-100 border-0 p-2"
+                  onClick={""}
+                  bgColor="#2C2C2C"
+                />
+                <AppButton
+                  label="Buy Now "
+                  className="w-100 border-0 p-2"
+                  onClick={""}
+                  bgColor="#2C2C2C"
+                />
               </div>
             </div>
           </div>
@@ -215,6 +215,34 @@ const ProductCard: React.FC<ProductCardProps> = ({
       </>
     );
   };
+  const homeView = () => {
+    return (
+      <>
+  
+      
+        <div className={`${Styles.productContent} p-2 py-2`}>
+          <p className={`${Styles.title} fw-normal fs-6 `}>
+            {data.title}
+            <span className={`border border-1 p-1 px-2 m-3 ${Styles.discount}`}>
+              {data.discount}
+            </span>
+          </p>
+
+          <p className={`${Styles.discription} fw-light`}>{data.description}</p>
+
+          <p className={`${Styles.discountedPrice} fw-medium mt-2`}>
+            ₹ {data.discountedPrice}
+            <span
+              className={`${Styles.price} px-2 text-decoration-line-through`}
+            >
+              ₹ {data.originalPrice}
+            </span>
+          </p>
+         
+        </div>
+      </>
+    );
+  };
   return (
     <div
       className="w-100 d-flex justify-content-center"
@@ -225,8 +253,10 @@ const ProductCard: React.FC<ProductCardProps> = ({
         {view == "grid"
           ? gridView()
           : view == "list"
-          ? listView()
-          : productView()}
+            ? listView()
+            : view == "home"
+              ? homeView()
+              : productView()}
       </div>
     </div>
   );

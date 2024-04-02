@@ -1,9 +1,9 @@
-import "./homeCarousel.css";
+import "./custom.module.css";
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import Slider from "react-slick";
 
-interface homeCarouselProps {
+interface customCarouselProps {
   data: {
     img: string;
     text: string;
@@ -11,38 +11,18 @@ interface homeCarouselProps {
   };
 }
 
-const HomeCarousel: React.FC<homeCarouselProps> = ({ data }) => {
+const CustomCarousel: React.FC<customCarouselProps> = ({ data }) => {
   const [imageIndex, setImageIndex] = useState(0);
   const [isActive,setIsActive] = useState(false);
 
   const settings = {
-    centerMode: true,
+    centerMode: false,
     centerPadding: "20%",
     slidesToShow: 1,
     slidesToScroll: 1,
     draggable: true,
     focusOnSelect: true,
-    responsive: [
-      {
-        breakpoint: 768,
-        settings: {
-          arrows: false,
-          centerMode: true,
-          centerPadding: "10%",
-          slidesToShow: 1,
-        },
-      },
-      {
-        breakpoint: 554,
-        settings: {
-          arrows: false,
-          centerMode: true,
-          centerPadding: "12%",
-          slidesToShow: 1,
-        },
-      },
-    ],
-    beforeChange: (current, next) => setImageIndex(next),
+    
   };
 
   return (
@@ -63,4 +43,4 @@ const HomeCarousel: React.FC<homeCarouselProps> = ({ data }) => {
   );
 };
 
-export default HomeCarousel;
+export default CustomCarousel;
