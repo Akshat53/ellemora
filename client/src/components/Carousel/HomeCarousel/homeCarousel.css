@@ -1,8 +1,9 @@
 .slide img {
-  max-width: 100%; 
+  max-width: 100%;
   height: auto;
   display: block;
   margin: 0 auto;
+  aspect-ratio: 2/3;
 }
 
 .slide {
@@ -26,5 +27,5 @@
   letter-spacing: 1.5px;
   text-align: center;
   color: rgba(0, 0, 0, 0.5);
-  padding: 14px; 
+  padding-top: 25px;
 }
