@@ -67,6 +67,10 @@ const Home: React.FC<homeProps> = (props: any) => {
       />
       <Heading title="Shop by style" />
       
+      <Heading title="Festive special" />
+      <HomeCarousel data={data} />
+      <Heading title="Sale" />
+
     </div>
   );
 };
