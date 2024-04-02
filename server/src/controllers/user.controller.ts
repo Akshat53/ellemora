@@ -12,16 +12,16 @@ class UserController {
     }
   }
 
-  // create new user
+  
 
   static async createUser(req: Request, res: Response) {
     try {
       const { firstName, lastName, email, mobile, password } = req.body;
 
-      // Hash the password
+     
       const hashedPassword = await bcrypt.hash(password, 10);
 
-      // Create the user object with the hashed password
+     
       const userData = {
         firstName,
         lastName,
@@ -50,7 +50,7 @@ class UserController {
     }
   }
 
-  // get user by ID
+  
 
   static async getUserByID(req: Request, res: Response) {
     try {
