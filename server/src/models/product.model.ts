@@ -24,7 +24,7 @@ interface IProduct extends Document {
   variants: Array<{
     color: number;
     sizes: string[];
-    // Add other variant properties as needed
+    
   }>;
   media: Array<{ type: 'photo' | 'video'; url: string }>;
   primaryVariant: boolean;
