@@ -221,7 +221,8 @@ const ProductCard: React.FC<ProductCardProps> = ({
   
       
         <div className={`${Styles.productContent} p-2 py-2`}>
-          <p className={`${Styles.title} fw-normal fs-6 `}>
+          <p className={`${Styles.title} fw-normal fs-6 te
+          xt-dark fs-large `}>
             {data.title}
             <span className={`border border-1 p-1 px-2 m-3 ${Styles.discount}`}>
               {data.discount}

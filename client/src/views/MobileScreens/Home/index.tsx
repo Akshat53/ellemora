@@ -17,6 +17,7 @@ import CustomCarousel from "../../../components/Carousel/CustomCarousel/CustomCa
 
 interface homeProps {}
 
+
 const cardData = [
   {
     title: "Europe Street beat",
@@ -28,7 +29,6 @@ const cardData = [
   
   },
 ];
-
 
 const data = [
   {
@@ -82,20 +82,15 @@ const Home: React.FC<homeProps> = (props: any) => {
         }
       />
       <Heading title="Shop by style" />
-
-      
-      {cardData.map((item,i)=>(
-         <ProductCard data={item} view="home"/>
-      ))}
-     
       <div className="d-flex flex-column p-2 ">
+      <CustomCarousel data={cardData} view={"home"}/>
       <AppButton label="EXPLORE ALL" className={`${Styles.Explore} `}/>
       </div>
       <Heading title="Festive special" />
       <HomeCarousel data={data} />
       <Heading title="Sale" />
-      <ProductCard data={""}/>
-      <CustomCarousel data={data}/>
+      
+      <CustomCarousel data={cardData} view="grid"/>
       
     </div>
   );
