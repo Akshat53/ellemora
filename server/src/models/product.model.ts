@@ -1,4 +1,4 @@
-import mongoose, { Schema, Document } from 'mongoose';
+import mongoose, { Schema, Document } from "mongoose";
 
 interface IProduct extends Document {
   name: string;
@@ -19,17 +19,15 @@ interface IProduct extends Document {
   price: number;
   discount: number;
   discountType: string;
-  colors: Array<{ name: string; code: string }>;
+  color: { name: string; code: string }; // Single color field
   sizes: string[];
-  variants: Array<{
-    color: number;
-    sizes: string[];
-    
-  }>;
-  media: Array<{ type: 'photo' | 'video'; url: string }>;
+  categoryId: Schema.Types.ObjectId;
+  relationId?: string;
   primaryVariant: boolean;
   softDelete: boolean;
   isActive: boolean;
+
+  masterProduct: Schema.Types.ObjectId | null;
 }
 
 const productSchema = new Schema<IProduct>({
@@ -51,30 +49,42 @@ const productSchema = new Schema<IProduct>({
   price: { type: Number, required: true },
   discount: { type: Number, required: true },
   discountType: { type: String, required: true },
-  colors: [
-    {
-      name: { type: String, required: true },
-      code: { type: String, required: true }
-    }
-  ],
+  color: { // Single color field
+    name: { type: String, required: true },
+    code: { type: String, required: true },
+  },
+  categoryId: { type: Schema.Types.ObjectId, ref: "Category", required: true },
   sizes: { type: [String], required: true },
-  variants: [
-    {
-      color: { type: Number, required: true },
-      sizes: { type: [String], required: true },
-    
-    }
-  ],
-  media: [
-    {
-      type: { type: String, enum: ['photo', 'video'], required: true },
-      url: { type: String, required: true }
-    }
-  ],
-  primaryVariant: { type: Boolean, required: true },
+  relationId: { type: String, required: false },
+  primaryVariant: { type: Boolean, default:true},
   softDelete: { type: Boolean, required: true, default: false },
   isActive: { type: Boolean, required: true, default: true },
+  masterProduct: { type: Schema.Types.ObjectId, ref: "Product", default: null },
 });
 
-const Product = mongoose.model<IProduct>('Product', productSchema);
+productSchema.pre<IProduct>("save", async function (next) {
+  if (this.relationId) {
+    try {
+      const existingProduct = await mongoose.model<IProduct>("Product").findOne({
+        _id: this.relationId,
+      });
+      if (existingProduct) {
+        this.masterProduct = existingProduct._id;
+
+        this.primaryVariant = false;
+        next();
+      } else {
+        throw new Error(
+          "Invalid relationId: No product found with the given relationId"
+        );
+      }
+    } catch (error: any) {
+      next(error);
+    }
+  } else {
+    next();
+  }
+});
+
+const Product = mongoose.model<IProduct>("Product", productSchema);
 export default Product;

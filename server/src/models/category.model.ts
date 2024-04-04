@@ -1,35 +1,20 @@
-import mongoose, { Schema, Document } from 'mongoose';
+import mongoose, { Schema, Document } from "mongoose";
 
 export interface ICategory extends Document {
   name: string;
-  description?: string;
-  softDelete: boolean;
+  description: string;
+  parentCategory?: Schema.Types.ObjectId | null;
+  children?: ICategory[];
   isActive: boolean;
+  softDelete: boolean;
 }
 
-const categorySchema: Schema = new Schema({
-  name: {
-    type: String,
-    required: true,
-  },
-  description: {
-    type: String,
-    required: false,
-  },
-  softDelete: {
-    type: Boolean,
-    required: true,
-    default: false,
-  },
-  isActive: {
-    type: Boolean,
-    required: true,
-    default: true,
-  },
-}, {
-  timestamps: true,
+const categorySchema = new Schema<ICategory>({
+  name: { type: String, required: true },
+  description: { type: String, required: true },
+  parentCategory: { type: Schema.Types.ObjectId, ref: "Category", default: null },
+  children: [{ type: Schema.Types.ObjectId, ref: "Category" }],
+  isActive: { type: Boolean, required: true, default: true },
+  softDelete: { type: Boolean, required: true, default: false },
 });
-
-const Category = mongoose.model<ICategory>('Category', categorySchema);
-
-export default Category;
+export default mongoose.model<ICategory>("Category", categorySchema);
