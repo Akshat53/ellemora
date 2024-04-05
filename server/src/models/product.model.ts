@@ -19,7 +19,7 @@ interface IProduct extends Document {
   price: number;
   discount: number;
   discountType: string;
-  color: { name: string; code: string }; // Single color field
+  color: { name: string; code: string }; 
   sizes: string[];
   categoryId: Schema.Types.ObjectId;
   relationId?: string;
@@ -49,7 +49,7 @@ const productSchema = new Schema<IProduct>({
   price: { type: Number, required: true },
   discount: { type: Number, required: true },
   discountType: { type: String, required: true },
-  color: { // Single color field
+  color: { 
     name: { type: String, required: true },
     code: { type: String, required: true },
   },
