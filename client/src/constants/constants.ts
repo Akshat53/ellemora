@@ -4,11 +4,13 @@ const Constants = {
     HOME: "/",
     PRODUCT: "/product",
     PRODUCTS: "/products",
+    CUSTOMIZATION : "/customization",
   },
   HEADERS: {
     HOME: "Ellemora",
     PRODUCT: "Product View",
-    PRODUCTS: "Products"
+    PRODUCTS: "Products",
+    CUSTOMIZATION : "Customization",
   }
 };
 

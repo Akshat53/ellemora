@@ -27,10 +27,10 @@ const data = [
 
 const AppGrid: React.FC = () => {
   return (
-    <div className="container">
-      <div className="row">
+    <div className="container ">
+      <div className="row ">
         {data.map((item, i) => (
-          <div key={i} className={`col-${i === 0 ? "12" : "6"} p-1 m-0 `}>
+          <div key={i} className={`col-${i === 0 ? "12" : "6"} ${styles.layout} m-0 `}>
             <div className="position-relative h-100 ">
               <img src={item.img} alt={item.text} className={styles.gridImage}  />
               <div className={`${styles.overlay} d-flex flex-column align-items-center justify-content-end`}>

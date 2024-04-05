@@ -218,19 +218,58 @@ const ProductCard: React.FC<ProductCardProps> = ({
   const homeView = () => {
     return (
       <>
-  
-      
-        <div className={`${Styles.productContent} p-2 py-2`}>
-          <p className={`${Styles.title} fw-normal fs-6 te
+        <div className={`${Styles.productContent} p-2 py-3`}>
+          <p className={`${Styles.title} fw-normal fs-5 te
           xt-dark fs-large `}>
             {data.title}
-            <span className={`border border-1 p-1 px-2 m-3 ${Styles.discount}`}>
+            <span className={` p-1 px-2 m-3 text-opacity ${Styles.hcd}`}>
               {data.discount}
             </span>
           </p>
 
-          <p className={`${Styles.discription} fw-light`}>{data.description}</p>
-
+          <p className={`${Styles.discountedPrice} fw-small mt-2 fs-6`}>
+            ₹ {data.discountedPrice}
+            <span
+              className={`${Styles.price} px-2 text-decoration-line-through`}
+            >
+              ₹ {data.originalPrice}
+            </span>
+          </p>
+          <p className={`${Styles.discription} fw-light fs-6`}>{data.description}</p>
+        </div>
+      </>
+    );
+  };
+  const cardView = () => {
+    return (
+      <>
+        {data.colour && data.colour.length > 0 && (
+          <div className="d-flex justify-content-center p-1 gap-2">
+            {data.colour.map((color, index) => (
+              <div
+                key={index}
+                className="border"
+                style={{ height: "19px", width: "19px", padding: "2px" }}
+                onClick={() => colors(color)}
+              >
+                <div
+                  className="w-100 h-100"
+                  style={{ backgroundColor: color }}
+                ></div>
+              </div>
+            ))}
+          </div>
+        )}
+        <div className={`${Styles.productContent} p-2 py-2`}>
+          <p className={`${Styles.title} fw-small fs-5${Styles.titleGrid}`}>
+            {data.title}
+            <span
+              className={`p-1 px-1 m-2 ${Styles.hcd}`}
+            >
+              {data.discount}
+            </span>
+          </p>
+          <p className={`${Styles.discription} fw-light mt-1`}>{data.description}</p>
           <p className={`${Styles.discountedPrice} fw-medium mt-2`}>
             ₹ {data.discountedPrice}
             <span
@@ -239,11 +278,23 @@ const ProductCard: React.FC<ProductCardProps> = ({
               ₹ {data.originalPrice}
             </span>
           </p>
-         
+          <div
+            className={`${Styles.btn} d-flex justify-content-evenly gap-1 py-2`}
+          >
+            <AppButton
+              label="Add to Bag "
+              className="w-100 p-1 "
+              onClick={""}
+              bgColor="#FBFBFB"
+              color="rgba(42, 42, 42, 1)"
+              border="0.5px solid rgba(169, 169, 169, 1)"
+            />
+          </div>
         </div>
       </>
     );
   };
+
   return (
     <div
       className="w-100 d-flex justify-content-center"
@@ -257,7 +308,9 @@ const ProductCard: React.FC<ProductCardProps> = ({
             ? listView()
             : view == "home"
               ? homeView()
-              : productView()}
+              : view == "card"
+                ? cardView()
+                : productView()}
       </div>
     </div>
   );

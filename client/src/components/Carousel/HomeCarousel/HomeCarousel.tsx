@@ -46,7 +46,7 @@ const HomeCarousel: React.FC<homeCarouselProps> = ({ data }) => {
   };
 
   return (
-    <div className="w-100">
+    <div className="w-100 carousel-container">
       <Slider {...settings}>
         {data.map((item, idx) => (
           <Link

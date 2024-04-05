@@ -11,6 +11,9 @@
   .Explore{
     color: rgba(233, 233, 233, 1);
     background-color: rgba(157, 0, 0, 1);
-    border: 0.5px solid rgba(128, 128, 128, 1)
+    border: 0.5px solid rgba(128, 128, 128, 1);
+    height: 54px;
+    font-weight: 500;
+    letter-spacing: 0.1em;
   }
   

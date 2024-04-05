@@ -9,7 +9,7 @@ interface headingProps {
 const Heading: React.FC <headingProps> = ({title}) => {
   return (
     <Row>
-        <Col className={`${Styles.col}d-flex lh-lg text-center fs-5 justify-content-centre w-100 fw-normal heading`}>
+        <Col className={`${Styles.col}d-flex lh-lg text-center fs-5 justify-content-centre w-100 fw-normal p-1 mt-3 heading`}>
             {title}
         </Col>
     </Row>
