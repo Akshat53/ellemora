@@ -6,6 +6,6 @@ const router = express.Router();
 router.post("/categories", CategoryController.createCategory);
 router.get("/categories/:id", CategoryController.getCategoryById);
 router.get("/categories", CategoryController.getCategories);
-router.get("/categories/parent", CategoryController.getParentCategories); // Corrected endpoint definition
+router.get("/categories/parent", CategoryController.getParentCategories); 
 
 export default router;
