@@ -6,3 +6,4 @@ const upload = multer({ storage });
 const uploadMiddleware = upload.array("files", 12);
 
 export default uploadMiddleware;
+ 
