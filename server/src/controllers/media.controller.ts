@@ -1,13 +1,32 @@
+import { Request, Response } from "express";
+import MediaService from "../services/media.service";
+import Product from "../models/product.model";
 
-import { Request, Response } from 'express';
-import { uploadFile } from '../services/media.service';
+class MediaController {
+  static async uploadMedia(req: Request, res: Response) {
+    const files = req.files as Express.Multer.File[];
+    const { productId } = req.body;
 
-export async function upload(req: Request, res: Response): Promise<void> {
-  try {
-    await uploadFile(req);
-    res.status(200).send('File uploaded successfully');
-  } catch (err) {
-    console.error('Error uploading file:', err);
-    res.status(500).send('Error uploading file');
+    if (!files) {
+      return res.status(400).send({ error: "No files uploaded." });
+    }
+
+    try {
+      const mediaArray = await MediaService.uploadMedia(files, productId);
+
+      const product = await Product.findById(productId);
+      if (!product) {
+        return res.status(404).send({ error: "Product not found." });
+      }
+
+      product.media.push(...mediaArray);
+      await product.save();
+
+      res.status(200).send({ message: "Files uploaded successfully.", media: mediaArray });
+    } catch (err:any) {
+      res.status(500).send({ error: err.message });
+    }
   }
 }
+
+export default MediaController;

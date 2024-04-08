@@ -1,51 +1,43 @@
+import { firebaseAdmin } from "../config/firebase";
+import Media, { IMedia } from "../models/media.model";
 
-import { Request } from 'express';
-import { firebaseAdmin } from '../config/firebase';
-import File from '../models/media.model'; // Import your Mongoose model for storing file paths
+class MediaService {
+  static async uploadMedia(files: Express.Multer.File[], productId: string): Promise<IMedia[]> {
+    const bucket = firebaseAdmin.storage().bucket();
+    const mediaPromises: Promise<IMedia>[] = [];
 
-export async function uploadFile(req: Request): Promise<void> {
-  if (!req.file) {
-    throw new Error('No file uploaded.');
-  }
+    for (const file of files) {
+      const blob = bucket.file(file.originalname);
+      const blobStream = blob.createWriteStream();
 
-  const bucket = firebaseAdmin.storage().bucket();
-  const file = bucket.file(req.file.originalname);
+      const mediaPromise = new Promise<IMedia>((resolve, reject) => {
+        blobStream.on("error", (err) => {
+          reject(err);
+        });
 
-  const stream = file.createWriteStream({
-    metadata: {
-      contentType: req.file.mimetype
+        blobStream.on("finish", async () => {
+          const url = `https://firebasestorage.googleapis.com/v0/b/${bucket.name}/o/${encodeURI(blob.name)}?alt=media`;
+
+          const media = new Media({
+            productId,
+            type: "image",
+            url,
+            filename: file.originalname,
+            path: blob.name,
+          });
+
+          await media.save();
+          resolve(media);
+        });
+
+        blobStream.end(file.buffer);
+      });
+
+      mediaPromises.push(mediaPromise);
     }
-  });
 
-  await new Promise<void>((resolve, reject) => {
-    stream.on('error', (err) => {
-      console.error('Error uploading file:', err);
-      reject(err);
-    });
-
-    stream.on('finish', async () => {
-      console.log('File uploaded successfully');
-
-      
-      const filePath = `gs://${file.metadata.bucket}/${file.name}`;
-      const newFile = new File({ path: filePath });
-      await newFile.save();
-
-      
-      const storedFile = await File.findOne({ path: filePath });
-
-      if (!storedFile) {
-        throw new Error('File path not found in database.');
-      }
-
-      
-      const storagePath = storedFile.path;
-      
-      
-      resolve();
-    });
-
-   
-    stream.end(req.file!.buffer);
-  });
+    return Promise.all(mediaPromises);
+  }
 }
+
+export default MediaService;

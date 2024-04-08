@@ -1,10 +1,20 @@
+import mongoose, { Schema, Document } from "mongoose";
 
-import mongoose from 'mongoose';
+export interface IMedia extends Document {
+  productId: Schema.Types.ObjectId;
+  type: string;
+  url: string;
+  filename: string;
+  path: string;
+}
 
-const fileSchema = new mongoose.Schema({
-  path: { type: String, required: true }
-});
+const mediaSchema = new Schema<IMedia>({
+  productId: { type: Schema.Types.ObjectId, required: true },
+  type: { type: String, enum: ["image", "video"], required: true },
+  url: { type: String, required: true },
+  filename: { type: String, required: true },
+  path: { type: String, required: true },
+}, { timestamps: true });
 
-const File = mongoose.model('File', fileSchema);
-
-export default File;
+const Media = mongoose.model<IMedia>("Media", mediaSchema);
+export default Media;
