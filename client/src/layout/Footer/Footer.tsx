@@ -1,8 +1,9 @@
 import React from "react";
 import Styles from "./footer.module.css";
 import SupportIcon from "../../assets/svg/message.svg";
-import quality from "../../assets/svg/quality.svg";
+import cod from "../../assets/svg/cod.svg";
 import offer from "../../assets/svg/offers.svg";
+import gift from "../../assets/svg/gift.svg";
 import { DownOutlined } from "@ant-design/icons";
 import visaIcon from "../../assets/svg/visa.svg";
 import masterCardIcon from "../../assets/svg/mastercard.svg";
@@ -102,17 +103,15 @@ const specialityOptions = [
     img: SupportIcon,
     label: (
       <>
-        24 x 7 <br />
-        CUSTOMER <br /> SUPPORT
+        FREE SHIPPING IN INDIA
       </>
     ),
   },
   {
-    img: quality,
+    img: cod,
     label: (
       <>
-        PREMIUM <br />
-        QUALITY <br /> DESIGNS
+        COD AVAILABLE
       </>
     ),
   },
@@ -120,9 +119,15 @@ const specialityOptions = [
     img: offer,
     label: (
       <>
-        EXCITING
-        <br />
-        OFFERS
+        EXCITING OFFERS
+      </>
+    ),
+  },
+  {
+    img: gift,
+    label: (
+      <>
+        EXCITING OFFERS
       </>
     ),
   },
@@ -134,15 +139,15 @@ const Footer: React.FC = () => {
   };
   return (
     <div className="d-flex justify-content-center w-100 ">
-      <div className={`py-3 ${Styles.footer} mt-5 w-100`}>
-        <div className={`d-flex justify-content-between px-3 ${Styles.spec}`}>
+      <div className={`py-0 ${Styles.footer} mt-5 w-100`}>
+        <div className={`d-flex justify-content-between py-2 bg-dark row m-0 ${Styles.spec}`}>
           {specialityOptions.map((item, i) => (
             <div
               key={i}
-              className={`w-25 d-flex justify-content-center align-items-center text-center flex-column  ${Styles.speciality}`}
+              className={`col-6 d-flex flex-column justify-content-center align-items-center text-light ${Styles.speciality}`}
             >
-              <img src={item.img} width={"19px"} height={"19.58px"} />
-              <p className={`fw-medium mt-2`}>{item.label}</p>
+              <img src={item.img} width={"20px"} height={"20px"} />
+              <p className={`${Styles.label} mt-2`}>{item.label}</p>
             </div>
           ))}
         </div>

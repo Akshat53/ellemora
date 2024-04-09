@@ -10,6 +10,8 @@
 .spec,
 .quickLinks {
   border-bottom: 3px solid rgba(241, 241, 241, 1);
+  color: rgba(32, 32, 32, 1);
+  height: 30%;
 }
 .bottomMid {
   font-size: 9px;
@@ -27,4 +29,9 @@
 }
 .fs3 {
   font-size: 6px;
+}
+
+.label {
+  font-weight: 300;
+  letter-spacing: 0.1em;
 }
