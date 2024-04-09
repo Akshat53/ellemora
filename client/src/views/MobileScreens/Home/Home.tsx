@@ -1,19 +1,22 @@
 import { connect } from "react-redux";
-import Categories from "../../../components/Categories";
+// import Categories from "../../../components/Categories";
 import { getProductListAction } from "../../../store/products/products.actions";
 import HeroSection from "../../../components/HeroSection/HeroSection";
 import ShopNow from "../../../components/ShopNow/ShopNow";
 import Heading from "../../../components/Headings/Heading";
 import sliderImages from "../../../assets/images/slider1/index";
 import HomeCarousel from "../../../components/Carousel/HomeCarousel/HomeCarousel";
-import Grid from "../../../components/Grid/Grid";
+import Grid1 from "../../../components/Grids/Grid1/Grid1";
 import AppButton from "../../../components/Buttons/Button";
 import img1 from "../../../assets/images/home/img1.png";
 import img2 from "../../../assets/images/home/img3.png";
 import Styles from "./index.module.css";
 import demoImages from "../../../assets/images/demo-product-images";
 import CustomCarousel from "../../../components/Carousel/CustomCarousel/CustomCarousel";
-import Customization from "../Customization/Customization";
+// import Customization from "../Customization/Customization";
+import CelebrityStyle from "../../../components/Celebrity/CelebrityStyle";
+import TailorTale from "../../../components/TailorTale/Tailor";
+import Grid2 from "../../../components/Grids/Grid2/Grid2";
 
 
 
@@ -113,7 +116,7 @@ const Home: React.FC<homeProps> = (props: any) => {
   console.log(productActions, productStore, "state with actions");
   return (
     <div className="">
-      <Categories />
+      {/* <Categories /> */}
       <HeroSection
         img={img1}
         children={
@@ -125,24 +128,34 @@ const Home: React.FC<homeProps> = (props: any) => {
       <ShopNow />
       <Heading title="New Arrivals" />
       <HomeCarousel data={data} />
-      <Heading title="Shop by Occasion" />
+      <div className="conatiner border-3 border-top border-bottom">
+      <Heading  title="what’s on your mind?" />
+      <Grid2 />
+      </div>
+      <Heading title="style by celebrities" />
+      <CelebrityStyle />
+      <Heading title="Shop by style" />
       {/* <Grid /> */}
       <Heading title="A tale of tailormade dreams" />
-      <HeroSection
+      <TailorTale
         img={img2}
         children={
+          <div className={`text-bg-light text-center w-100 h-50 p-4 mt-1`}>
+            <h1 className={`${Styles.title} py-1 mb-4`}>ELLEMORA PROCESS</h1>
+            <p className={`${Styles.description} py-1 mb-4`}>This product will be exclusively handcrafted for you</p>
           <AppButton
-            label="Customization"
-            className={`${Styles.AppButton} `}
-            bgColor="rgba(35, 35, 35, 1)"
+            label="EXPLORE"
+            className={`${Styles.AppButton} mt-2 py-3`}
+            bgColor="rgba(44, 44, 44, 1)"
             color="rgba(255, 255, 255, 1)"
             border="0.5px solid rgba(169, 169, 169, 1)"
             // onClick={{Customization}}
           />
+          </div>
         }
       />
-      <Heading title="Shop by style" />
-      <Grid />
+      <Heading title="Shop by Occasion" />
+      <Grid1 />
       {/* <div className="d-flex flex-column p-2 ">
         <CustomCarousel data={cardData} view={"home"} />
         <AppButton label="EXPLORE ALL" className={`${Styles.Explore} `} />
@@ -153,7 +166,8 @@ const Home: React.FC<homeProps> = (props: any) => {
       <CustomCarousel data={cardData2} view={"card"} />
       <Heading title="Sale" />
       <CustomCarousel data={cardData3} view={"card"} />
-      <Heading title="style by celebrities" />
+      
+    
     </div>
   );
 };

@@ -1,6 +1,8 @@
 import React from "react";
 import customImg from "../../../assets/images/custom-images/custom";
 import Styles from "./custom.module.css";
+import Video from '../../../assets/videos/customization website banner video 8.mp4';
+import AppButton from "../../../components/Buttons/Button";
 
 interface CustomizationStep {
   title: string;
@@ -48,35 +50,52 @@ const customizationSteps: CustomizationStep[] = [
 ];
 
 const Customization: React.FC = () => {
-    return (
-        <div className="container">
-            {customizationSteps.map((step, index) => (
-                <div className="row" key={index}>
-                    <div className="d-flex gap-3 justify-content-center p-3 m-2 align-items-end">
-                        <div className={`${Styles.span}`}>{step.step}</div>
-                        <div className={`${Styles.title} `}>{step.title}</div>
-                    </div>
-                    <div className={`${Styles.imageContainer} m-1`}>
-                        {step.images.map((img, i) => (
-                            <img
-                                key={i}
-                                src={img}
-                                alt=""
-                                className={` ${
-                                    i === 1
-                                        ? `${Styles.scaleUp} ${Styles.imgLarge}`
-                                        : `${Styles.imgNormal}`
-                                }`}
-                            />
-                        ))}
-                    </div>
-                    <div className={`${Styles.description} m-5`}>
-                        <p>{step.description}</p>
-                    </div>
-                </div>
+  return (
+    <div className="">
+      <div>
+      <video autoPlay loop muted playsInline className={` w-100 mt-3`} src={Video}></video>
+       <h2 className={`${Styles.head} text-center p-4 m-3 fs-3`}>A TALE OF TAILORMADE DREAMS</h2>
+      </div>
+      {customizationSteps.map((step, index) => (
+        <div className="row" key={index}>
+          <div className="container">
+            <div className={`${Styles.span} text-center py-1 mt-3 `}>{step.step}</div>
+            <div className={`${Styles.title} text-center p-2 m-1 `}>{step.title}</div>
+          </div>
+          <div className={`${Styles.imageContainer} d-flex justify-content-center`}>
+            {step.images.map((img, i) => (
+              <img
+                key={i}
+                src={img}
+                alt=""
+                className={`img-responsive ${
+                  i === 1 ? `${Styles.scaleUp}` : `${Styles.imgNormal}`
+                } conatiner`}
+              />
             ))}
+          </div>
+          <div className={`${Styles.description} container mt-5 text-center`}>
+            <p>{step.description}</p>
+          </div>
         </div>
-    );
+      ))}
+      <div className={`w-100 mt-4 text-center border-bottom border-top border-2 p-2 mb-2`}>
+        <h3 className={`${Styles.appointhead} mt-5`}>Experience Style Beyond Imagination</h3>
+        <p className={`${Styles.appointpara} my-4`}>We craft your journey, From customised masterpieces to an extensive selection. From the finery touch to the elegance that embraces your pocket.</p>
+        <AppButton
+        label="BOOK APPOINTMENT"
+        className={`${Styles.AppButton} w-50 mb-5 py-4`}
+        bgColor="rgba(44, 44, 44, 1)"
+        color="rgba(255, 255, 255, 1)"
+        border="0.5px solid rgba(169, 169, 169, 1)"
+         />
+      </div>
+      <div className={`conatiner text-center p-1 m-1`}>
+        <h3 className={`${Styles.whyhead} mt-3 py-2`}>WHY ELLEMORA?</h3>
+        <p className={`${Styles.whypara} py-1`}>Your dream outfit becomes a reality. With meticulous attention to detail, your dress is crafted, packed, and sent to you, ready for you to wear on your special day.</p>
+      </div>
+    </div>
+  );
 };
 
 export default Customization;

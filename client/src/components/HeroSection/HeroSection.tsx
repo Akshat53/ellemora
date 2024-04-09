@@ -11,7 +11,7 @@ const HeroSection: React.FC<HeroSectionProps> = ({ img,children }) => {
   return (
     <Row>
       <Col
-        className={`${Styles.img} w-100 h-100`}
+        className={`w-100 h-100`}
         >
           <div className="w-full position-relative h-100">
           <img  src={img} alt="project" width={"100%"} />

@@ -1,0 +1,12 @@
+  .gridItemImage {
+    border-radius: 55% 45% 58% 42% / 47% 54% 46% 53% ;
+    background-color: rgba(242, 231, 229, 1);
+  }
+  
+  .gridItemTitle {
+    font-size: 13px;
+    font-weight: 400;
+    line-height: 13.5px;
+    letter-spacing: 0.1em;
+    color: rgba(0, 0, 0, 1);
+  }
