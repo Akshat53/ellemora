@@ -6,7 +6,7 @@ import ShopNow from "../../../components/ShopNow/ShopNow";
 import Heading from "../../../components/Headings/Heading";
 import sliderImages from "../../../assets/images/slider1/index";
 import HomeCarousel from "../../../components/Carousel/HomeCarousel/HomeCarousel";
-import Grid1 from "../../../components/Grids/Grid1/Grid1";
+// import Grid1 from "../../../components/Grids/Grid1/Grid1";
 import AppButton from "../../../components/Buttons/Button";
 import img1 from "../../../assets/images/home/img1.png";
 import img2 from "../../../assets/images/home/img3.png";
@@ -17,27 +17,26 @@ import CustomCarousel from "../../../components/Carousel/CustomCarousel/CustomCa
 import CelebrityStyle from "../../../components/Celebrity/CelebrityStyle";
 import TailorTale from "../../../components/TailorTale/Tailor";
 import Grid2 from "../../../components/Grids/Grid2/Grid2";
-import View from "../../../components/ViewAll/View";
-import { Link } from "react-router-dom";
+import ShopStyle from "../../../components/Carousel/ShopByStyle/ShopStyle";
 
-const cardData = [
-  {
-    title: "PINK CASCADE SET",
-    discount: "20% off",
-    description: "Pink Cascade set with red velvet touch",
-    discountedPrice: "24,000",
-    originalPrice: "140,000",
-    img: [demoImages.img8],
-  },
-  {
-    title: "PINK CASCADE SET",
-    discount: "20% off",
-    description: "Pink Cascade set with red velvet touch",
-    discountedPrice: "24,000",
-    originalPrice: "140,000",
-    img: [demoImages.img5],
-  },
-];
+// const cardData = [
+//   {
+//     title: "PINK CASCADE SET",
+//     discount: "20% off",
+//     description: "Pink Cascade set with red velvet touch",
+//     discountedPrice: "24,000",
+//     originalPrice: "140,000",
+//     img: [demoImages.img8],
+//   },
+//   {
+//     title: "PINK CASCADE SET",
+//     discount: "20% off",
+//     description: "Pink Cascade set with red velvet touch",
+//     discountedPrice: "24,000",
+//     originalPrice: "140,000",
+//     img: [demoImages.img5],
+//   },
+// ];
 
 const cardData2 = [
   {
@@ -147,6 +146,7 @@ const Home: React.FC<homeProps> = (props: any) => {
       <Heading title="style by celebrities" />
       <CelebrityStyle />
       <Heading title="Shop by style" />
+      <ShopStyle data={data} />
       {/* <Grid /> */}
       <Heading title="A tale of tailormade dreams" />
       <TailorTale
@@ -163,7 +163,6 @@ const Home: React.FC<homeProps> = (props: any) => {
               bgColor="rgba(44, 44, 44, 1)"
               color="rgba(255, 255, 255, 1)"
               border="0.5px solid rgba(169, 169, 169, 1)"
-              // onClick={{Customization}}
             />
           </div>
         }

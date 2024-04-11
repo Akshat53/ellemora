@@ -1,0 +1,7 @@
+  .slide {
+    position: relative;
+    transition: transform 300ms;
+    opacity: 1;
+  }
+
+  

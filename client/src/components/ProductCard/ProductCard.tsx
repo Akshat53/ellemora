@@ -2,9 +2,7 @@ import React from "react";
 import ProductCarousel from "../Carousel/ProductCarousel/ProductCarousel";
 import Styles from "./productCard.module.css";
 import shareIcon from "../../assets/svg/share.svg";
-
 import wishlistIcon from "../../assets/svg/fav.svg";
-
 import AppButton from "../Buttons/Button";
 import ProductColors from "../Buttons/ProductColors/ProductColors";
 
