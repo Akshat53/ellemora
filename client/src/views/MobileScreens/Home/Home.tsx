@@ -17,8 +17,8 @@ import CustomCarousel from "../../../components/Carousel/CustomCarousel/CustomCa
 import CelebrityStyle from "../../../components/Celebrity/CelebrityStyle";
 import TailorTale from "../../../components/TailorTale/Tailor";
 import Grid2 from "../../../components/Grids/Grid2/Grid2";
-
-
+import View from "../../../components/ViewAll/View";
+import { Link } from "react-router-dom";
 
 const cardData = [
   {
@@ -89,26 +89,32 @@ const data = [
   {
     img: sliderImages.img1,
     text: "PINK CASCADE SET",
+    disprice: "₹ 24,000",
+    orgprice: "₹ 140,000",
     link: "/products",
   },
   {
     img: sliderImages.img2,
     text: "PINK CASCADE SET 2",
+    disprice: "₹ 24,000",
+    orgprice: "₹ 140,000",
     link: "/product",
   },
   {
     img: sliderImages.img3,
     text: "PINK CASCADE SET 3",
+    disprice: "₹ 24,000",
+    orgprice: "₹ 140,000",
     link: "",
   },
   {
     img: sliderImages.img4,
     text: "PINK CASCADE SET 4",
+    disprice: "₹ 24,000",
+    orgprice: "₹ 140,000",
     link: "",
   },
 ];
-
-
 
 const Home: React.FC<homeProps> = (props: any) => {
   const { productStore, productActions } = props;
@@ -126,11 +132,17 @@ const Home: React.FC<homeProps> = (props: any) => {
         }
       />
       <ShopNow />
-      <Heading title="New Arrivals" />
+      <div className="d-flex justify-content-end ">
+        <div className={`${Styles.viewAll} d-flex justify-content-between align-items-end`}>
+          <Heading title="New Arrivals" />
+          <p className="text-end">View All</p>
+        </div>
+      </div>
+
       <HomeCarousel data={data} />
-      <div className="conatiner border-3 border-top border-bottom">
-      <Heading  title="what’s on your mind?" />
-      <Grid2 />
+      <div className="border-3 border-top border-bottom">
+        <Heading title="what’s on your mind?" />
+        <Grid2 />
       </div>
       <Heading title="style by celebrities" />
       <CelebrityStyle />
@@ -142,20 +154,22 @@ const Home: React.FC<homeProps> = (props: any) => {
         children={
           <div className={`text-bg-light text-center w-100 h-50 p-4 mt-1`}>
             <h1 className={`${Styles.title} py-1 mb-4`}>ELLEMORA PROCESS</h1>
-            <p className={`${Styles.description} py-1 mb-4`}>This product will be exclusively handcrafted for you</p>
-          <AppButton
-            label="EXPLORE"
-            className={`${Styles.AppButton} mt-2 py-3`}
-            bgColor="rgba(44, 44, 44, 1)"
-            color="rgba(255, 255, 255, 1)"
-            border="0.5px solid rgba(169, 169, 169, 1)"
-            // onClick={{Customization}}
-          />
+            <p className={`${Styles.description} py-1 mb-4`}>
+              This product will be exclusively handcrafted for you
+            </p>
+            <AppButton
+              label="EXPLORE"
+              className={`${Styles.AppButton} mt-2 py-3`}
+              bgColor="rgba(44, 44, 44, 1)"
+              color="rgba(255, 255, 255, 1)"
+              border="0.5px solid rgba(169, 169, 169, 1)"
+              // onClick={{Customization}}
+            />
           </div>
         }
       />
-      <Heading title="Shop by Occasion" />
-      <Grid1 />
+      {/* <Heading title="Shop by Occasion" /> */}
+      {/* <Grid1 /> */}
       {/* <div className="d-flex flex-column p-2 ">
         <CustomCarousel data={cardData} view={"home"} />
         <AppButton label="EXPLORE ALL" className={`${Styles.Explore} `} />
@@ -166,8 +180,6 @@ const Home: React.FC<homeProps> = (props: any) => {
       <CustomCarousel data={cardData2} view={"card"} />
       <Heading title="Sale" />
       <CustomCarousel data={cardData3} view={"card"} />
-      
-    
     </div>
   );
 };

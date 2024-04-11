@@ -38,8 +38,8 @@ const gridItems: GridItem[] = [
 
 const Grid2: React.FC = () => {
   return (
-    <Container className={`p-1`}>
-      <Row className='container'>
+    <Container className={``}>
+      <Row className=''>
         {gridItems.map((gridItem, index) => (
           <Col key={index} className={`p-1`} sm={4} md={3} lg={3} xs={4}>
             <div className={`p-2 my-3 text-center`}>

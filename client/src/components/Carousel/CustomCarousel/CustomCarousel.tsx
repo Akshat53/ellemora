@@ -1,7 +1,7 @@
 import React from "react";
 import Slider from "react-slick";
 import ProductCard from "../../ProductCard/ProductCard";
-import './custom.module.css';
+import Styles from './custom.module.css';
 
 interface HomeCarouselProps {
   data: {
@@ -12,36 +12,38 @@ interface HomeCarouselProps {
 }
 
 const CustomCarousel: React.FC<HomeCarouselProps> = ({ data ,view}) => {
-  const settings = {
-    className: "center",
-    centerMode: false, 
+  const settings = { 
     infinite: true,
     slidesToShow: 2, 
     slidesToScroll: 1,
-    speed: 500,
-    rows: 1,
-    slidesPerRow: 1,
+    speed: 600,
+    centerMode: true,
+    centerPadding: "40px",
     responsive: [
       {
         breakpoint: 768,
         settings: {
-          slidesToShow: 2,
+          slidesToShow: 1.5,
+          slidesToScroll: 1,
+          centerPadding: "115px",
         },
       },
       {
         breakpoint: 480,
         settings: {
-          slidesToShow: 1,
+          slidesToShow: 2.1,
+          slidesToScroll: 1,
+          centerPadding: "15px",
         },
       },
     ],
   };
 
   return (
-    <div className="carousel-container">
+    <div className={`${Styles.customCarouselContainer}`}>
     <Slider {...settings}>
       {data.map((item, index) => (
-        <div key={index} className="p-1">
+        <div key={index} className="px-1">
           <ProductCard data={item} view={view}/>
         </div>
       ))}

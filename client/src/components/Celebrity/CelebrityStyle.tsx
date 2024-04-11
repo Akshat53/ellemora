@@ -24,27 +24,45 @@ const celebrityStyleProps: CelebrityStyleProps[] = [
 
 const CelebrityStyle: React.FC = () => {
   return (
-    <div className={`${Styles.container} container`}>
+    <div className={`${Styles.container} py-3 w-100`}>
+      
       {celebrityStyleProps.map((data, index) => (
-        <div className={`${Styles.celebritystyle} row `} key={index}>
-          <div className={`col-sm-12 col-md-6 col-lg-6 position-relative mt-2 ${Styles.imgContainer} `}>
+        <div className={`${Styles.celebritystyle} `} key={index}>
+          <div
+            className={`col-sm-12 col-md-6 col-lg-6 position-relative ${Styles.imgContainer} `}
+          >
+          
             <img
               src={data.image1}
               className={`position-absolute ${Styles.img2}`}
               alt="Image1"
             />
-            <img src={data.image2} className={`ms-5 ${Styles.img1}`} alt="Image2" />
+            <img
+              src={data.image2}
+              className={` ${Styles.img1}`}
+              alt="Image2"
+            />
+         
           </div>
-          <div className={`d-flex flex-column justify-content-center col-sm-12 col-md-6 `}>
-            <h3 className={`${Styles.title} mt-3 `}>{data.title}</h3>
+
+          <div
+            className={`d-flex flex-column justify-content-center col-sm-12 col-md-6 px-3`}
+          >
+            <h3 className={`${Styles.title}`}>{data.title}</h3>
             <p className={`${Styles.description} py-3`}>{data.description}</p>
-            <Button href={data.link} className={`${Styles.button} border-0 bg-transparent`}>
+            <div className="d-flex">
+            <Button
+              href={data.link}
+              className={`${Styles.button} px-3 border-1 bg-transparent`}
+            >
               SHOP NOW
             </Button>
+            </div>
           </div>
         </div>
       ))}
-    </div>
+      </div>
+   
   );
 };
 

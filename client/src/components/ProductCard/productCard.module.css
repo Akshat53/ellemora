@@ -58,8 +58,8 @@ max-width: 600px;
 }
 
 .hcd {
-  font-size: 12px;
-  font-weight: 500;
-  color: rgba(137, 11, 11, 1);
-  border: 0.5px solid rgba(128, 128, 128, 1);
+  font-size: 10px;
+  font-weight: bold;
+  color: rgba(26, 161, 4, 1);
+  /* border: 0.5px solid rgba(128, 128, 128, 1); */
 }

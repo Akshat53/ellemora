@@ -1,4 +1,4 @@
-.slide img {
+/* .slide img {
     max-width: 100%; 
     height: auto;
     display: block;
@@ -32,4 +32,10 @@
   .carousel-container {
     width: 100%; 
     overflow: hidden; 
+  } */
+
+  .customCarouselContainer {
+    overflow: hidden;
   }
+  
+  

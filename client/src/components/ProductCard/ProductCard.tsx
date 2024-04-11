@@ -263,11 +263,6 @@ const ProductCard: React.FC<ProductCardProps> = ({
         <div className={`${Styles.productContent} p-2 py-2`}>
           <p className={`${Styles.title} fw-small fs-5${Styles.titleGrid}`}>
             {data.title}
-            <span
-              className={`p-1 px-1 m-2 ${Styles.hcd}`}
-            >
-              {data.discount}
-            </span>
           </p>
           <p className={`${Styles.discription} fw-light mt-1`}>{data.description}</p>
           <p className={`${Styles.discountedPrice} fw-medium mt-2`}>
@@ -276,6 +271,11 @@ const ProductCard: React.FC<ProductCardProps> = ({
               className={`${Styles.price} px-2 text-decoration-line-through`}
             >
               ₹ {data.originalPrice}
+            </span>
+            <span
+              className={`${Styles.hcd}`}
+            >
+              {data.discount}
             </span>
           </p>
           <div
