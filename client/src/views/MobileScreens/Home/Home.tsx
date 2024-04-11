@@ -9,7 +9,7 @@ import HomeCarousel from "../../../components/Carousel/HomeCarousel/HomeCarousel
 // import Grid1 from "../../../components/Grids/Grid1/Grid1";
 import AppButton from "../../../components/Buttons/Button";
 import img1 from "../../../assets/images/home/img1.png";
-import img2 from "../../../assets/images/home/img3.png";
+import video from "../../../assets/videos/customization website banner video 8.mp4"
 import Styles from "./index.module.css";
 import demoImages from "../../../assets/images/demo-product-images";
 import CustomCarousel from "../../../components/Carousel/CustomCarousel/CustomCarousel";
@@ -18,6 +18,8 @@ import CelebrityStyle from "../../../components/Celebrity/CelebrityStyle";
 import TailorTale from "../../../components/TailorTale/Tailor";
 import Grid2 from "../../../components/Grids/Grid2/Grid2";
 import ShopStyle from "../../../components/Carousel/ShopByStyle/ShopStyle";
+import { useNavigate } from "react-router-dom";
+import celebImages from "../../../assets/images/celebstyle/index";
 
 // const cardData = [
 //   {
@@ -115,7 +117,35 @@ const data = [
   },
 ];
 
+const celebrityStyleProps = [
+  {
+    image1: celebImages.img1,
+    image2: celebImages.img2,
+    title: "#SPOTTED",
+    description:
+      "If minimalism is more your vibe, ElleMora has you covered too. Their collection boasts classic silhouettes in neutral tones that are perfect for creating timeless looks.",
+    link: "/products",
+  },
+  {
+    image1: celebImages.img1,
+    image2: celebImages.img2,
+    title: "#SPOTTED",
+    description:
+      "If minimalism is more your vibe, ElleMora has you covered too. Their collection boasts classic silhouettes in neutral tones that are perfect for creating timeless looks.",
+    link: "/products",
+  },
+];
+
 const Home: React.FC<homeProps> = (props: any) => {
+  const navigate = useNavigate();
+
+  const handleExplore = () => {
+    navigate("/customization");
+  };
+
+  const handleView = () => {
+    navigate("/products");
+  };
   const { productStore, productActions } = props;
 
   console.log(productActions, productStore, "state with actions");
@@ -131,11 +161,13 @@ const Home: React.FC<homeProps> = (props: any) => {
         }
       />
       <ShopNow />
-      <div className="d-flex justify-content-end ">
-        <div className={`${Styles.viewAll} d-flex justify-content-between align-items-end`}>
-          <Heading title="New Arrivals" />
-          <p className="text-end">View All</p>
-        </div>
+
+      <div
+        className={`${Styles.viewAll} d-flex justify-content-center align-items-end`}>
+        <Heading title="New Arrivals" />
+          <p onClick={handleView} className="position-absolute end-0">
+            VIEW ALL
+          </p>
       </div>
 
       <HomeCarousel data={data} />
@@ -144,15 +176,21 @@ const Home: React.FC<homeProps> = (props: any) => {
         <Grid2 />
       </div>
       <Heading title="style by celebrities" />
-      <CelebrityStyle />
-      <Heading title="Shop by style" />
+      <CelebrityStyle celebrityStyleProps={celebrityStyleProps}/>
+      <div
+        className={`${Styles.viewAll} d-flex justify-content-center align-items-end`}>
+          <Heading title="Shop by style" />
+          <p onClick={handleView} className="position-absolute end-0">
+            VIEW ALL
+          </p>
+      </div>
       <ShopStyle data={data} />
       {/* <Grid /> */}
       <Heading title="A tale of tailormade dreams" />
       <TailorTale
-        img={img2}
+        video={video}
         children={
-          <div className={`text-bg-light text-center w-100 h-50 p-4 mt-1`}>
+          <div className={`text-bg-light text-center w-100 h-50 p-3`}>
             <h1 className={`${Styles.title} py-1 mb-4`}>ELLEMORA PROCESS</h1>
             <p className={`${Styles.description} py-1 mb-4`}>
               This product will be exclusively handcrafted for you
@@ -163,6 +201,7 @@ const Home: React.FC<homeProps> = (props: any) => {
               bgColor="rgba(44, 44, 44, 1)"
               color="rgba(255, 255, 255, 1)"
               border="0.5px solid rgba(169, 169, 169, 1)"
+              onClick={handleExplore}
             />
           </div>
         }
@@ -173,11 +212,29 @@ const Home: React.FC<homeProps> = (props: any) => {
         <CustomCarousel data={cardData} view={"home"} />
         <AppButton label="EXPLORE ALL" className={`${Styles.Explore} `} />
       </div> */}
-      <Heading title="Festive special" />
+      <div
+        className={`${Styles.viewAll} d-flex justify-content-center align-items-end`}>
+          <Heading title="Festive special" />
+          <p onClick={handleView} className="position-absolute end-0">
+            VIEW ALL
+          </p>
+      </div>
       <HomeCarousel data={data} />
-      <Heading title="Best Seller" />
+      <div
+        className={`${Styles.viewAll} d-flex justify-content-center align-items-end`}>
+          <Heading title="Best Seller" />
+          <p onClick={handleView} className="position-absolute end-0">
+            VIEW ALL
+          </p>
+      </div>
       <CustomCarousel data={cardData2} view={"card"} />
-      <Heading title="Sale" />
+      <div
+        className={`${Styles.viewAll} d-flex justify-content-center align-items-end`}>
+          <Heading title="Sale" />
+          <p onClick={handleView} className="position-absolute end-0">
+            VIEW ALL
+          </p>
+      </div>
       <CustomCarousel data={cardData3} view={"card"} />
     </div>
   );

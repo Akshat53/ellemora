@@ -4,21 +4,21 @@ import { Row, Col } from "antd";
 
 interface TailorTaleProps {
   children: React.ReactNode;
-  img: string,
+  video: string,
 }
 
-const TailorTale: React.FC<TailorTaleProps> = ({ img,children }) => {
+const TailorTale: React.FC<TailorTaleProps> = ({ video,children }) => {
   return (
     <Row>
       <Col
         className={` w-100 h-100`}
         >
           <div className="w-full h-100">
-          <img  src={img} alt="project" width={"100%"} />
+          <video autoPlay loop muted playsInline src={video} width={"100%"} ></video>
           </div>
           
         <div
-          className={`} h-100 w-100`}>
+          className={`h-100 w-100`}>
           {children}
         </div>
       </Col>

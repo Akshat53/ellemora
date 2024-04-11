@@ -54,11 +54,11 @@ const Customization: React.FC = () => {
     <div className="">
       <div>
       <video autoPlay loop muted playsInline className={` w-100 mt-3`} src={Video}></video>
-       <h2 className={`${Styles.head} text-center p-4 m-3 fs-3`}>A TALE OF TAILORMADE DREAMS</h2>
+       {/* <h2 className={`${Styles.head} text-center p-4 m-3 fs-3`}>A TALE OF TAILORMADE DREAMS</h2> */}
       </div>
       {customizationSteps.map((step, index) => (
         <div className="row" key={index}>
-          <div className="container">
+          <div className="container mt-1">
             <div className={`${Styles.span} text-center py-1 mt-3 `}>{step.step}</div>
             <div className={`${Styles.title} text-center p-2 m-1 `}>{step.title}</div>
           </div>

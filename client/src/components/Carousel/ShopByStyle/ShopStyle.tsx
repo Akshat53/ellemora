@@ -50,7 +50,7 @@ const ShopStyle: React.FC<ShopStyleProps> = ( { data } ) => {
     };
 
   return (
-    <div className="w-100 slider-container">
+    <div className="">
       <Slider {...settings}>
         {data.map((item, idx) => (
           <Link
@@ -63,7 +63,7 @@ const ShopStyle: React.FC<ShopStyleProps> = ( { data } ) => {
                 idx === imageIndex ? "slide" : "slide"
               }
             >
-              <img src={item.img} alt={item.text} />
+              <img src={item.img} alt={item.text} className='images'/>
               <p className="text-center text-dark">{item.text}</p>
               <p className="m-0 p-0 text-dark">{item.disprice} <span className={`text-decoration-line-through text-muted`}>{item.orgprice}</span></p>
             </div>

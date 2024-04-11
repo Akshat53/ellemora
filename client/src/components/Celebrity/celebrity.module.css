@@ -4,15 +4,15 @@
   }
   
   .imgContainer {
-    height: 500px;
+    height: 370px;
   }
   
   .img2{
-    top: 22%;
-    width: 55%;
+    top: 8%;
+    width: 56%;
   }
   .img1{
-    margin-left: 50% !important;
+    margin-left: 50%;
     width: 50%;
   }
   
@@ -46,8 +46,9 @@
     height: auto;
   }
   @media only screen and (max-width:786px) {
-  
+    
   }
   @media only screen and (max-width:500px) {
 
   }
+
