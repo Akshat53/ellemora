@@ -1,114 +1,140 @@
-import React from "react";
-import {  Col, Collapse, Row } from "antd";
+import React, { useEffect, useState } from "react";
+import axios from "axios";
+import { Col, Row } from "antd";
+import { useParams } from "react-router-dom";
 import ProductCard from "../../../components/ProductCard/ProductCard";
-import demoImages from "../../../assets/images/demo-product-images";
-import Styles from "./product.module.css";
 import CustomCollapse from "../../../components/Collapse/Collapse";
 import ProductCarousel from "../../../components/Carousel/ProductCarousel/ProductCarousel";
+import Styles from "./product.module.css";
+import { selectProductAction } from "../../../store/products/products.actions";
+import { connect } from "react-redux";
 
+interface ProductData {
+  title: string;
+  discount: string;
+  description: string;
+  discountedPrice: number;
+  originalPrice: string;
+  img: string[];
+  colour: string[];
+}
 
-const data = [
-  {
-    title: "Europe Street beat",
-    discount: "20% off",
-    description: "Pink Cascade set with red velvet touch",
-    discountedPrice: "24000",
-    originalPrice: "140,000",
-    img: [demoImages.img1, demoImages.img2, demoImages.img3],
-    colour: ["#570000", "#573400", "#505700"],
-  },
-];
+interface CollapseOption {
+  header: string;
+  description?: string;
+  content: Array<{
+    title: string | null;
+    subContent: string;
+  }>;
+  categories?: string[];
+}
 
-const collapseOptions = [
-  {
-    header: "Product Description",
-    discription:
-      "Elegant and classic blue dress is crafted in bamberg satin. The dress has ring and sequin disc scalloped detailings and a lilac bamberg satin halter slip. Easy to wear that combines classic and contemporary styles.",
-    content: [
-      {
-        title: "LENGTH",
-        subContent: "1 Suit",
-      },
-      {
-        title: "SLEEVE TYPE",
-        subContent: "Foil Jersey ",
-      },
-      {
-        title: "PRODUCT CODE",
-        subContent: "AIJ9839",
-      },
-      {
-        title: "NO. OF COMPONENTS",
-        subContent: "AIJ9839",
-      },
-      {
-        title: "FIT",
-        subContent: "Fitted at the bust and waist",
-      },
-      {
-        title: "PATTERN",
-        subContent: "Dry Clean only",
-      },
-      {
-        title: "NECKLINE",
-        subContent: "AIJ9839",
-      },
-      {
-        title: "COMPONENTS",
-        subContent: "AIJ9839",
-      },
-    ],
-    categories: ["women", "fusion", "clothes"],
-  },
-  {
-    header: "Composition & Care",
-    content: [
-      {
-        title: "FABRIC",
-        subContent: "1 Suit",
-      },
-      {
-        title: "CARE",
-        subContent: "1 Suit",
-      },
-      {
-        title: "TYPE OF WORK",
-        subContent: "Fitted at the bust and waist",
-      },
-    ],
-  },
-  {
-    header: "Disclaimer",
-    content: [
-      {
-        title: null,
-        subContent:
-          "This product will be exclusively handcrafted for you, making the colour/texture/pattern slightly vary from the image shown, due to multiple artisan-led techniques and processes involved.",
-      },
-    ],
-  },
-  {
-    header: "EXCHANGE & RETURNS",
-    content: [
-      {
-        title: null,
-        subContent:
-          "Returnable within 3 days of delivery (7 days for Diamond tier members). Custom-made orders are not returnable. For international orders, a restocking or return handling fee of $50 or 20% of the product-selling value, whichever is lower will be applicable. ",
-      },
-    ],
-  },
-];
-const images= [demoImages.img1, demoImages.img2, demoImages.img3] ;
+const Product: React.FC = (props) => {
+  const { productActions, productStore } = props;
+  const { getProductListAction } = productActions;
+  const { productsList, selectedProduct } = productStore;
+  console.log(
+    selectedProduct,
+    "selectedProductselectedProductselectedProductselectedProduct"
+  );
 
-const Product: React.FC = () => {
+  const [productData, setProductData] = useState<ProductData[]>([]);
+  const [collapseOptions, setCollapseOptions] = useState<CollapseOption[]>([]);
+  const [images, setImages] = useState<string[]>([]);
+  const { productId } = useParams<{ productId: string }>();
+
+  useEffect(() => {
+    const fetchData = async () => {
+      if (productId) {
+        try {
+          const [productResponse, mediaResponse] = await Promise.all([
+            axios.get(`http://localhost:4000/api/v1/products/${productId}`),
+            axios.get(
+              `http://localhost:4000/api/v1/products/${productId}/media/`
+            ),
+          ]);
+          console.log(mediaResponse);
+          const productData = productResponse.data;
+          const mediaData = mediaResponse.data;
+
+          const imageUrls = mediaData.map((mediaItem: any) => mediaItem.url);
+          const mappedProductData: ProductData = {
+            title: productData.name,
+            discount: `${productData.discount}% off`,
+            description: productData.description,
+            discountedPrice:
+              productData.price -
+              (productData.price * productData.discount) / 100,
+            originalPrice: productData.price.toString(),
+            img: imageUrls,
+            colour: [productData.color.code],
+          };
+
+          setProductData([mappedProductData]);
+
+          const mappedCollapseOptions: CollapseOption[] = [
+            {
+              header: "Product Description",
+              description: productData.shortDescription,
+              content: [
+                { title: "LENGTH", subContent: productData.length },
+                {
+                  title: "SLEEVE TYPE",
+                  subContent: productData.sleeveTypes.join(", "),
+                },
+                { title: "FIT", subContent: productData.fit },
+                { title: "PATTERN", subContent: productData.pattern },
+                { title: "FABRIC", subContent: productData.fabric },
+                { title: "TYPE OF WORK", subContent: productData.typeOfWork },
+                { title: "NECKLINE", subContent: productData.neckline },
+                {
+                  title: "NO. OF COMPONENTS",
+                  subContent: String(productData.numberOfComponents),
+                },
+              ],
+              categories: productData.tags,
+            },
+            {
+              header: "Composition & Care",
+              content: [
+                { title: "FABRIC", subContent: productData.fabric },
+                { title: "CARE", subContent: productData.core },
+                { title: "TYPE OF WORK", subContent: productData.typeOfWork },
+              ],
+            },
+            {
+              header: "Disclaimer",
+              content: [{ title: null, subContent: productData.disclaimer }],
+            },
+            {
+              header: "EXCHANGE & RETURNS",
+              content: [{ title: null, subContent: productData.returnPolicy }],
+            },
+          ];
+
+          setCollapseOptions(mappedCollapseOptions);
+
+          setImages(imageUrls);
+        } catch (error) {
+          console.error("Error fetching product data:", error);
+        }
+      }
+    };
+
+    fetchData();
+  }, [productId]);
+
+  if (!productData || productData.length === 0) return <div>Loading...</div>;
   const handleColor = (clicked: string) => {
     console.log(clicked);
   };
 
+  if (productData.length === 0) return <div>Loading...</div>;
+
   return (
     <Row justify="center" className={`${Styles.product}`}>
       <Col span={24}>
-        {data.map((item, index) => (
+        {productData.map((item, index) => (
           <ProductCard
             key={index}
             data={item}
@@ -122,12 +148,24 @@ const Product: React.FC = () => {
       <Col span={24} className="border-top border-1 border-bottom">
         <CustomCollapse collapseOptions={collapseOptions} />
       </Col>
-    <Col>
-     <ProductCarousel images={images} />
-     </Col>
-     
+      <Col></Col>
     </Row>
   );
 };
 
-export default Product;
+const mapStateToProps = (state: any) => {
+  return {
+    productStore: state.productStore,
+    authStore: state.authStore,
+  };
+};
+
+const mapDispatchToProps = (dispatch: any) => {
+  return {
+    productActions: {
+      getProductListAction: (id: any) => dispatch(selectProductAction(id)),
+    },
+  };
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(Product);

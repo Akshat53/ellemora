@@ -1,15 +1,19 @@
 const Constants = {
-  API_URL: "http://localhost:3001",
+  API_URL: "http://localhost:4000/api/v1",
   ROUTES: {
     HOME: "/",
-    PRODUCT: "/product",
+    PRODUCT: "/product/:productId",
     PRODUCTS: "/products",
+    Admin: "/admin",
+    Upload: "/bulkUpload"
   },
   HEADERS: {
     HOME: "Ellemora",
     PRODUCT: "Product View",
-    PRODUCTS: "Products"
-  }
+    PRODUCTS: "Products",
+    ADMIN: "Ellemora Dashboard",
+    Upload: "Product Upload"
+  },
 };
 
 export default Constants;

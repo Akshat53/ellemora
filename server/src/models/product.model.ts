@@ -28,7 +28,7 @@
     primaryVariant: boolean;
     softDelete: boolean;
     isActive: boolean;
-
+    tags: string[];
     masterProduct: Schema.Types.ObjectId | null;
   }
 
@@ -51,6 +51,7 @@
     price: { type: Number, required: true },
     discount: { type: Number, required: true },
     media: [{ type: Schema.Types.ObjectId, ref: 'Media' }],
+    tags: { type: [String], required: true },
     discountType: { type: String, required: true },
     color: { 
       name: { type: String, required: true },

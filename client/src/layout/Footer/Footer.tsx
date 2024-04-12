@@ -14,7 +14,9 @@ import playStoreIcon from "../../assets/svg/playstore.png";
 import appStoreIcon from "../../assets/svg/appstore.png";
 
 import type { CollapseProps } from "antd";
+
 import { Collapse } from "antd";
+import { Link } from "react-router-dom";
 
 const socialOptions = [
   {
@@ -56,13 +58,32 @@ const items: CollapseProps["items"] = [
       <>
         <div className="d-flex justify-content-between ">
           <p className="m-0 p-0">COLLECTIONS</p>
+
           <div>
             <DownOutlined />
           </div>
         </div>
       </>
     ),
-    children: <p>{text}</p>,
+    children: (
+      <ul className="list-unstyled">
+        <Link to={"/lehnga"} className="text-decoration-none">
+          <li>lehenga</li>
+        </Link>
+        <Link to={"/saree"} className="text-decoration-none">
+          <li>saree</li>
+        </Link>
+        <Link to={"/drapes"} className="text-decoration-none">
+          <li>drapes</li>
+        </Link>
+        <Link to={"/jumpsuit"} className="text-decoration-none">
+          <li>jump suit</li>
+        </Link>
+        <Link to={"/gown"} className="text-decoration-none">
+          <li>Gown</li>
+        </Link>
+      </ul>
+    ),
     showArrow: false,
   },
   {
@@ -77,7 +98,23 @@ const items: CollapseProps["items"] = [
         </div>
       </>
     ),
-    children: <p>{text}</p>,
+    children:    <ul className="list-unstyled">
+    <Link to={"/lehnga"} className="text-decoration-none">
+      <li>lehenga</li>
+    </Link>
+    <Link to={"/saree"} className="text-decoration-none">
+      <li>saree</li>
+    </Link>
+    <Link to={"/drapes"} className="text-decoration-none">
+      <li>drapes</li>
+    </Link>
+    <Link to={"/jumpsuit"} className="text-decoration-none">
+      <li>jump suit</li>
+    </Link>
+    <Link to={"/gown"} className="text-decoration-none">
+      <li>Gown</li>
+    </Link>
+  </ul>,
     showArrow: false,
   },
   {
@@ -92,7 +129,23 @@ const items: CollapseProps["items"] = [
         </div>
       </>
     ),
-    children: <p>{text}</p>,
+    children:    <ul className="list-unstyled">
+    <Link to={"/lehnga"} className="text-decoration-none">
+      <li>lehenga</li>
+    </Link>
+    <Link to={"/saree"} className="text-decoration-none">
+      <li>saree</li>
+    </Link>
+    <Link to={"/drapes"} className="text-decoration-none">
+      <li>drapes</li>
+    </Link>
+    <Link to={"/jumpsuit"} className="text-decoration-none">
+      <li>jump suit</li>
+    </Link>
+    <Link to={"/gown"} className="text-decoration-none">
+      <li>Gown</li>
+    </Link>
+  </ul>,
     showArrow: false,
   },
 ];
@@ -126,6 +179,17 @@ const specialityOptions = [
       </>
     ),
   },
+  {
+    img: offer,
+    label: (
+      <>
+        EXCITING
+        <br />
+        OFFERS
+      </>
+    ),
+  },
+
 ];
 
 const Footer: React.FC = () => {
@@ -134,12 +198,12 @@ const Footer: React.FC = () => {
   };
   return (
     <div className="d-flex justify-content-center w-100 ">
-      <div className={`py-3 ${Styles.footer} mt-5 w-100`}>
-        <div className={`d-flex justify-content-between px-3 ${Styles.spec}`}>
+      <div className={` ${Styles.footer} mt-5 w-100`}>
+        <div className={`d-flex justify-content-between  ${Styles.spec} row m-0`}>
           {specialityOptions.map((item, i) => (
             <div
               key={i}
-              className={`w-25 d-flex justify-content-center align-items-center text-center flex-column  ${Styles.speciality}`}
+              className={` col-6 d-flex justify-content-center align-items-center flex-column ${Styles.speciality}`}
             >
               <img src={item.img} width={"19px"} height={"19.58px"} />
               <p className={`fw-medium mt-2`}>{item.label}</p>

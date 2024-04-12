@@ -7,7 +7,7 @@ const { Panel } = Collapse;
 
 interface CollapseOption {
   header: string;
-  discription?: string;
+  description?: string;
   content: { title: string | null; subContent: string }[];
   categories?: string[];
 }
@@ -21,6 +21,8 @@ const CustomCollapse: React.FC<CustomCollapseProps> = ({ collapseOptions }) => {
     return str ? str.toUpperCase() : "";
   };
 
+
+
   return (
     <Collapse
       bordered={false}
@@ -30,8 +32,8 @@ const CustomCollapse: React.FC<CustomCollapseProps> = ({ collapseOptions }) => {
     >
       {collapseOptions.map((item, i) => (
         <Panel header={item.header} key={i} className={`${Styles.panel}`}>
-          {item.discription && (
-            <p className={`${Styles.fs10}`}>{item.discription}</p>
+          {item.description && (
+            <p className={`${Styles.fs10}`}>{item.description}</p>
           )}
           <Row gutter={[16, 16]}>
             {item.content.map((contentItem, j) => (
@@ -50,11 +52,11 @@ const CustomCollapse: React.FC<CustomCollapseProps> = ({ collapseOptions }) => {
               </Col>
             ))}
           </Row>
-          <Col className="d-flex gap-2 py-3">
+          <div className="d-flex gap-2 py-3 flex-wrap"  >
             {item.categories?.map((cat, index) => (
               <Tag key={index} label={[cat]} />
             ))}
-          </Col>
+          </div>
         </Panel>
       ))}
     </Collapse>

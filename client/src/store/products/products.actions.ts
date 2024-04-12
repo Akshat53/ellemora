@@ -7,12 +7,12 @@ export const getProductListAction = (params) => async (dispatch) => {
     type: actions.GET_PRODUCTS_LIST,
     data: response,
   });
-  return response.data;
+  return response;
 };
 
-export const selectProductAction = (data) => async (dispatch) => {
+export const selectProductAction = (id:string) => async (dispatch) => {
   dispatch({
     type: actions.SELECT_PRODUCT,
-    data: data,
+    data: id,
   });
 }
