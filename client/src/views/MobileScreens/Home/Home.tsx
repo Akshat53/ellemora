@@ -236,7 +236,7 @@ const Home: React.FC<homeProps> = (props: any) => {
           </p>
       </div>
       <CustomCarousel data={cardData3} view={"card"} />
-    </div>
+    </div> 
   );
 };
 

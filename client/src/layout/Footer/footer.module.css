@@ -10,8 +10,6 @@
 .spec,
 .quickLinks {
   border-bottom: 3px solid rgba(241, 241, 241, 1);
-  color: rgba(32, 32, 32, 1);
-  height: 30%;
 }
 .bottomMid {
   font-size: 9px;
@@ -30,8 +28,15 @@
 .fs3 {
   font-size: 6px;
 }
+.spec{
+  background-color: #202020;
+  color: white;
+}
 
-.label {
-  font-weight: 300;
+.list a{
+  color: #202020;
+  text-transform: uppercase;
   letter-spacing: 0.1em;
+  line-height: 1.8rem;
+  font-size: medium;
 }
