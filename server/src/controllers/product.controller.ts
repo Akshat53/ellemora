@@ -15,13 +15,12 @@ const addProduct = async (req: Request, res: Response) => {
 
 const getAllProducts = async (req: Request, res: Response) => {
   try {
-    
     const products = await productService.getAllProducts();
     let data = {
       productsList: products,
       limit: 10,
       page: 1,
-      start: 0  ,
+      start: 0,
     };
     res.status(200).json(data);
   } catch (err) {
@@ -34,7 +33,10 @@ const getProductById = async (req: Request, res: Response) => {
   try {
     const productId = req.params.id;
     const product = await productService.getProductById(productId);
-    res.status(200).json(product);
+    let data = {
+      productDetails: product,
+    };
+    res.status(200).json(data);
   } catch (err) {
     console.error("Failed to get product:", err);
     res.status(500).send("Failed to get product");

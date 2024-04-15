@@ -16,12 +16,12 @@ interface ProductCardProps {
     discountedPrice: string;
     originalPrice: string;
     img?: string[];
-    colour: string[] | null;
+    colorName: string; // Add color name prop
+    colorsCode: string; // Add color code prop
   };
   view: string;
   onClick: any;
-  // onClick: (item: object) => void;
-  colors: (color: string) => void;
+  colors: (colorName: string, colorsCode: string) => void;
 }
 
 const ProductCard: React.FC<ProductCardProps> = ({
@@ -30,6 +30,9 @@ const ProductCard: React.FC<ProductCardProps> = ({
   onClick,
   colors,
 }) => {
+
+
+  
   const listView = () => {
     return (
       <>
@@ -86,21 +89,21 @@ const ProductCard: React.FC<ProductCardProps> = ({
   const productView = () => {
     return (
       <>
-        {data.colour && data.colour.length > 0 && (
+        {data.colorName && (
           <div className="d-flex justify-content-center p-1 gap-2">
-            {data.colour.map((color, index) => (
+            
               <div
-                key={index}
+             
                 className="border"
                 style={{ height: "19px", width: "19px", padding: "2px" }}
                 onClick={() => colors(color)}
               >
                 <div
                   className="w-100 h-100"
-                  style={{ backgroundColor: color }}
+                  style={{ backgroundColor: data.colorsCode }}
                 ></div>
               </div>
-            ))}
+          
           </div>
         )}
         <div className={`${Styles.productContent} p-2 py-2`}>

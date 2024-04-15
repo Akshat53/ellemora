@@ -1,5 +1,8 @@
 import * as actions from "../../actiontypes/actiontypes";
-import { getProductList } from "../../services/products.service";
+import {
+  getProductById,
+  getProductList,
+} from "../../services/products.service";
 
 export const getProductListAction = (params) => async (dispatch) => {
   const response = await getProductList(params);
@@ -10,9 +13,17 @@ export const getProductListAction = (params) => async (dispatch) => {
   return response;
 };
 
-export const selectProductAction = (id:string) => async (dispatch) => {
+export const selectProductAction = (id: string) => async (dispatch) => {
   dispatch({
     type: actions.SELECT_PRODUCT,
     data: id,
   });
-}
+};
+
+export const getProductByIdAction = (id: string) => async (dispatch) => {
+  const response = await getProductById(id, {});
+  dispatch({
+    type: actions.GET_PRODUCT_DETAILS,
+    data: response,
+  });
+};
