@@ -1,7 +1,7 @@
-import React, { useState } from 'react';
-import deleteIcon from '../../../assets/svg/delete.svg';
-import bagItemImg from '../../../assets/images/filled-bag images/index';
-import styles from './fillbag.module.css';
+import React, { useState } from "react";
+import deleteIcon from "../../../assets/svg/delete.svg";
+import bagItemImg from "../../../assets/images/filled-bag images/index";
+import styles from "./fillbag.module.css";
 
 interface Product {
   id: number;
@@ -21,79 +21,79 @@ const FillBag: React.FC = () => {
   const [products, setProducts] = useState<Product[]>([
     {
       id: 1,
-      name: 'Pink Cascade Set',
+      name: "Pink Cascade Set",
       image: bagItemImg.img1,
-      color: 'P',
-      size: 'M',
+      color: "#570000",
+      size: "M",
       disprice: 24000,
       orgprice: 140000,
       quantity: 1,
-      shippingDate: '25 June 2024',
+      shippingDate: "25 June 2024",
       discountPercentage: 10,
-      description: 'Pink Cascade set with red....',
+      description: "Pink Cascade set with red....",
     },
     {
-        id: 2,
-        name: 'Pink Cascade Set',
-        image: bagItemImg.img2,
-        color: 'P',
-        size: 'M',
-        disprice: 24000,
-        orgprice: 140000,
-        quantity: 1,
-        shippingDate: '25 June 2024',
-        discountPercentage: 10,
-        description: 'Pink Cascade set with red....',
-      },
-      {
-        id: 4,
-        name: 'Pink Cascade Set',
-        image: bagItemImg.img4,
-        color: 'P',
-        size: 'M',
-        disprice: 24000,
-        orgprice: 140000,
-        quantity: 1,
-        shippingDate: '25 June 2024',
-        discountPercentage: 10,
-        description: 'Pink Cascade set with red....',
-      },
-      {
-        id: 5,
-        name: 'Pink Cascade Set',
-        image: bagItemImg.img5,
-        color: 'P',
-        size: 'M',
-        disprice: 24000,
-        orgprice: 140000,
-        quantity: 1,
-        shippingDate: '25 June 2024',
-        discountPercentage: 10,
-        description: 'Pink Cascade set with red....',
-      },
-      {
-        id: 6,
-        name: 'Pink Cascade Set',
-        image: bagItemImg.img6,
-        color: 'P',
-        size: 'M',
-        disprice: 24000,
-        orgprice: 140000,
-        quantity: 1,
-        shippingDate: '25 June 2024',
-        discountPercentage: 10,
-        description: 'Pink Cascade set with red....',
-      },
+      id: 2,
+      name: "Pink Cascade Set",
+      image: bagItemImg.img2,
+      color: "#570000",
+      size: "M",
+      disprice: 24000,
+      orgprice: 140000,
+      quantity: 1,
+      shippingDate: "25 June 2024",
+      discountPercentage: 10,
+      description: "Pink Cascade set with red....",
+    },
+    {
+      id: 4,
+      name: "Pink Cascade Set",
+      image: bagItemImg.img4,
+      color: "#570000",
+      size: "M",
+      disprice: 24000,
+      orgprice: 140000,
+      quantity: 1,
+      shippingDate: "25 June 2024",
+      discountPercentage: 10,
+      description: "Pink Cascade set with red....",
+    },
+    {
+      id: 5,
+      name: "Pink Cascade Set",
+      image: bagItemImg.img5,
+      color: "#570000",
+      size: "M",
+      disprice: 24000,
+      orgprice: 140000,
+      quantity: 1,
+      shippingDate: "25 June 2024",
+      discountPercentage: 10,
+      description: "Pink Cascade set with red....",
+    },
+    {
+      id: 6,
+      name: "Pink Cascade Set",
+      image: bagItemImg.img6,
+      color: "#570000",
+      size: "M",
+      disprice: 24000,
+      orgprice: 140000,
+      quantity: 1,
+      shippingDate: "25 June 2024",
+      discountPercentage: 10,
+      description: "Pink Cascade set with red....",
+    },
   ]);
 
   const totalPrice = products.reduce((acc, product) => {
-    const discountedPrice = product.orgprice * (1 - (product.discountPercentage || 0) / 100);
+    const discountedPrice =
+      product.orgprice * (1 - (product.discountPercentage || 0) / 100);
     return acc + discountedPrice * product.quantity;
   }, 0);
 
-
-  const [couponCode, setCouponCode] = useState('');
-  const [note, setNote] = useState('');
+  const [couponCode, setCouponCode] = useState("");
+  const [note, setNote] = useState("");
 
   const handleApplyCoupon = () => {
     alert(`Coupon code "${couponCode}" applied!`);
@@ -106,7 +106,9 @@ const FillBag: React.FC = () => {
   const handleAddQuantity = (productId: number) => {
     setProducts(
       products.map((product) =>
-        product.id === productId ? { ...product, quantity: product.quantity + 1 } : product
+        product.id === productId
+          ? { ...product, quantity: product.quantity + 1 }
+          : product
       )
     );
   };
@@ -114,27 +116,34 @@ const FillBag: React.FC = () => {
   const handleRemoveQuantity = (productId: number) => {
     setProducts(
       products.map((product) =>
-        product.id === productId ? { ...product, quantity: Math.max(product.quantity - 1, 0) } : product
+        product.id === productId
+          ? { ...product, quantity: Math.max(product.quantity - 1, 0) }
+          : product
       )
     );
   };
 
-
   return (
     <div>
       <div className="container my-5">
-        <h5 className='fw-normal p-2 my-2'>Items(5)</h5>
+        <h5 className="fw-normal p-2 my-2">Items(5)</h5>
         <div className="row">
           {products.map((product) => (
-            <div key={product.id} className="col-12 mb-3 d-flex pb-2 mb-4 border-bottom border-2">
+            <div
+              key={product.id}
+              className="col-12 mb-3 d-flex pb-2 mb-4 border-bottom border-2"
+            >
               <div className={`${styles.productImageContainer}`}>
-                <img src={product.image} alt={product.name} className={`${styles.prodimg} img-fluid`} />
+                <img
+                  src={product.image}
+                  alt={product.name}
+                  className={`${styles.prodimg} img-fluid`}
+                />
               </div>
               <div className="ml-4">
                 <div className="d-flex align-items-start">
                   <h5 className="flex-grow-1 fs-6 text-uppercase lh-base my-2 py-1 fw-normal">
-                    {product.name}<br/><span>{product.description}</span>
-                    {product.discountPercentage && (
+                    {product.name}{product.discountPercentage && (
                       <span className="badge text-danger ms-2 fw-medium border border-danger">
                         {product.discountPercentage}% off
                       </span>
@@ -142,45 +151,48 @@ const FillBag: React.FC = () => {
                   </h5>
                   <button
                     type="button"
-                    className="btn btn-link py-3 align-middle"
+                    className="btn btn-link p-2 m-1 align-middle"
                     onClick={() => handleRemoveProduct(product.id)}
                   >
                     <img src={deleteIcon} alt="Delete" />
                   </button>
                 </div>
-                <div className='d-flex flex-row m-1 justify-content-center align-items-between '>
+                <div className="mb-4">{product.description}</div>
+                <div className="d-flex flex-row m-1 justify-content-between align-items-center">
                   <p className="p-2">
-                    Size<br/><button className="btn btn-outline-secondary">{product.size}{' '}</button>
+                    Size
+                    <br />
+                  <div className="border rounded p-1 text-center">
+                  {product.size}
+                  </div>
                   </p>
                   <p className="p-2">
-                    Color<br/>{' '}
-                    <button
-                      type="button"
-                      className={`btn btn-outline-secondary ${product.color.toLowerCase()}`}
-                    >
-                      {product.color}
-                    </button></p>
-                  <div className="d-flex align-items-center my-3 p-2">
-                    <div>
-                    <button className="btn btn-outline-secondary" onClick={() => handleRemoveQuantity(product.id)}>
-                      -
-                    </button>
+                    Color
+                    <br />{" "}
+                  <div className={`p-1 border rounded ${styles.colors}`}>
+                    <div style={{backgroundColor:product.color}} className={`h-100 w-100`}>
                     </div>
-                    <div className="mx-2">{product.quantity}</div>
-                    <div>
-                    <button className="btn btn-outline-secondary" onClick={() => handleAddQuantity(product.id)}>
-                      +
-                    </button>
-                    </div>
+                  </div>
+                  </p>
+                  <div className="border d-flex rounded h-50 ms-5">
+                    <div className="p-3" onClick={()=>handleAddQuantity(product.id)}>+</div>
+                    <div className="p-3 border-end border-start">{product.quantity}</div>
+                    <div className="p-3" onClick={()=>handleRemoveQuantity(product.id)}>-</div>
                   </div>
                 </div>
                 <div className="d-flex align-items-center">
-                  <p className={`${styles.discountedPrice} fw-small fs-6`}>₹{product.disprice}
-                    <span className={`${styles.price} px-2 text-decoration-line-through text-secondary`}>₹{product.orgprice}</span></p>
+                  <p className={`${styles.discountedPrice} fw-small fs-6`}>
+                    ₹{product.disprice}
+                    <span
+                      className={`${styles.price} px-2 text-decoration-line-through text-secondary`}
+                    >
+                      ₹{product.orgprice}
+                    </span>
+                  </p>
                 </div>
                 <span className="text-muted d-flex justify-content-end">
-                    Ship By {product.shippingDate}
-                  </span>
+                  Ship By {product.shippingDate}
+                </span>
               </div>
             </div>
           ))}
@@ -224,7 +236,11 @@ const FillBag: React.FC = () => {
             value={couponCode}
             onChange={(e) => setCouponCode(e.target.value)}
           />
-          <button type="button" className="btn btn-primary" onClick={handleApplyCoupon}>
+          <button
+            type="button"
+            className="btn btn-primary"
+            onClick={handleApplyCoupon}
+          >
             Apply Coupon Code
           </button>
         </div>

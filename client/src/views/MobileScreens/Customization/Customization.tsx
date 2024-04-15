@@ -3,6 +3,7 @@ import customImg from "../../../assets/images/custom-images/custom";
 import Styles from "./custom.module.css";
 import Video from '../../../assets/videos/customization website banner video 8.mp4';
 import AppButton from "../../../components/Buttons/Button";
+import HeadBar from "../../../components/HeadBar/HeadBar";
 
 interface CustomizationStep {
   title: string;
@@ -52,6 +53,7 @@ const customizationSteps: CustomizationStep[] = [
 const Customization: React.FC = () => {
   return (
     <div className="">
+      <HeadBar header="Customization" />
       <div>
       <video autoPlay loop muted playsInline className={` w-100 mt-3`} src={Video}></video>
        {/* <h2 className={`${Styles.head} text-center p-4 m-3 fs-3`}>A TALE OF TAILORMADE DREAMS</h2> */}

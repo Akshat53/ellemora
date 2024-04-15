@@ -27,11 +27,11 @@ const CelebrityStyle: React.FC<CelebrityStyleProps> = ({ celebrityStyleProps }) 
 
   return (
     <div
-      className={`${Styles.container} py-3 w-100`}
+      className={`${Styles.CContainer} py-3 w-100`}
     >
       <Slider {...settings}>
         {celebrityStyleProps.map((data, index) => (
-          <div key={index} className={`${Styles.celebritystyle}`}>
+          <div key={index} className={`${Styles.celebritystyle} m-0`}>
             <div
               className={`col-sm-12 col-md-6 col-lg-6 position-relative ${Styles.imgContainer}`}
             >

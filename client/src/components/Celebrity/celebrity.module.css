@@ -1,6 +1,7 @@
-.container {
+.CContainer {
     background-color:rgba(242, 231, 229, 1);
     margin-top: 20px ;
+    overflow: hidden;
   }
   
   .imgContainer {

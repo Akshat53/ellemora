@@ -207,7 +207,7 @@ const Footer: React.FC = () => {
   return (
     <div className="d-flex justify-content-center w-100 ">
       <div className={`py-0 ${Styles.footer} mt-5 w-100`}>
-        <div className={`d-flex justify-content-between row py-4 ${Styles.spec}`}>
+        <div className={`d-flex justify-content-between row py-4 m-0 ${Styles.spec}`}>
           {specialityOptions.map((item, i) => (
             <div
               key={i}
