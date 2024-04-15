@@ -12,12 +12,13 @@ class MediaController {
     }
 
     try {
-      const mediaArray = await MediaService.uploadMedia(files, productId);
-
       const product = await Product.findById(productId);
+      
       if (!product) {
         return res.status(404).send({ error: "Product not found." });
       }
+
+      const mediaArray = await MediaService.uploadMedia(files, productId);
 
       product.media.push(...mediaArray);
       await product.save();

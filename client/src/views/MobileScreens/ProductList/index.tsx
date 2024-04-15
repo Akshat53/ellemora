@@ -26,6 +26,8 @@ const ProductList: React.FC = (props) => {
       .finally(() => setLoading(false));
   }, []);
 
+  console.log(productsList)
+
   useEffect(() => {
     setProducts(productsList);
   });

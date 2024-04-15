@@ -6,8 +6,9 @@ class MediaService {
     const bucket = firebaseAdmin.storage().bucket();
     const mediaPromises: Promise<IMedia>[] = [];
 
+    let foldername = productId
     for (const file of files) {
-      const blob = bucket.file(file.originalname);
+      const blob = bucket.file(`${foldername}/${file.originalname}`);
       const blobStream = blob.createWriteStream();
 
       const mediaPromise = new Promise<IMedia>((resolve, reject) => {
@@ -16,7 +17,7 @@ class MediaService {
         });
 
         blobStream.on("finish", async () => {
-          const url = `https://firebasestorage.googleapis.com/v0/b/${bucket.name}/o/${encodeURI(blob.name)}?alt=media`;
+          const url = `https://firebasestorage.googleapis.com/v0/b/${bucket.name}/o/${encodeURIComponent(blob.name)}?alt=media`;
 
           const media = new Media({
             productId,
