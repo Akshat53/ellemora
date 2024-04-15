@@ -2,18 +2,19 @@ import "./homeCarousel.css";
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import Slider from "react-slick";
+import ProductCard from "../../ProductCard/ProductCard";
 
 interface homeCarouselProps {
   data: {
     img: string;
     text: string;
     disprice: string;
-    orgprice:string;
+    orgprice: string;
     link: string;
   };
 }
 
-const HomeCarousel: React.FC<homeCarouselProps> = ({ data }) => {
+const HomeCarousel: React.FC<homeCarouselProps> = ({ data, view }) => {
   const [imageIndex, setImageIndex] = useState(0);
   const [isActive, setIsActive] = useState(false);
 
@@ -51,21 +52,28 @@ const HomeCarousel: React.FC<homeCarouselProps> = ({ data }) => {
     <div className="w-100 carousel-container">
       <Slider {...settings}>
         {data.map((item, idx) => (
-          <Link
-            to={idx == imageIndex ? item.link : isActive}
-            key={idx}
-            className="text-decoration-none"
+          <div
+            className={
+              idx === imageIndex ? "slide activeSlide" : "slide "
+            }
           >
-            <div
-              className={
-                idx === imageIndex ? "slide activeSlide" : "slide slideImg"
-              }
-            >
-              <img src={item.img} alt={item.text} />
-              <p className="text-center text-dark">{item.text}</p>
-              <p className="m-0 p-0 text-dark">{item.disprice} <span className={`text-decoration-line-through text-muted`}>{item.orgprice}</span></p>
-            </div>
-          </Link>
+            <ProductCard view={view} data={item} />
+          </div>
+          // <Link
+          //   to={idx == imageIndex ? item.link : isActive}
+          //   key={idx}
+          //   className="text-decoration-none"
+          // >
+          //   <div
+          //     className={
+          //       idx === imageIndex ? "slide activeSlide" : "slide slideImg"
+          //     }
+          //   >
+          //     <img src={item.img} alt={item.text} />
+          //     <p className="text-center text-dark">{item.text}</p>
+          //     <p className="m-0 p-0 text-dark">{item.disprice} <span className={`text-decoration-line-through text-muted`}>{item.orgprice}</span></p>
+          //   </div>
+          // </Link>
         ))}
       </Slider>
     </div>

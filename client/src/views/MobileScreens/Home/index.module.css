@@ -33,4 +33,6 @@ letter-spacing: 0.1em;
 color: rgba(106, 106, 106, 1);
 }
 
-
+.viewAll{
+  right: 1% !important;
+}

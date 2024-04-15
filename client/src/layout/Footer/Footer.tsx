@@ -57,7 +57,7 @@ const items: CollapseProps["items"] = [
     label: (
       <>
         <div className="d-flex justify-content-between mt-1">
-          <p className="m-0 p-0 fs-6 fw-bold">COLLECTIONS</p>
+          <p className={`m-0 p-0 fs-6 fw-medium ${Styles.labelpara}`}>COLLECTIONS</p>
 
           <div>
             <DownOutlined />
@@ -91,7 +91,7 @@ const items: CollapseProps["items"] = [
     label: (
       <>
         <div className="d-flex justify-content-between mt-1">
-          <p className="m-0 p-0 fs-6 fw-bold">QUICK LINKS</p>
+          <p className={`m-0 p-0 fs-6 fw-medium ${Styles.labelpara}`}>QUICK LINKS</p>
           <div>
             <DownOutlined />
           </div>
@@ -122,7 +122,7 @@ const items: CollapseProps["items"] = [
     label: (
       <>
         <div className="d-flex justify-content-between mt-1">
-          <p className="m-0 p-0 fs-6 fw-bold">FINE PRINT</p>
+          <p className={`m-0 p-0 fs-6 fw-medium ${Styles.labelpara}`}>FINE PRINT</p>
           <div>
             <DownOutlined />
           </div>
@@ -153,7 +153,7 @@ const items: CollapseProps["items"] = [
     label: (
       <>
         <div className="d-flex justify-content-between mt-1">
-          <p className="m-0 p-0 fs-6 fw-bold">FAQ</p>
+          <p className={`m-0 p-0 fs-6 fw-medium ${Styles.labelpara}`}>FAQ</p>
 
           <div>
             <DownOutlined />
@@ -207,13 +207,13 @@ const Footer: React.FC = () => {
   return (
     <div className="d-flex justify-content-center w-100 ">
       <div className={`py-0 ${Styles.footer} mt-5 w-100`}>
-        <div className={`d-flex justify-content-between bg-dark row m-0 py-2 ${Styles.spec}`}>
+        <div className={`d-flex justify-content-between row py-4 ${Styles.spec}`}>
           {specialityOptions.map((item, i) => (
             <div
               key={i}
-              className={`col-6 d-flex flex-column justify-content-center align-items-center text-light ${Styles.speciality}`}
+              className={`col-6 d-flex flex-column justify-content-center align-items-center ${Styles.speciality}`}
             >
-              <img src={item.img} width={"19px"} height={"19.58px"} />
+              <img src={item.img} width={"19px"} height={"19.58px"} className={`${Styles.specimg}`}/>
               <p className={`${Styles.label} mt-2`}>{item.label}</p>
             </div>
           ))}

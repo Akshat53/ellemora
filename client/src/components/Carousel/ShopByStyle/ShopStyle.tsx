@@ -7,8 +7,6 @@ interface ShopStyleProps {
     data: {
         img: string;
         text: string;
-        disprice: string;
-        orgprice:string;
         link: string;
       };
 } 
@@ -65,7 +63,6 @@ const ShopStyle: React.FC<ShopStyleProps> = ( { data } ) => {
             >
               <img src={item.img} alt={item.text} className='images'/>
               <p className="text-center text-dark">{item.text}</p>
-              <p className="m-0 p-0 text-dark">{item.disprice} <span className={`text-decoration-line-through text-muted`}>{item.orgprice}</span></p>
             </div>
           </Link>
         ))}

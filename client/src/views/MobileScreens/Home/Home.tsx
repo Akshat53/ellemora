@@ -9,6 +9,7 @@ import HomeCarousel from "../../../components/Carousel/HomeCarousel/HomeCarousel
 // import Grid1 from "../../../components/Grids/Grid1/Grid1";
 import AppButton from "../../../components/Buttons/Button";
 import img1 from "../../../assets/images/home/img1.png";
+import img4 from "../../../assets/images/home/img4.png";
 import video from "../../../assets/videos/customization website banner video 8.mp4"
 import Styles from "./index.module.css";
 import demoImages from "../../../assets/images/demo-product-images";
@@ -18,7 +19,7 @@ import CelebrityStyle from "../../../components/Celebrity/CelebrityStyle";
 import TailorTale from "../../../components/TailorTale/Tailor";
 import Grid2 from "../../../components/Grids/Grid2/Grid2";
 import ShopStyle from "../../../components/Carousel/ShopByStyle/ShopStyle";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import celebImages from "../../../assets/images/celebstyle/index";
 
 // const cardData = [
@@ -88,32 +89,27 @@ const cardData3 = [
 
 const data = [
   {
-    img: sliderImages.img1,
-    text: "PINK CASCADE SET",
-    disprice: "₹ 24,000",
-    orgprice: "₹ 140,000",
-    link: "/products",
+    title: "PINK CASCADE SET",
+    discount: "20% off",
+    description: "Pink Cascade set with red velvet touch",
+    discountedPrice: "24,000",
+    originalPrice: "10,000",
+    img: [sliderImages.img1],
   },
   {
-    img: sliderImages.img2,
-    text: "PINK CASCADE SET 2",
-    disprice: "₹ 24,000",
-    orgprice: "₹ 140,000",
-    link: "/product",
-  },
-  {
-    img: sliderImages.img3,
-    text: "PINK CASCADE SET 3",
-    disprice: "₹ 24,000",
-    orgprice: "₹ 140,000",
-    link: "",
-  },
-  {
-    img: sliderImages.img4,
-    text: "PINK CASCADE SET 4",
-    disprice: "₹ 24,000",
-    orgprice: "₹ 140,000",
-    link: "",
+    title: "PINK CASCADE SET",
+    discount: "20% off",
+    description: "Pink Cascade set with red velvet touch",
+    discountedPrice: "24,000",
+    originalPrice: "10,000",
+    img: [sliderImages.img2],
+  },  {
+    title: "PINK CASCADE SET",
+    discount: "20% off",
+    description: "Pink Cascade set with red velvet touch",
+    discountedPrice: "24,000",
+    originalPrice: "10,000",
+    img: [demoImages.img3],
   },
 ];
 
@@ -152,6 +148,7 @@ const Home: React.FC<homeProps> = (props: any) => {
   return (
     <div className="">
       {/* <Categories /> */}
+      {/* <div className="bg-black text-light text-center p-2 text-wrap fw-light lh-sm">Get 10% off on your 1st purchase. Use code: welcome10</div> */}
       <HeroSection
         img={img1}
         children={
@@ -163,14 +160,14 @@ const Home: React.FC<homeProps> = (props: any) => {
       <ShopNow />
 
       <div
-        className={`${Styles.viewAll} d-flex justify-content-center align-items-end`}>
+        className={` d-flex justify-content-center align-items-end`}>
         <Heading title="New Arrivals" />
-          <p onClick={handleView} className="position-absolute end-0">
+          <p onClick={handleView} className={`position-absolute end-0 ${Styles.viewAll}`}>
             VIEW ALL
           </p>
       </div>
 
-      <HomeCarousel data={data} />
+      <HomeCarousel data={data} view="home"/>
       <div className="border-3 border-top border-bottom">
         <Heading title="what’s on your mind?" />
         <Grid2 />
@@ -180,11 +177,11 @@ const Home: React.FC<homeProps> = (props: any) => {
       <div
         className={`${Styles.viewAll} d-flex justify-content-center align-items-end`}>
           <Heading title="Shop by style" />
-          <p onClick={handleView} className="position-absolute end-0">
+          <p onClick={handleView} className={`position-absolute end-0 ${Styles.viewAll}`}>
             VIEW ALL
           </p>
       </div>
-      <ShopStyle data={data} />
+      <ShopStyle data={data}  />
       {/* <Grid /> */}
       <Heading title="A tale of tailormade dreams" />
       <TailorTale
@@ -215,15 +212,15 @@ const Home: React.FC<homeProps> = (props: any) => {
       <div
         className={`${Styles.viewAll} d-flex justify-content-center align-items-end`}>
           <Heading title="Festive special" />
-          <p onClick={handleView} className="position-absolute end-0">
+          <p onClick={handleView} className={`position-absolute end-0 ${Styles.viewAll}`}>
             VIEW ALL
           </p>
       </div>
-      <HomeCarousel data={data} />
+      <HomeCarousel  data={data} view="home" />
       <div
         className={`${Styles.viewAll} d-flex justify-content-center align-items-end`}>
           <Heading title="Best Seller" />
-          <p onClick={handleView} className="position-absolute end-0">
+          <p onClick={handleView} className={`position-absolute end-0 ${Styles.viewAll}`}>
             VIEW ALL
           </p>
       </div>
@@ -231,11 +228,16 @@ const Home: React.FC<homeProps> = (props: any) => {
       <div
         className={`${Styles.viewAll} d-flex justify-content-center align-items-end`}>
           <Heading title="Sale" />
-          <p onClick={handleView} className="position-absolute end-0">
+          <p onClick={handleView} className={`position-absolute end-0 ${Styles.viewAll}`}>
             VIEW ALL
           </p>
       </div>
       <CustomCarousel data={cardData3} view={"card"} />
+      <div>
+        <Link to={"/giftcard"}>
+        <img src={img4} alt="gift card" className="img-fluid mt-4" />
+        </Link>
+      </div>
     </div> 
   );
 };

@@ -3,6 +3,7 @@ import Home from "../views/MobileScreens/Home/Home";
 import Product from "../views/MobileScreens/Product";
 import ProductList from "../views/MobileScreens/ProductList";
 import Customization from "../views/MobileScreens/Customization/Customization";
+import BuyNow from "../views/MobileScreens/BuyNow/BuyNow";
 
 export const authorizedWebRoutes = [
   {
@@ -28,6 +29,12 @@ export const authorizedWebRoutes = [
     Component: Customization,
     exact: true,
     title: Constants.HEADERS.CUSTOMIZATION,
+  },
+  {
+    path: Constants.ROUTES.BUYNOW,
+    Component: BuyNow,
+    exact: true,
+    title: Constants.HEADERS.BUYNOW,
   },
 ];
 
@@ -56,6 +63,12 @@ export const authorizedMobileRoutes = [  {
   Component: Customization,
   exact: true,
   title: Constants.HEADERS.CUSTOMIZATION,
+},
+{
+  path: Constants.ROUTES.BUYNOW,
+  Component: BuyNow,
+  exact: true,
+  title: Constants.HEADERS.BUYNOW,
 },
 ];
 
