@@ -9,12 +9,12 @@ interface headerProps {
 
 const HeadBar: React.FC <headerProps> = ({header}) => {
   return (
-    <div>
-        <div>
+    <div className='d-flex position-relative justify-content-center'>
+        <div className='position-absolute start-0'>
             <img src={back} alt="back" />
         </div>
-        <div>
-        {header}
+        <div className=''>
+            {header}
         </div>
     </div>
   )
