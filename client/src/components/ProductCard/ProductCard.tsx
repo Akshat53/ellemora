@@ -38,9 +38,8 @@ const ProductCard: React.FC<ProductCardProps> = ({
   const listView = () => {
     return (
       <>
-         {data.img && <ProductCarousel images={data.img} />}
+        {data.img && <ProductCarousel images={data.img} />}
         {data.colour && data.colour.length > 0 && (
-          
           <div className="d-flex justify-content-center p-1 gap-2">
             {data.colour.map((color, index) => (
               <div
@@ -93,8 +92,8 @@ const ProductCard: React.FC<ProductCardProps> = ({
   const productView = () => {
     return (
       <>
+        {data.img && <ProductCarousel images={data.img} />}
         {data.colorName && (
-   
           <div className="d-flex justify-content-center p-1 gap-2">
             <div
               className="border"
@@ -134,22 +133,15 @@ const ProductCard: React.FC<ProductCardProps> = ({
               <div className="w-100 d-flex gap-2  ">
                 <AppButton
                   label="Size"
-                  className="w-100 border-0 p-2"
+                  className="w-100  p-2 "
                   onClick={toggleModal}
                   bgColor="white"
                   color="black"
-                  border="1px solid #5C5C5C"
+                  border="1px solid black"
                 />
 
                 {isModalOpen && <SizeChart onClose={toggleModal} />}
-                <AppButton
-                  label="Size"
-                  className="w-100 border-0 p-2"
-                  onClick={""}
-                  bgColor="white"
-                  color="black"
-                  border="1px solid #5C5C5C"
-                />
+
                 <button className="bg-white p-2 default-border">
                   <img src={shareIcon} />
                 </button>
@@ -180,7 +172,7 @@ const ProductCard: React.FC<ProductCardProps> = ({
   const gridView = () => {
     return (
       <>
-         {data.img && <ProductCarousel images={data.img} />}
+        {data.img && <ProductCarousel images={data.img} />}
         {data.colour && data.colour.length > 0 && (
           <div className="d-flex justify-content-center p-1 gap-2">
             {data.colour.map((color, index) => (
@@ -234,11 +226,13 @@ const ProductCard: React.FC<ProductCardProps> = ({
   };
   const homeView = () => {
     return (
-      <>  
+      <>
         {data.img && <img src={data.img} width={"100%"} height={"80%"} />}
         <div className={`${Styles.productContent} text-center py-3`}>
-          <p className={`${Styles.title} fw-normal fs-5 te
-          xt-dark fs-large `}>
+          <p
+            className={`${Styles.title} fw-normal fs-5 te
+          xt-dark fs-large `}
+          >
             {data.title}
           </p>
 
@@ -257,7 +251,7 @@ const ProductCard: React.FC<ProductCardProps> = ({
   const cardView = () => {
     return (
       <>
-         {data.img && <ProductCarousel images={data.img} />}
+        {data.img && <ProductCarousel images={data.img} />}
         {data.colour && data.colour.length > 0 && (
           <div className="d-flex justify-content-center p-1 gap-2">
             {data.colour.map((color, index) => (
@@ -279,7 +273,9 @@ const ProductCard: React.FC<ProductCardProps> = ({
           <p className={`${Styles.title} fw-small fs-5${Styles.titleGrid}`}>
             {data.title}
           </p>
-          <p className={`${Styles.discription} fw-light mt-1`}>{data.description}</p>
+          <p className={`${Styles.discription} fw-light mt-1`}>
+            {data.description}
+          </p>
           <p className={`${Styles.discountedPrice} fw-medium mt-2`}>
             ₹ {data.discountedPrice}
             <span
@@ -287,11 +283,7 @@ const ProductCard: React.FC<ProductCardProps> = ({
             >
               ₹ {data.originalPrice}
             </span>
-            <span
-              className={`${Styles.hcd}`}
-            >
-              {data.discount}
-            </span>
+            <span className={`${Styles.hcd}`}>{data.discount}</span>
           </p>
           <div
             className={`${Styles.btn} d-flex justify-content-evenly gap-1 py-2`}
@@ -316,8 +308,7 @@ const ProductCard: React.FC<ProductCardProps> = ({
       onClick={view !== "product" ? () => onClick(data) : undefined}
     >
       <div className={`border-0 ${Styles.productCard}`}>
-     
-      {view == "grid"
+        {view == "grid"
           ? gridView()
           : view == "list"
             ? listView()
