@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import image from "../../../assets/images/my-bag/item1.png";
 import Styles from "./bag.module.css";
+import HeadBar from '../../HeadBar/HeadBar';
 
 interface Product {
   id: number;
@@ -16,6 +17,8 @@ const EmptyBag: React.FC = () => {
   };
 
   return (
+    <div>
+    <HeadBar header='Bag' />
     <div className="container mt-5">
       <div className="row">
         <div className="col text-center p-2">
@@ -39,6 +42,7 @@ const EmptyBag: React.FC = () => {
           </button>
         </div>
       </div>
+    </div>
     </div>
   );
 };

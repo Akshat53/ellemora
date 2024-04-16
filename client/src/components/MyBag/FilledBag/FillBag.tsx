@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import deleteIcon from "../../../assets/svg/delete.svg";
 import bagItemImg from "../../../assets/images/filled-bag images/index";
 import styles from "./fillbag.module.css";
+import HeadBar from "../../HeadBar/HeadBar";
 
 interface Product {
   id: number;
@@ -125,8 +126,9 @@ const FillBag: React.FC = () => {
 
   return (
     <div>
-      <div className="container my-5">
-        <h5 className="fw-normal p-2 my-2">Items(5)</h5>
+      <HeadBar header="My Bag" />
+      <div className="container my-2">
+        <h5 className={`${styles.item} fw-normal p-2 my-2 text-uppercase`}>Items(5)</h5>
         <div className="row">
           {products.map((product) => (
             <div
@@ -176,7 +178,7 @@ const FillBag: React.FC = () => {
                   </p>
                   <div className="border d-flex rounded h-50 ms-5">
                     <div className="p-3" onClick={()=>handleAddQuantity(product.id)}>+</div>
-                    <div className="p-3 border-end border-start">{product.quantity}</div>
+                    <div className="p-3 w-75 border-end border-start">{product.quantity}</div>
                     <div className="p-3" onClick={()=>handleRemoveQuantity(product.id)}>-</div>
                   </div>
                 </div>
