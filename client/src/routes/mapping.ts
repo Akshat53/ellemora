@@ -1,4 +1,7 @@
 import Constants from "../constants/constants";
+import Admin from "../views/Admin/Admin";
+import FileUpload from "../views/Admin/ProductUploadeByExcel";
+import Home from "../views/MobileScreens/Home";
 import Home from "../views/MobileScreens/Home/Home";
 import Product from "../views/MobileScreens/Product";
 import ProductList from "../views/MobileScreens/ProductList";
@@ -23,6 +26,18 @@ export const authorizedWebRoutes = [
     Component: ProductList,
     exact: true,
     title: Constants.HEADERS.PRODUCTS,
+  },
+  {
+    path: Constants.ROUTES.Admin,
+    Component: Admin,
+    exact: true,
+    title: Constants.HEADERS.ADMIN,
+  },
+  {
+    path: Constants.ROUTES.Upload,
+    Component: FileUpload,
+    exact: true,
+    title: Constants.HEADERS.Upload,
   },
   {
     path: Constants.ROUTES.CUSTOMIZATION,
@@ -57,6 +72,14 @@ export const authorizedMobileRoutes = [  {
   Component: ProductList,
   exact: true,
   title: Constants.HEADERS.PRODUCTS,
+},
+{
+  path: Constants.ROUTES.PRODUCTS,
+  Component: ProductList,
+  exact: true,
+  title: Constants.HEADERS.PRODUCTS,
+},
+];
 },
 {
   path: Constants.ROUTES.CUSTOMIZATION,

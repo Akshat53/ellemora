@@ -9,8 +9,8 @@ interface MainProps {
 const Main: React.FC<MainProps> = (props) => {
   const { children } = props;
   return (
-    <Row>
-      <Col span={24} className="">{children}</Col>
+    <Row >
+      <Col span={24} >{children}</Col>
     </Row>
   );
 };

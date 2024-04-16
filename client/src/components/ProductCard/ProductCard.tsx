@@ -17,7 +17,8 @@ interface ProductCardProps {
     colour: string[] | null;
   };
   view: string;
-  onClick: (item: object) => void;
+  onClick: any;
+  // onClick: (item: object) => void;
   colors: (color: string) => void;
 }
 

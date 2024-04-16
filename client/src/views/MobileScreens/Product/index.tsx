@@ -6,6 +6,8 @@ import ProductCard from "../../../components/ProductCard/ProductCard";
 import CustomCollapse from "../../../components/Collapse/Collapse";
 import ProductCarousel from "../../../components/Carousel/ProductCarousel/ProductCarousel";
 import Styles from "./product.module.css";
+import { selectProductAction } from "../../../store/products/products.actions";
+import { connect } from "react-redux";
 
 interface ProductData {
   title: string;
@@ -27,7 +29,15 @@ interface CollapseOption {
   categories?: string[];
 }
 
-const Product: React.FC = () => {
+const Product: React.FC = (props) => {
+  const { productActions, productStore } = props;
+  const { getProductListAction } = productActions;
+  const { productsList, selectedProduct } = productStore;
+  console.log(
+    selectedProduct,
+    "selectedProductselectedProductselectedProductselectedProduct"
+  );
+
   const [productData, setProductData] = useState<ProductData[]>([]);
   const [collapseOptions, setCollapseOptions] = useState<CollapseOption[]>([]);
   const [images, setImages] = useState<string[]>([]);
@@ -47,7 +57,7 @@ const Product: React.FC = () => {
           const productData = productResponse.data;
           const mediaData = mediaResponse.data;
 
-          const imageUrls = mediaData.map((mediaItem:any) => mediaItem.url);
+          const imageUrls = mediaData.map((mediaItem: any) => mediaItem.url);
           const mappedProductData: ProductData = {
             title: productData.name,
             discount: `${productData.discount}% off`,
@@ -65,7 +75,7 @@ const Product: React.FC = () => {
           const mappedCollapseOptions: CollapseOption[] = [
             {
               header: "Product Description",
-              description: productData.description,
+              description: productData.shortDescription,
               content: [
                 { title: "LENGTH", subContent: productData.length },
                 {
@@ -88,7 +98,7 @@ const Product: React.FC = () => {
               header: "Composition & Care",
               content: [
                 { title: "FABRIC", subContent: productData.fabric },
-                { title: "CARE", subContent: "Dry Clean only" },
+                { title: "CARE", subContent: productData.core },
                 { title: "TYPE OF WORK", subContent: productData.typeOfWork },
               ],
             },
@@ -118,7 +128,6 @@ const Product: React.FC = () => {
   const handleColor = (clicked: string) => {
     console.log(clicked);
   };
-  console.log(images);
 
   if (productData.length === 0) return <div>Loading...</div>;
 
@@ -139,11 +148,24 @@ const Product: React.FC = () => {
       <Col span={24} className="border-top border-1 border-bottom">
         <CustomCollapse collapseOptions={collapseOptions} />
       </Col>
-      <Col>
-        <ProductCarousel images={images} />
-      </Col>
+      <Col></Col>
     </Row>
   );
 };
 
-export default Product;
+const mapStateToProps = (state: any) => {
+  return {
+    productStore: state.productStore,
+    authStore: state.authStore,
+  };
+};
+
+const mapDispatchToProps = (dispatch: any) => {
+  return {
+    productActions: {
+      getProductListAction: (id: any) => dispatch(selectProductAction(id)),
+    },
+  };
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(Product);

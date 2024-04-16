@@ -37,7 +37,7 @@ const Authorized: React.FC = () => {
   }, [width]);
 
   return (
-    <Suspense fallback={"Loading..."}>
+    <Suspense fallback={"Loading..."} >
       <Header />
       <Main>
         <Routes>

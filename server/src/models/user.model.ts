@@ -1,37 +1,64 @@
 import mongoose, { Schema, Document } from "mongoose";
 
 export interface User extends Document {
-  userId: number;
-  username: string;
+  isAdmin: boolean;
+  role: "user" | "admin" | "superAdmin";
   firstName: string;
   lastName: string;
   email: string;
+  mobile : string;
   password: string;
-  address: string;
-  isAdmin: boolean;
-  createdAt: Date;
-  updatedAt: Date;
-  deletedAt: Date;
+  softDelete: boolean;
   isActive: boolean;
 }
 
-const userSchema = new Schema<User>(
+const userSchema: Schema<User> = new Schema(
   {
-    username: { type: String, required: true },
-    userId: { type: Number, required: true, unique: true },
-
-    firstName: { type: String, required: true },
-    lastName: { type: String, required: true },
-    email: { type: String, required: true },
-    password: { type: String, required: true },
-    address: { type: String, required: true },
-    isAdmin: { type: Boolean, default: false },
-    isActive: { type: Boolean, default: true },
-    createdAt: { type: Date, default: Date.now },
-    updatedAt: { type: Date, default: Date.now },
+    isAdmin: {
+      type: Boolean,
+      required: true,
+      default: false,
+    },
+    role: {
+      type: String,
+      required: true,
+      default: "user",
+      enum: ["user", "admin", "superAdmin"],
+    },
+    firstName: {
+      type: String,
+      required: true,
+    },
+    lastName: {
+      type: String,
+      required: true,
+    },
+    email: {
+      type: String,
+      required: true,
+      unique: true,
+    },
+   mobile: {
+    type: String,
+    required : true
+    },
+    password: {
+      type: String,
+      required: true,
+    },
+    softDelete: {
+      type: Boolean,
+      required: true,
+      default: false,
+    },
+    isActive: {
+      type: Boolean,
+      required: true,
+      default: true,
+    },
   },
   {
-    collection: "Users",
+    timestamps: true,
   }
 );
 

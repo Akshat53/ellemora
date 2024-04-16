@@ -15,7 +15,9 @@ import playStoreIcon from "../../assets/svg/playstore.png";
 import appStoreIcon from "../../assets/svg/appstore.png";
 
 import type { CollapseProps } from "antd";
+
 import { Collapse } from "antd";
+import { Link } from "react-router-dom";
 import { Link } from "react-router-dom";
 
 const socialOptions = [

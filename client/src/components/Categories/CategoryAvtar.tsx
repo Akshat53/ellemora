@@ -13,11 +13,13 @@ const CategoryAvatar: React.FC<CategoryAvatarProps> = (props) => {
   const { data } = props;
   return (
     <Space direction="vertical" size={16} className="mt-2 mx-2">
-      <Avatar
-        size={64}
-        icon={<img src={data.icon} className="object-fit-cover" />}
-        className="d-flex align-item-center justify-item-center"
-      />
+      <div className="custom-avatar">
+        <Avatar
+          size={64}
+          src={data.icon}
+          className="d-flex align-item-center justify-item-center custom-avatar-img"
+        />
+      </div>
       <p className="text-center p-0 m-0">{data.label}</p>
     </Space>
   );
