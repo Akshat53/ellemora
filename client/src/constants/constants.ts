@@ -14,11 +14,12 @@ const Constants = {
     PRODUCT: "Product View",
     PRODUCTS: "Products",
     CUSTOMIZATION : "Customization",
-    BUYNOW : "/buynow",
-  },
-    PRODUCTS: "Products",
+    BUYNOW : "Buy Now",
+
     ADMIN: "Ellemora Dashboard",
     Upload: "Product Upload"
+  },
+  
   }
   
 export default Constants;

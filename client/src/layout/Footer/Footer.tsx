@@ -18,7 +18,6 @@ import type { CollapseProps } from "antd";
 
 import { Collapse } from "antd";
 import { Link } from "react-router-dom";
-import { Link } from "react-router-dom";
 
 const socialOptions = [
   {

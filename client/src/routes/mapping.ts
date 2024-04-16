@@ -1,8 +1,8 @@
 import Constants from "../constants/constants";
 import Admin from "../views/Admin/Admin";
 import FileUpload from "../views/Admin/ProductUploadeByExcel";
-import Home from "../views/MobileScreens/Home";
 import Home from "../views/MobileScreens/Home/Home";
+
 import Product from "../views/MobileScreens/Product";
 import ProductList from "../views/MobileScreens/ProductList";
 import Customization from "../views/MobileScreens/Customization/Customization";
@@ -74,14 +74,6 @@ export const authorizedMobileRoutes = [  {
   title: Constants.HEADERS.PRODUCTS,
 },
 {
-  path: Constants.ROUTES.PRODUCTS,
-  Component: ProductList,
-  exact: true,
-  title: Constants.HEADERS.PRODUCTS,
-},
-];
-},
-{
   path: Constants.ROUTES.CUSTOMIZATION,
   Component: Customization,
   exact: true,
@@ -94,6 +86,7 @@ export const authorizedMobileRoutes = [  {
   title: Constants.HEADERS.BUYNOW,
 },
 ];
+
 
 export const unauthorizedMobileRoutes = [];
 
