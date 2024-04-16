@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import ProductCarousel from "../Carousel/ProductCarousel/ProductCarousel";
 import Styles from "./productCard.module.css";
 import shareIcon from "../../assets/svg/share.svg";
@@ -7,6 +7,7 @@ import wishlistIcon from "../../assets/svg/fav.svg";
 
 import AppButton from "../Buttons/Button";
 import ProductColors from "../Buttons/ProductColors/ProductColors";
+import SizeChart from "../SizeChart/SizeChart";
 
 interface ProductCardProps {
   data: {
@@ -30,9 +31,12 @@ const ProductCard: React.FC<ProductCardProps> = ({
   onClick,
   colors,
 }) => {
+  const [isModalOpen, setIsModalOpen] = useState(false);
 
+  const toggleModal = () => {
+    setIsModalOpen(!isModalOpen);
+  };
 
-  
   const listView = () => {
     return (
       <>
@@ -91,19 +95,16 @@ const ProductCard: React.FC<ProductCardProps> = ({
       <>
         {data.colorName && (
           <div className="d-flex justify-content-center p-1 gap-2">
-            
+            <div
+              className="border"
+              style={{ height: "19px", width: "19px", padding: "2px" }}
+              onClick={() => colors(color)}
+            >
               <div
-             
-                className="border"
-                style={{ height: "19px", width: "19px", padding: "2px" }}
-                onClick={() => colors(color)}
-              >
-                <div
-                  className="w-100 h-100"
-                  style={{ backgroundColor: data.colorsCode }}
-                ></div>
-              </div>
-          
+                className="w-100 h-100"
+                style={{ backgroundColor: data.colorsCode }}
+              ></div>
+            </div>
           </div>
         )}
         <div className={`${Styles.productContent} p-2 py-2`}>
@@ -130,14 +131,16 @@ const ProductCard: React.FC<ProductCardProps> = ({
           >
             <div className="d-flex flex-column w-100 gap-2 ">
               <div className="w-100 d-flex gap-2  ">
-              <AppButton
-              label="Size"
-              className="w-100 border-0 p-2"
-              onClick={""}
-              bgColor="white"
-              color="black"
-              border="1px solid #5C5C5C" 
-            />
+                <AppButton
+                  label="Size"
+                  className="w-100 border-0 p-2"
+                  onClick={toggleModal}
+                  bgColor="white"
+                  color="black"
+                  border="1px solid #5C5C5C"
+                />
+
+                {isModalOpen && <SizeChart onClose={toggleModal} />}
                 <button className="bg-white p-2 default-border">
                   <img src={shareIcon} />
                 </button>
@@ -146,18 +149,18 @@ const ProductCard: React.FC<ProductCardProps> = ({
                 </button>
               </div>
               <div className="d-flex gap-2 w-100 ">
-              <AppButton
-              label="Add to bag"
-              className="w-100 border-0 p-2"
-              onClick={""}
-              bgColor="#2C2C2C"
-            />
-                 <AppButton
-              label="Buy Now "
-              className="w-100 border-0 p-2"
-              onClick={""}
-              bgColor="#2C2C2C"
-            />
+                <AppButton
+                  label="Add to bag"
+                  className="w-100 border-0 p-2"
+                  onClick={""}
+                  bgColor="#2C2C2C"
+                />
+                <AppButton
+                  label="Buy Now "
+                  className="w-100 border-0 p-2"
+                  onClick={""}
+                  bgColor="#2C2C2C"
+                />
               </div>
             </div>
           </div>
@@ -229,8 +232,8 @@ const ProductCard: React.FC<ProductCardProps> = ({
         {view == "grid"
           ? gridView()
           : view == "list"
-          ? listView()
-          : productView()}
+            ? listView()
+            : productView()}
       </div>
     </div>
   );

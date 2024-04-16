@@ -61,11 +61,11 @@ const parseProductData = (product) => {
       product.price - ((product.price * product.discount) / 100).toFixed(2),
     originalPrice: product.price.toFixed(2),
     img: product.media.map((mediaItem) => mediaItem.url),
-    colorsCode: product.color.code,
-    colorName: product.color.name,
+    colorsCode: product.color.map((code) => code.code),
+    colorName: product.color.map((code) => code.name),
     shortDescription: product.shortDescription,
     length: product.length,
-    sleeveTypes: product.sleeveTypes.map((sleevetype) => sleevetype),
+    sleeveTypes: product.sleeveTypes.map((sleevetype) => sleevetype), 
     fit: product.fit,
     pattern: product.pattern,
     fabric: product.fabric,
@@ -77,13 +77,12 @@ const parseProductData = (product) => {
     disclaimer: product.disclaimer,
     returnPolicy: product.returnPolicy,
     components: product.components.map((component) => component),
-    
   };
 
   return parsedData;
 };
 
-const parseList = (data) => {
+const parseList = (data: any) => {
   let newData = {
     productsList: data.productsList.map((product: any) =>
       parseProductData(product)
@@ -95,7 +94,7 @@ const parseList = (data) => {
   return newData;
 };
 
-const selectProduct = (state, id) => {
+const selectProduct = (state: any, id: string) => {
   let selectedProduct = null;
   let selectedProductOptions = [];
   selectedProduct = state.productsList.filter((item) => item.id == id)[0];
@@ -144,9 +143,9 @@ const selectProduct = (state, id) => {
   } else return {};
 };
 
-console.log(selectProduct)
+console.log(selectProduct);
 const setProduct = (data: any) => {
-  console.log(data, "datadatadatadatadatadata")
+  console.log(data, "datadatadatadatadatadata");
   let selectedProduct = null;
   let selectedProductOptions = [];
   selectedProduct = parseProductData(data.productDetails);
@@ -206,6 +205,5 @@ const reducer = (state = initialState, action: Action) => {
       return state;
   }
 };
-
 
 export default reducer;
