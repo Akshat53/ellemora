@@ -1,10 +1,11 @@
 import React from "react";
 import CategoryAvtar from "./CategoryAvtar";
 import "./categories.css";
-import Sale from "../../assets/images/demo-product-images/item1.png";
-import Lehengas from "../../assets/images/demo-product-images/item3.png";
-import Dresses from "../../assets/images/demo-product-images/item5.png";
-import BestSeller from "../../assets/images/demo-product-images/item6.png";
+import Sale from "../../assets/images/avtar/img1.png";
+import Lehengas from "../../assets/images/avtar/img2.png";
+import Dresses from "../../assets/images/avtar/img3.png";
+import BestSeller from "../../assets/images/avtar/img4.png";
+import Basics from "../../assets/images/avtar/img5.png"
 
 const categoriesOptions = [
   {
@@ -24,8 +25,8 @@ const categoriesOptions = [
     label: "Best Seller",
   },
   {
-    icon: "",
-    label: "Sale",
+    icon: Basics,
+    label: "Basics",
   },
 ];
 

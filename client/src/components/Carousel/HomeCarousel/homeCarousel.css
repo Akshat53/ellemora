@@ -1,0 +1,27 @@
+
+
+.slide {
+ 
+  transition: transform 300ms;
+  opacity: 0.8;
+  transform: scale(0.9) translateX(0%);
+height: auto;
+}
+
+
+.activeSlide {
+  transform: scale(1) translateX(0%);
+  opacity: 1;
+ 
+
+
+
+}
+
+
+.carousel-container {
+
+  overflow: hidden;
+  
+}
+

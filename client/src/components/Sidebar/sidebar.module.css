@@ -43,6 +43,7 @@
 .sidebar {
   max-height: 100vh;
   overflow-y: auto; /* Allow vertical scrolling within the sidebar */
+  z-index: 2000 !important;
 }
 
 .main-content {

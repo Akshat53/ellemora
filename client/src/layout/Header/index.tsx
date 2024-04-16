@@ -11,7 +11,7 @@ const Header: React.FC = () => {
   return (
     <>
       {open && <Sidebar onClick={handleClick} />}
-
+      <div className="bg-black text-light text-center p-2 text-wrap fw-light lh-sm">Get 10% off on your 1st purchase. Use code: welcome10</div>
       <Navbar onClick={handleClick} />
     </>
   );

@@ -7,7 +7,7 @@
   line-height: 15px;
   font-family: "Poppins", sans-serif;
 }
-.spec,
+
 .quickLinks {
   border-bottom: 3px solid rgba(241, 241, 241, 1);
 }
@@ -29,6 +29,22 @@
   font-size: 6px;
 }
 .spec{
-  background-color: #202020;
-  color: white;
+  background-color: rgba(242, 231, 229, 1);
+  color: rgba(24, 24, 24, 1);
+  font-size: 16px;
+  line-height: 15px;
+  letter-spacing: 0.1em;
+  font-weight: 500;
+}
+
+.list a{
+  color: #202020;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  line-height: 1.8rem;
+  font-size: medium;
+}
+
+.labelpara {
+  letter-spacing: 0.1em;
 }

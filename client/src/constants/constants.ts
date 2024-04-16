@@ -4,6 +4,8 @@ const Constants = {
     HOME: "/",
     PRODUCT: "/product/:productId",
     PRODUCTS: "/products",
+    CUSTOMIZATION : "/customization",
+    BUYNOW : "/buynow",
     Admin: "/admin",
     Upload: "/bulkUpload"
   },
@@ -11,9 +13,13 @@ const Constants = {
     HOME: "Ellemora",
     PRODUCT: "Product View",
     PRODUCTS: "Products",
+    CUSTOMIZATION : "Customization",
+    BUYNOW : "Buy Now",
+
     ADMIN: "Ellemora Dashboard",
     Upload: "Product Upload"
   },
-};
-
+  
+  }
+  
 export default Constants;

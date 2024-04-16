@@ -2,14 +2,24 @@ import React from "react";
 import { Row, Col } from "antd";
 import Styles from "./hero.module.css";
 
-const HeroSection: React.FC = () => {
+interface HeroSectionProps {
+  children: React.ReactNode;
+  img: string,
+}
+
+const HeroSection: React.FC<HeroSectionProps> = ({ img,children }) => {
   return (
     <Row>
-      <Col className={` ${Styles.img} position-relative`}>
-        <div
-          className={`${Styles.overlayBox} d-flex h-100 w-100 align-items-end justify-content-center`}
+      <Col
+        className={`w-100 h-100`}
         >
-          <p className="text-light heading">dschubdsxcsd</p>
+          <div className="w-full position-relative h-100">
+          <img  src={img} alt="project" width={"100%"} />
+          </div>
+          
+        <div
+          className={`${Styles.overlayBox} d-flex h-100 w-100 align-items-end justify-content-center position-absolute top-0`}>
+          {children}
         </div>
       </Col>
     </Row>

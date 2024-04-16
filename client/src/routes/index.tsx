@@ -2,14 +2,14 @@ interface IRoutes {
     HOME: string;
     PRODUCT: string;
     PRODUCTS: string;
-    // Add other routes here...
+    BUYNOW: string;
   }
   
   const Routes: IRoutes = {
     HOME: "/",
     PRODUCT: "/product",
-    PRODUCTS : "/products"
-    // other routes...
+    PRODUCTS : "/products",
+    BUYNOW: "/buynow",
   };
   
   export default Routes;

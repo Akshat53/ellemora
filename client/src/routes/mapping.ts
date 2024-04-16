@@ -1,9 +1,12 @@
 import Constants from "../constants/constants";
 import Admin from "../views/Admin/Admin";
 import FileUpload from "../views/Admin/ProductUploadeByExcel";
-import Home from "../views/MobileScreens/Home";
+import Home from "../views/MobileScreens/Home/Home";
+
 import Product from "../views/MobileScreens/Product";
 import ProductList from "../views/MobileScreens/ProductList";
+import Customization from "../views/MobileScreens/Customization/Customization";
+import BuyNow from "../views/MobileScreens/BuyNow/BuyNow";
 
 export const authorizedWebRoutes = [
   {
@@ -36,6 +39,18 @@ export const authorizedWebRoutes = [
     exact: true,
     title: Constants.HEADERS.Upload,
   },
+  {
+    path: Constants.ROUTES.CUSTOMIZATION,
+    Component: Customization,
+    exact: true,
+    title: Constants.HEADERS.CUSTOMIZATION,
+  },
+  {
+    path: Constants.ROUTES.BUYNOW,
+    Component: BuyNow,
+    exact: true,
+    title: Constants.HEADERS.BUYNOW,
+  },
 ];
 
 export const unauthorizedWebRoutes = [];
@@ -59,12 +74,19 @@ export const authorizedMobileRoutes = [  {
   title: Constants.HEADERS.PRODUCTS,
 },
 {
-  path: Constants.ROUTES.PRODUCTS,
-  Component: ProductList,
+  path: Constants.ROUTES.CUSTOMIZATION,
+  Component: Customization,
   exact: true,
-  title: Constants.HEADERS.PRODUCTS,
+  title: Constants.HEADERS.CUSTOMIZATION,
+},
+{
+  path: Constants.ROUTES.BUYNOW,
+  Component: BuyNow,
+  exact: true,
+  title: Constants.HEADERS.BUYNOW,
 },
 ];
+
 
 export const unauthorizedMobileRoutes = [];
 

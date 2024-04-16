@@ -1,8 +1,9 @@
 import React from "react";
 import Styles from "./footer.module.css";
 import SupportIcon from "../../assets/svg/message.svg";
-import quality from "../../assets/svg/quality.svg";
+import cod from "../../assets/svg/cod.svg";
 import offer from "../../assets/svg/offers.svg";
+import gift from "../../assets/svg/gift.svg";
 import { DownOutlined } from "@ant-design/icons";
 import visaIcon from "../../assets/svg/visa.svg";
 import masterCardIcon from "../../assets/svg/mastercard.svg";
@@ -45,19 +46,19 @@ const downloadOptions = [
 ];
 const paymentOptions = [visaIcon, masterCardIcon, paypalIcon];
 
-const text = `
-  A dog is a type of domesticated animal.
-  Known for its loyalty and faithfulness,
-  it can be found as a welcome guest in many households across the world.
-`;
+// const text = `
+//   A dog is a type of domesticated animal.
+//   Known for its loyalty and faithfulness,
+//   it can be found as a welcome guest in many households across the world.
+// `;
 
 const items: CollapseProps["items"] = [
   {
     key: "1",
     label: (
       <>
-        <div className="d-flex justify-content-between ">
-          <p className="m-0 p-0">COLLECTIONS</p>
+        <div className="d-flex justify-content-between mt-1">
+          <p className={`m-0 p-0 fs-6 fw-medium ${Styles.labelpara}`}>COLLECTIONS</p>
 
           <div>
             <DownOutlined />
@@ -66,18 +67,18 @@ const items: CollapseProps["items"] = [
       </>
     ),
     children: (
-      <ul className="list-unstyled">
+      <ul className={`${Styles.list}`}>
         <Link to={"/lehnga"} className="text-decoration-none">
-          <li>lehenga</li>
+          <li>Lehenga</li>
         </Link>
         <Link to={"/saree"} className="text-decoration-none">
-          <li>saree</li>
+          <li>Saree</li>
         </Link>
         <Link to={"/drapes"} className="text-decoration-none">
-          <li>drapes</li>
+          <li>Drapes</li>
         </Link>
         <Link to={"/jumpsuit"} className="text-decoration-none">
-          <li>jump suit</li>
+          <li>JumpSuit</li>
         </Link>
         <Link to={"/gown"} className="text-decoration-none">
           <li>Gown</li>
@@ -90,29 +91,29 @@ const items: CollapseProps["items"] = [
     key: "2",
     label: (
       <>
-        <div className="d-flex justify-content-between">
-          <p className="m-0 p-0">QUICK LINKS</p>
+        <div className="d-flex justify-content-between mt-1">
+          <p className={`m-0 p-0 fs-6 fw-medium ${Styles.labelpara}`}>QUICK LINKS</p>
           <div>
             <DownOutlined />
           </div>
         </div>
       </>
     ),
-    children:    <ul className="list-unstyled">
-    <Link to={"/lehnga"} className="text-decoration-none">
-      <li>lehenga</li>
+    children:    <ul className={`${Styles.list}`}>
+    <Link to={"/aboutus"} className="text-decoration-none">
+      <li>About Us</li>
     </Link>
-    <Link to={"/saree"} className="text-decoration-none">
-      <li>saree</li>
+    <Link to={"/contactus"} className="text-decoration-none">
+      <li>Contact Us</li>
     </Link>
-    <Link to={"/drapes"} className="text-decoration-none">
-      <li>drapes</li>
+    <Link to={"/sizeguide"} className="text-decoration-none">
+      <li>Size Guide</li>
     </Link>
-    <Link to={"/jumpsuit"} className="text-decoration-none">
-      <li>jump suit</li>
+    <Link to={"/bestseller"} className="text-decoration-none">
+      <li>Best Seller</li>
     </Link>
-    <Link to={"/gown"} className="text-decoration-none">
-      <li>Gown</li>
+    <Link to={"/giftcard"} className="text-decoration-none">
+      <li>Gift Card</li>
     </Link>
   </ul>,
     showArrow: false,
@@ -121,31 +122,46 @@ const items: CollapseProps["items"] = [
     key: "3",
     label: (
       <>
-        <div className="d-flex justify-content-between">
-          <p className="m-0 p-0">FINE PRINT</p>
+        <div className="d-flex justify-content-between mt-1">
+          <p className={`m-0 p-0 fs-6 fw-medium ${Styles.labelpara}`}>FINE PRINT</p>
           <div>
             <DownOutlined />
           </div>
         </div>
       </>
     ),
-    children:    <ul className="list-unstyled">
-    <Link to={"/lehnga"} className="text-decoration-none">
-      <li>lehenga</li>
+    children:    <ul className={`${Styles.list}`}>
+    <Link to={"/cancellationpolicy"} className="text-decoration-none">
+      <li>cancellation policy</li>
     </Link>
-    <Link to={"/saree"} className="text-decoration-none">
-      <li>saree</li>
+    <Link to={"/privacypolicy"} className="text-decoration-none">
+      <li>privacy policy</li>
     </Link>
-    <Link to={"/drapes"} className="text-decoration-none">
-      <li>drapes</li>
+    <Link to={"/refundandreturnspolicy"} className="text-decoration-none">
+      <li>refund and returns policy</li>
     </Link>
-    <Link to={"/jumpsuit"} className="text-decoration-none">
-      <li>jump suit</li>
+    <Link to={"/shippingpolicy"} className="text-decoration-none">
+      <li>shipping policy</li>
     </Link>
-    <Link to={"/gown"} className="text-decoration-none">
-      <li>Gown</li>
+    <Link to={"/termsandconditions"} className="text-decoration-none">
+      <li>terms and conditions</li>
     </Link>
   </ul>,
+    showArrow: false,
+  },
+  {
+    key: "4",
+    label: (
+      <>
+        <div className="d-flex justify-content-between mt-1">
+          <p className={`m-0 p-0 fs-6 fw-medium ${Styles.labelpara}`}>FAQ</p>
+
+          <div>
+            <DownOutlined />
+          </div>
+        </div>
+      </>
+    ),
     showArrow: false,
   },
 ];
@@ -155,17 +171,15 @@ const specialityOptions = [
     img: SupportIcon,
     label: (
       <>
-        24 x 7 <br />
-        CUSTOMER <br /> SUPPORT
+        FREE SHIPPING IN INDIA
       </>
     ),
   },
   {
-    img: quality,
+    img: cod,
     label: (
       <>
-        PREMIUM <br />
-        QUALITY <br /> DESIGNS
+        COD AVAILABLE
       </>
     ),
   },
@@ -173,23 +187,18 @@ const specialityOptions = [
     img: offer,
     label: (
       <>
-        EXCITING
-        <br />
-        OFFERS
+        EXCITING OFFERS
       </>
     ),
   },
   {
-    img: offer,
+    img: gift,
     label: (
       <>
-        EXCITING
-        <br />
-        OFFERS
+        EXCITING OFFERS
       </>
     ),
   },
-
 ];
 
 const Footer: React.FC = () => {
@@ -198,15 +207,15 @@ const Footer: React.FC = () => {
   };
   return (
     <div className="d-flex justify-content-center w-100 ">
-      <div className={` ${Styles.footer} mt-5 w-100`}>
-        <div className={`d-flex justify-content-between  ${Styles.spec} row m-0`}>
+      <div className={`py-0 ${Styles.footer} mt-5 w-100`}>
+        <div className={`d-flex justify-content-between row py-4 m-0 ${Styles.spec}`}>
           {specialityOptions.map((item, i) => (
             <div
               key={i}
-              className={` col-6 d-flex justify-content-center align-items-center flex-column ${Styles.speciality}`}
+              className={`col-6 d-flex flex-column justify-content-center align-items-center ${Styles.speciality}`}
             >
-              <img src={item.img} width={"19px"} height={"19.58px"} />
-              <p className={`fw-medium mt-2`}>{item.label}</p>
+              <img src={item.img} width={"19px"} height={"19.58px"} className={`${Styles.specimg}`}/>
+              <p className={`${Styles.label} mt-2`}>{item.label}</p>
             </div>
           ))}
         </div>

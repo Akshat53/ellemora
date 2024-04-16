@@ -20,9 +20,8 @@ const AppButton: React.FC<buttonProps> = ({
   return (
     <button
       onClick={onClick}
-      className={`p-2 w-100 `}
-      style={{ backgroundColor: bgColor ,color:color, border:border}}
-    >
+      className={`p-2  ${className}`}
+      style={{ backgroundColor: bgColor ,color:color, border:border}}>
       {label}
     </button>
   );

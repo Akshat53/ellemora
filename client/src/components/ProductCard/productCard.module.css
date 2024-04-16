@@ -1,6 +1,8 @@
+
 .title {
   font-family: "Poppins", sans-serif;
-  line-height: 22.5px;
+  line-height: 22px;
+  letter-spacing: 0.01em;
 }
 .titleGrid{
   font-size: 11px !important;
@@ -15,19 +17,19 @@
   font-family: "Poppins", sans-serif;
 }
 .discription {
-  font-size: 10px;
+  font-size: 11px;
   color: #6d6d6d;
 }
 .discount {
   font-size: 9px;
   color: #ffae81;
-
   text-align: center;
 }
 .discountedPrice {
   color: #000000;
-  font-size: 12px;
-  line-height: 18px;
+  font-size: 10px;
+  line-height: 15px;
+  letter-spacing: 0.1em;
 }
 .price {
   color: #808080;
@@ -37,15 +39,15 @@
   padding-bottom: 20px;
 }
 .btn button {
-
   background-color: #2a2a2a;
   color: white;
-
   font-size: 12px;
+  font-weight: 500;
 }
 .productCard{
 width: 100%;
 max-width: 600px;
+
 }
 .addToBag{
   background-color: rgba(241, 238, 238, 1) !important;
@@ -54,4 +56,11 @@ max-width: 600px;
 .gridDiscount{
   font-size: 8px !important;
   color: #ffae81;
+}
+
+.hcd {
+  font-size: 10px;
+  font-weight: bold;
+  color: rgba(26, 161, 4, 1);
+  /* border: 0.5px solid rgba(128, 128, 128, 1); */
 }

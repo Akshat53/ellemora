@@ -1,0 +1,9 @@
+  .slide {
+    transition: transform 300ms;
+    opacity: 1;
+  }
+
+  .images {
+    max-width: 107% !important;
+  }
+  
