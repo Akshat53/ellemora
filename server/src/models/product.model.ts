@@ -20,7 +20,7 @@
     price: number;
     discount: number;
     discountType: string;
-    color: { name: string; code: string }; 
+    color: [{ name: string; code: string }]; 
     sizes: string[];
     categoryId: Schema.Types.ObjectId;
     media: IMedia[];
@@ -53,10 +53,10 @@
     media: [{ type: Schema.Types.ObjectId, ref: 'Media' }],
     tags: { type: [String], required: true },
     discountType: { type: String, required: true },
-    color: { 
+    color: [{ 
       name: { type: String, required: true },
       code: { type: String, required: true },
-    },
+    }],
     categoryId: { type: Schema.Types.ObjectId, ref: "Category"},
     sizes: { type: [String], required: true },
     relationId: { type: String, required: false },

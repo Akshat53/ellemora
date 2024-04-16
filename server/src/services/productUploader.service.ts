@@ -2,7 +2,7 @@ import * as xlsx from "xlsx";
 import csv from "csv-parser";
 import * as fs from "fs";
 import Product, { IProduct } from "../models/product.model";
-import Media from "../models/media.model"; // Ensure this is the correct import path
+import Media from "../models/media.model"; 
 import mongoose from "mongoose";
 
 export class ExcelService {
