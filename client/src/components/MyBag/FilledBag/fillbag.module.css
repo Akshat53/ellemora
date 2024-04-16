@@ -1,0 +1,18 @@
+.productImageContainer {
+    width: 40%;
+}
+
+.prodimg {
+    width: 90%;
+}
+
+.colors{
+    height: 25px;
+    width: 25px;
+    display: flex;
+    justify-content: center;
+}
+
+.item {
+    letter-spacing: 0.1rem;
+}
