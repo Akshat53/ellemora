@@ -1,10 +1,8 @@
 import React, { useEffect, useState } from "react";
-import axios from "axios";
 import { Col, Row } from "antd";
 import { useParams } from "react-router-dom";
 import ProductCard from "../../../components/ProductCard/ProductCard";
 import CustomCollapse from "../../../components/Collapse/Collapse";
-import ProductCarousel from "../../../components/Carousel/ProductCarousel/ProductCarousel";
 import Styles from "./product.module.css";
 import {
   getProductByIdAction,

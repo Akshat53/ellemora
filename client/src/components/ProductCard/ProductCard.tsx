@@ -6,6 +6,7 @@ import wishlistIcon from "../../assets/svg/fav.svg";
 import AppButton from "../Buttons/Button";
 import ProductColors from "../Buttons/ProductColors/ProductColors";
 import SizeChart from "../SizeChart/SizeChart";
+import AppSekelton from "../Sekelton/Sekelton";
 
 interface ProductCardProps {
   data: {
@@ -15,8 +16,8 @@ interface ProductCardProps {
     discountedPrice: string;
     originalPrice: string;
     img?: string[];
-    colorName: string; // Add color name prop
-    colorsCode: string; // Add color code prop
+    colorName: string;
+    colorsCode: string;
   };
   view: string;
   onClick: any;
@@ -38,7 +39,11 @@ const ProductCard: React.FC<ProductCardProps> = ({
   const listView = () => {
     return (
       <>
-        {data.img && <ProductCarousel images={data.img} />}
+        {data.img.length > 0 ? (
+          <ProductCarousel images={data.img} />
+        ) : (
+          <AppSekelton />
+        )}
         {data.colour && data.colour.length > 0 && (
           <div className="d-flex justify-content-center p-1 gap-2">
             {data.colour.map((color, index) => (
@@ -57,12 +62,12 @@ const ProductCard: React.FC<ProductCardProps> = ({
           </div>
         )}
         <div className={`${Styles.productContent} p-2 py-2`}>
-          <p className={`${Styles.title} fw-normal fs-6 `}>
-            {data.title}
-            <span className={`border border-1 p-1 px-2 m-3 ${Styles.discount}`}>
+          <div className="d-flex">
+            <p className={`${Styles.title} fw-normal fs-6 `}>{data.title}</p>
+            <div className={`border border-1 p-1 px-2 ms-3 ${Styles.discount}`}>
               {data.discount}
-            </span>
-          </p>
+            </div>
+          </div>
 
           <p className={`${Styles.discription} fw-light`}>{data.description}</p>
 
@@ -92,7 +97,11 @@ const ProductCard: React.FC<ProductCardProps> = ({
   const productView = () => {
     return (
       <>
-        {data.img && <ProductCarousel images={data.img} />}
+        {data.img.length > 0 ? (
+          <ProductCarousel images={data.img} />
+        ) : (
+          <AppSekelton />
+        )}
         {data.colorName && (
           <div className="d-flex justify-content-center p-1 gap-2">
             <div
@@ -172,7 +181,11 @@ const ProductCard: React.FC<ProductCardProps> = ({
   const gridView = () => {
     return (
       <>
-        {data.img && <ProductCarousel images={data.img} />}
+        {data.img.length > 0 ? (
+          <ProductCarousel images={data.img} />
+        ) : (
+          <AppSekelton />
+        )}
         {data.colour && data.colour.length > 0 && (
           <div className="d-flex justify-content-center p-1 gap-2">
             {data.colour.map((color, index) => (

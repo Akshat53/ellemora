@@ -10,7 +10,7 @@ import HomeCarousel from "../../../components/Carousel/HomeCarousel/HomeCarousel
 import AppButton from "../../../components/Buttons/Button";
 import img1 from "../../../assets/images/home/img1.png";
 import img4 from "../../../assets/images/home/img4.png";
-import video from "../../../assets/videos/customization website banner video 8.mp4"
+import video from "../../../assets/videos/customization website banner video 8.mp4";
 import Styles from "./index.module.css";
 import demoImages from "../../../assets/images/demo-product-images";
 import CustomCarousel from "../../../components/Carousel/CustomCarousel/CustomCarousel";
@@ -103,7 +103,8 @@ const data = [
     discountedPrice: "24,000",
     originalPrice: "10,000",
     img: [sliderImages.img2],
-  },  {
+  },
+  {
     title: "PINK CASCADE SET",
     discount: "20% off",
     description: "Pink Cascade set with red velvet touch",
@@ -159,29 +160,35 @@ const Home: React.FC<homeProps> = (props: any) => {
       />
       <ShopNow />
 
-      <div
-        className={` d-flex justify-content-center align-items-end`}>
+      <div className={` d-flex justify-content-center align-items-end`}>
         <Heading title="New Arrivals" />
-          <p onClick={handleView} className={`position-absolute end-0 ${Styles.viewAll}`}>
-            VIEW ALL
-          </p>
+        <p
+          onClick={handleView}
+          className={`position-absolute end-0 ${Styles.viewAll}`}
+        >
+          VIEW ALL
+        </p>
       </div>
 
-      <HomeCarousel data={data} view="home"/>
+      <HomeCarousel data={data} view="home" />
       <div className="border-3 border-top border-bottom">
         <Heading title="what’s on your mind?" />
         <Grid2 />
       </div>
       <Heading title="style by celebrities" />
-      <CelebrityStyle celebrityStyleProps={celebrityStyleProps}/>
+      <CelebrityStyle celebrityStyleProps={celebrityStyleProps} />
       <div
-        className={`${Styles.viewAll} d-flex justify-content-center align-items-end`}>
-          <Heading title="Shop by style" />
-          <p onClick={handleView} className={`position-absolute end-0 ${Styles.viewAll}`}>
-            VIEW ALL
-          </p>
+        className={`${Styles.viewAll} d-flex justify-content-center align-items-end`}
+      >
+        <Heading title="Shop by style" />
+        <p
+          onClick={handleView}
+          className={`position-absolute end-0 ${Styles.viewAll}`}
+        >
+          VIEW ALL
+        </p>
       </div>
-      <ShopStyle data={data}  />
+      <ShopStyle data={data} />
       {/* <Grid /> */}
       <Heading title="A tale of tailormade dreams" />
       <TailorTale
@@ -210,35 +217,47 @@ const Home: React.FC<homeProps> = (props: any) => {
         <AppButton label="EXPLORE ALL" className={`${Styles.Explore} `} />
       </div> */}
       <div
-        className={`${Styles.viewAll} d-flex justify-content-center align-items-end`}>
-          <Heading title="Festive special" />
-          <p onClick={handleView} className={`position-absolute end-0 ${Styles.viewAll}`}>
-            VIEW ALL
-          </p>
+        className={`${Styles.viewAll} d-flex justify-content-center align-items-end`}
+      >
+        <Heading title="Festive special" />
+        <p
+          onClick={handleView}
+          className={`position-absolute end-0 ${Styles.viewAll}`}
+        >
+          VIEW ALL
+        </p>
       </div>
-      <HomeCarousel  data={data} view="home" />
+      <HomeCarousel data={data} view="home" />
       <div
-        className={`${Styles.viewAll} d-flex justify-content-center align-items-end`}>
-          <Heading title="Best Seller" />
-          <p onClick={handleView} className={`position-absolute end-0 ${Styles.viewAll}`}>
-            VIEW ALL
-          </p>
+        className={`${Styles.viewAll} d-flex justify-content-center align-items-end`}
+      >
+        <Heading title="Best Seller" />
+        <p
+          onClick={handleView}
+          className={`position-absolute end-0 ${Styles.viewAll}`}
+        >
+          VIEW ALL
+        </p>
       </div>
       <CustomCarousel data={cardData2} view={"card"} />
       <div
-        className={`${Styles.viewAll} d-flex justify-content-center align-items-end`}>
-          <Heading title="Sale" />
-          <p onClick={handleView} className={`position-absolute end-0 ${Styles.viewAll}`}>
-            VIEW ALL
-          </p>
+        className={`${Styles.viewAll} d-flex justify-content-center align-items-end`}
+      >
+        <Heading title="Sale" />
+        <p
+          onClick={handleView}
+          className={`position-absolute end-0 ${Styles.viewAll}`}
+        >
+          VIEW ALL
+        </p>
       </div>
       <CustomCarousel data={cardData3} view={"card"} />
       <div>
         <Link to={"/giftcard"}>
-        <img src={img4} alt="gift card" className="img-fluid mt-4" />
+          <img src={img4} alt="gift card" className="img-fluid mt-4" />
         </Link>
       </div>
-    </div> 
+    </div>
   );
 };
 

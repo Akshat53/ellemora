@@ -4,6 +4,6 @@ import uploadMiddleware from "../middleware/upload.middleware";
 
 const router = express.Router();
 
-router.post("/upload", uploadMiddleware, MediaController.uploadMedia);
+router.post("/", uploadMiddleware, MediaController.uploadMedia);
 
 export default router;

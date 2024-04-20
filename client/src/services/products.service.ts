@@ -10,7 +10,8 @@ export const postProduct = async (data: object) => {
   return response.data;
 };
 
-export const getProductById = async (id: string, params: object) => {
+
+export const getProductById = async (id: string, params: object = {}) => {
   const response = await get(`/products/${id}`, params);
   return response.data;
 };

@@ -4,11 +4,16 @@ import { updateObject } from "../../utils/store";
 
 const initialState = {
   productsList: [],
-  start: 0,
   limit: 10,
   page: 1,
-  orderBy: 1,
-  sortBy: "createdAt",
+  total: 0,
+  orderBy: "desc",
+  sortBy: "updatedAt",
+  priceRange: "00:3000",
+  categoryId: "",
+  sizes: "",
+  colorsId: "",
+  hasMore: false,
   selectedProduct: null,
   selectedProductOptions: [
     {
@@ -52,6 +57,7 @@ const initialState = {
 };
 
 const parseProductData = (product) => {
+  // server types for product
   let parsedData = {
     id: product._id,
     title: product.name,
@@ -65,7 +71,7 @@ const parseProductData = (product) => {
     colorName: product.color.map((code) => code.name),
     shortDescription: product.shortDescription,
     length: product.length,
-    sleeveTypes: product.sleeveTypes.map((sleevetype) => sleevetype), 
+    sleeveTypes: product.sleeveTypes.map((sleevetype) => sleevetype),
     fit: product.fit,
     pattern: product.pattern,
     fabric: product.fabric,
@@ -82,121 +88,94 @@ const parseProductData = (product) => {
   return parsedData;
 };
 
-const parseList = (data: any) => {
+const parseProductDataOptions = (selectedProduct) => {
+  // display types for product
+  return [
+    {
+      header: "Product Description",
+      description: selectedProduct.shortDescription,
+      content: [
+        { title: "LENGTH", subContent: selectedProduct.length },
+        {
+          title: "SLEEVE TYPE",
+          subContent: selectedProduct.sleeveTypes.join(", "),
+        },
+        { title: "FIT", subContent: selectedProduct.fit },
+        { title: "PATTERN", subContent: selectedProduct.pattern },
+        { title: "FABRIC", subContent: selectedProduct.fabric },
+        { title: "TYPE OF WORK", subContent: selectedProduct.typeOfWork },
+        { title: "NECKLINE", subContent: selectedProduct.neckline },
+        {
+          title: "NO. OF COMPONENTS",
+          subContent: String(selectedProduct.numberOfComponents),
+        },
+      ],
+      categories: selectedProduct.tags,
+    },
+    {
+      header: "Composition & Care",
+      content: [
+        { title: "FABRIC", subContent: selectedProduct.fabric },
+        { title: "CARE", subContent: selectedProduct.core },
+        { title: "TYPE OF WORK", subContent: selectedProduct.typeOfWork },
+      ],
+    },
+    {
+      header: "Disclaimer",
+      content: [{ title: null, subContent: selectedProduct.disclaimer }],
+    },
+    {
+      header: "EXCHANGE & RETURNS",
+      content: [{ title: null, subContent: selectedProduct.returnPolicy }],
+    },
+  ];
+};
+
+const parseList = (state, data: any) => {
+  const newProducts = data.productsList.map((product: any) =>
+    parseProductData(product)
+  );
+  const newProductsList = [...state.productsList, ...newProducts];
+
+  const hasMore =
+    state.productsList.length + newProducts.length < data.totalProducts;
+
   let newData = {
-    productsList: data.productsList.map((product: any) =>
-      parseProductData(product)
-    ),
-    limit: data.limit,
+    productsList: newProductsList,
+    total: data.totalProducts,
+    hasMore: hasMore,
     page: data.page,
-    start: data.start,
   };
+
   return newData;
 };
 
 const selectProduct = (state: any, id: string) => {
   let selectedProduct = null;
   let selectedProductOptions = [];
-  selectedProduct = state.productsList.filter((item) => item.id == id)[0];
+  selectedProduct = state.productsList.filter((item) => item.id == id)[0]; // display types for product
 
   if (selectedProduct) {
-    selectedProductOptions = [
-      {
-        header: "Product Description",
-        description: selectedProduct.shortDescription,
-        content: [
-          { title: "LENGTH", subContent: selectedProduct.length },
-          {
-            title: "SLEEVE TYPE",
-            subContent: selectedProduct.sleeveTypes.join(", "),
-          },
-          { title: "FIT", subContent: selectedProduct.fit },
-          { title: "PATTERN", subContent: selectedProduct.pattern },
-          { title: "FABRIC", subContent: selectedProduct.fabric },
-          { title: "TYPE OF WORK", subContent: selectedProduct.typeOfWork },
-          { title: "NECKLINE", subContent: selectedProduct.neckline },
-          {
-            title: "NO. OF COMPONENTS",
-            subContent: String(selectedProduct.numberOfComponents),
-          },
-        ],
-        categories: selectedProduct.tags,
-      },
-      {
-        header: "Composition & Care",
-        content: [
-          { title: "FABRIC", subContent: selectedProduct.fabric },
-          { title: "CARE", subContent: selectedProduct.core },
-          { title: "TYPE OF WORK", subContent: selectedProduct.typeOfWork },
-        ],
-      },
-      {
-        header: "Disclaimer",
-        content: [{ title: null, subContent: selectedProduct.disclaimer }],
-      },
-      {
-        header: "EXCHANGE & RETURNS",
-        content: [{ title: null, subContent: selectedProduct.returnPolicy }],
-      },
-    ];
+    selectedProductOptions = parseProductDataOptions(selectedProduct);
     return { selectedProduct, selectedProductOptions };
   } else return {};
 };
 
-console.log(selectProduct);
 const setProduct = (data: any) => {
-  console.log(data, "datadatadatadatadatadata");
   let selectedProduct = null;
   let selectedProductOptions = [];
   selectedProduct = parseProductData(data.productDetails);
 
   if (selectedProduct) {
-    selectedProductOptions = [
-      {
-        header: "Product Description",
-        description: selectedProduct.shortDescription,
-        content: [
-          { title: "LENGTH", subContent: selectedProduct.length },
-          {
-            title: "SLEEVE TYPE",
-            subContent: selectedProduct.sleeveTypes.join(", "),
-          },
-          { title: "FIT", subContent: selectedProduct.fit },
-          { title: "PATTERN", subContent: selectedProduct.pattern },
-          { title: "FABRIC", subContent: selectedProduct.fabric },
-          { title: "TYPE OF WORK", subContent: selectedProduct.typeOfWork },
-          { title: "NECKLINE", subContent: selectedProduct.neckline },
-          {
-            title: "NO. OF COMPONENTS",
-            subContent: String(selectedProduct.numberOfComponents),
-          },
-        ],
-        categories: selectedProduct.tags,
-      },
-      {
-        header: "Composition & Care",
-        content: [
-          { title: "FABRIC", subContent: selectedProduct.fabric },
-          { title: "CARE", subContent: selectedProduct.core },
-          { title: "TYPE OF WORK", subContent: selectedProduct.typeOfWork },
-        ],
-      },
-      {
-        header: "Disclaimer",
-        content: [{ title: null, subContent: selectedProduct.disclaimer }],
-      },
-      {
-        header: "EXCHANGE & RETURNS",
-        content: [{ title: null, subContent: selectedProduct.returnPolicy }],
-      },
-    ];
+    selectedProductOptions = parseProductDataOptions(selectedProduct);
     return { selectedProduct, selectedProductOptions };
   } else return {};
 };
+
 const reducer = (state = initialState, action: Action) => {
   switch (action.type) {
     case actions.GET_PRODUCTS_LIST:
-      return updateObject(state, parseList(action.data));
+      return updateObject(state, parseList(state, action.data));
     case actions.SELECT_PRODUCT:
       return updateObject(state, selectProduct(state, action.data));
     case actions.GET_PRODUCT_DETAILS:

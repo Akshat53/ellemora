@@ -1,22 +1,16 @@
 import express from "express";
 import productController from "../controllers/product.controller";
-import { fileUploadMiddleware } from "../middleware/productUpload.middleware";
-import { ExcelController } from '../controllers/productUploader.controller';
+import { fileUploadMiddleware } from "../middleware/excelfileuploader.middleware";
+import { ExcelController } from "../controllers/excelfileuploader.controller";
 
 const router = express.Router();
 
-const excelController = new ExcelController(); 
+const excelController = new ExcelController();
 
-router.post("/products", productController.addProduct);
-
-router.post("/products/upload", fileUploadMiddleware, excelController.upload);
-
-router.get('/products/:id', productController.getProductById);
-
-
-router.get('/products/:id/media', productController.getProductMedia);
-
-
-router.get('/products', productController.getAllProducts);
+router.get("/", productController.getAllProducts);
+router.get("/:id", productController.getProductById);
+router.get("/:id/media", productController.getProductMedia);
+router.post("/", productController.addProduct);
+router.post("/upload", fileUploadMiddleware, excelController.upload);
 
 export default router;

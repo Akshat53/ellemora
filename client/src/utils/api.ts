@@ -1,8 +1,9 @@
+// api.ts
 import axios from "axios";
 import _ from "lodash";
 import Constants from "../constants/constants";
 
-let API_URL = Constants.API_URL
+const API_URL = Constants.API_URL;
 
 const url = (path: string, params: any) => {
   const sections = path.split(":");
@@ -18,26 +19,24 @@ const apiService = axios.create({});
 export const get = (path: string, params = {}) =>
   apiService.get(url(path, params), { params });
 
-export const post = (path: string, params = {}) =>
-  apiService.post(url(path, params), params);
+export const post = (path: string, body = {}, params = {}) =>
+  apiService.post(url(path, params), body);
 
-export const put = (path: string, params = {}) =>
-  apiService.put(url(path, params), params);
+export const put = (path: string, body = {}, params = {}) =>
+  apiService.put(url(path, params), body);
 
 export const deleteRequest = (path: string, params = {}) =>
-  apiService.delete(url(path, params), { params });
+  apiService.delete(url(path, params));
 
 apiService.interceptors.request.use((request) => {
+  // Optionally modify request here
   return request;
 });
 
 apiService.interceptors.response.use(
-  function (response) {
-    return response;
-  },
-  function (error) {
-    // Manage ERROR here
-    console.log(error, "Error in API");
+  response => response,
+  error => {
+    console.error("Error in API", error);
     return Promise.reject(error);
   }
 );

@@ -1,9 +1,10 @@
 import * as xlsx from "xlsx";
 import csv from "csv-parser";
 import * as fs from "fs";
-import Product, { IProduct } from "../models/product.model";
+import Product from "../models/product.model";
 import Media from "../models/media.model"; 
 import mongoose from "mongoose";
+import  { IProduct } from "src/types/product.types"
 
 export class ExcelService {
   async parseAndStoreFile(file: Express.Multer.File): Promise<IProduct[]> {

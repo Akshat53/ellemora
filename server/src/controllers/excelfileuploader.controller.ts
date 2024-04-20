@@ -1,5 +1,5 @@
 import { Request, Response } from 'express';
-import { ExcelService } from '../services/productUploader.service';
+import { ExcelService } from '../services/excelfileuploader.service';
 
 export class ExcelController {
   private excelService: ExcelService;
