@@ -107,7 +107,11 @@ const getProductMedia = async (req: Request, res: Response) => {
     console.error("Failed to get product media:", err);
     res.status(500).send("Failed to get product media");
   }
+
+
 };
+
+
 
 export default {
   addProduct,

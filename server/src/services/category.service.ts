@@ -1,6 +1,7 @@
 import { GetOptions } from "src/types/product.types";
-import { ICategory } from "../types/categories.types";
+// import from "../types/categories.types";
 import Category from "../models/category.model";
+import  { ICategory } from "../types/categories.types"
 
 const getCategories = async (options: GetOptions): Promise<ICategory[]> => {
   const { query, sortBy, sortOrder } = options;

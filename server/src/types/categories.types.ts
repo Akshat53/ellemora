@@ -1,9 +1,11 @@
-import { Schema, Document } from "mongoose";
+import { Schema, Document, Types } from "mongoose";
+
+
 
 export interface ICategory extends Document {
   name: string;
   description: string;
-  parentCategory?: Schema.Types.ObjectId | null;
+  parentCategory?: Types.ObjectId | null;
   level: number;
   isActive: boolean;
   softDelete: boolean;

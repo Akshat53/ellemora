@@ -5,8 +5,9 @@ import shareIcon from "../../assets/svg/share.svg";
 import wishlistIcon from "../../assets/svg/fav.svg";
 import AppButton from "../Buttons/Button";
 import ProductColors from "../Buttons/ProductColors/ProductColors";
-import SizeChart from "../SizeChart/SizeChart";
+
 import AppSekelton from "../Sekelton/Sekelton";
+import AppModal from "../AppModal/appModal";
 
 interface ProductCardProps {
   data: {
@@ -18,6 +19,7 @@ interface ProductCardProps {
     img?: string[];
     colorName: string;
     colorsCode: string;
+    sizes: [];
   };
   view: string;
   onClick: any;
@@ -31,11 +33,18 @@ const ProductCard: React.FC<ProductCardProps> = ({
   colors,
 }) => {
   const [isModalOpen, setIsModalOpen] = useState(false);
+  const [sizeBackground, setSizeBackground] = useState(false);
+  const [activeSizeIndex, setActiveSizeIndex] = useState(0);
+  console.log(activeSizeIndex)
 
   const toggleModal = () => {
     setIsModalOpen(!isModalOpen);
   };
 
+  const handleSizeButtonClick = (index: number) => {
+    setActiveSizeIndex(index);
+    setSizeBackground(true);
+  };
   const listView = () => {
     return (
       <>
@@ -107,7 +116,7 @@ const ProductCard: React.FC<ProductCardProps> = ({
             <div
               className="border"
               style={{ height: "19px", width: "19px", padding: "2px" }}
-              onClick={() => colors(color)}
+              onClick={() => colors(colors)}
             >
               <div
                 className="w-100 h-100"
@@ -148,8 +157,6 @@ const ProductCard: React.FC<ProductCardProps> = ({
                   color="black"
                   border="1px solid black"
                 />
-
-                {isModalOpen && <SizeChart onClose={toggleModal} />}
 
                 <button className="bg-white p-2 default-border">
                   <img src={shareIcon} />
@@ -330,6 +337,25 @@ const ProductCard: React.FC<ProductCardProps> = ({
               : view == "card"
                 ? cardView()
                 : productView()}
+        {isModalOpen && (
+          <AppModal onClose={toggleModal}>
+            <div className="d-flex row ">
+              {data.sizes.map((items, i) => (
+                <button
+                  key={i}
+                  className={`border p-4 col-4 text-dark ${
+                    activeSizeIndex === i && sizeBackground
+                      ? "bg-dark text-white"
+                      : "bg-white"
+                  }`}
+                  onClick={() => handleSizeButtonClick(i)}
+                >
+                  {items}
+                </button>
+              ))}
+            </div>
+          </AppModal>
+        )}
       </div>
     </div>
   );

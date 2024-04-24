@@ -49,6 +49,7 @@ const Product: React.FC = (props) => {
     setCollapseOptions(selectedProductOptions);
     setProductData(selectedProduct);
   }, [selectedProduct, selectedProductOptions]);
+  console.log(selectedProduct)
 
   const handleColor = (clicked: string) => {
     console.log(clicked);
@@ -70,7 +71,7 @@ const Product: React.FC = (props) => {
       <Col span={24} className="border-top border-1 border-bottom">
         <CustomCollapse collapseOptions={collapseOptions} />
       </Col>
-      <Col></Col>
+    
     </Row>
   );
 };

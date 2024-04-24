@@ -5,12 +5,17 @@ import ProfileIcon from "../../assets/svg/profile.svg";
 import FavIcon from "../../assets/svg/fav.svg";
 import BagIcon from "../../assets/svg/bag.svg";
 import MenuIcon from "../../assets/svg/menu.svg";
+import { useNavigate } from "react-router-dom";
 
 interface NavbarProps {
   onClick: () => void;
 }
 
 const Navbar: React.FC<NavbarProps> = ({ onClick }) => {
+  const navigate = useNavigate ();
+  const handleClick =() =>{
+    navigate ( "/")
+  }
   return (
     <div>
       <div style={{ backgroundColor: "white", position: "relative", zIndex: 2 }} className="appbar">
@@ -27,7 +32,7 @@ const Navbar: React.FC<NavbarProps> = ({ onClick }) => {
             alt="Menu"
             onClick={onClick}
           />
-          <div className="ellemora">ELLEMORA</div>
+          <div className="ellemora" onClick={handleClick}>ELLEMORA</div>
         </div>
         <div style={{ justifyContent: "space-around" }}>
           <img src={SearchIcon} className="top-icon" alt="Search" />

@@ -1,4 +1,4 @@
-import { Schema, Document, PopulateOptions } from "mongoose";
+import { Schema, Document, PopulateOptions, Types } from "mongoose";
 import { IMedia } from "./media.types";
 
 export interface QueryFilters {
@@ -38,14 +38,15 @@ export interface IProduct extends Document {
   discountType: string;
   color: [{ name: string; code: string }];
   sizes: string[];
-  categoryId: Schema.Types.ObjectId;
-  media: IMedia[];
+
   relationId?: string;
   primaryVariant: boolean;
   softDelete: boolean;
   isActive: boolean;
   tags: string[];
-  masterProduct: Schema.Types.ObjectId | null;
+  categoryId: Types.ObjectId;
+  media: IMedia[];
+  masterProduct: Types.ObjectId | null;
 }
 
 export interface ProductPaginationData {

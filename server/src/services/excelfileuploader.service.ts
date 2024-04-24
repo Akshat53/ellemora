@@ -1,12 +1,42 @@
+import mongoose from "mongoose";
 import * as xlsx from "xlsx";
 import csv from "csv-parser";
 import * as fs from "fs";
 import Product from "../models/product.model";
-import Media from "../models/media.model"; 
-import mongoose from "mongoose";
-import  { IProduct } from "src/types/product.types"
+import Media from "../models/media.model";
+import Category from "../models/category.model";
+import { IProduct } from "src/types/product.types";
+import { ICategory } from "src/types/categories.types";
 
 export class ExcelService {
+  async findOrCreateCategory(categoryPath: string): Promise<mongoose.Types.ObjectId | null> {
+    const categories = categoryPath.split('/');
+    let currentParentId: mongoose.Types.ObjectId | null = null;
+    let currentLevel = 0;
+
+    for (const name of categories) {
+      let category: ICategory | null = await Category.findOne({ name, parentCategory: currentParentId });
+
+      if (!category) {
+        category = await Category.create({
+          name,
+          parentCategory: currentParentId,
+          level: currentLevel,
+          isActive: true,
+          softDelete: false,
+          description: "Auto-generated category"
+        });
+      }
+
+      currentParentId = category._id;
+      currentLevel = category.level + 1;
+    }
+
+    return currentParentId;  
+  }
+
+  
+
   async parseAndStoreFile(file: Express.Multer.File): Promise<IProduct[]> {
     let data: any[] = [];
     if (
@@ -31,7 +61,8 @@ export class ExcelService {
 
     if (data.length > 0) {
       const productPromises = data.map(async (item) => {
-       
+        const categoryId = await this.findOrCreateCategory(item.categoryPath || "Default/Category/Path");
+
         const productData = {
           name: item.name || "Default Name",
           description: item.description || "Default Description",
@@ -56,17 +87,15 @@ export class ExcelService {
             code: item["color.code"] || "#FFFFFF",
           },
           sizes: item.sizes ? item.sizes.split(";") : [],
-          categoryId: new mongoose.Types.ObjectId(item.categoryId || "5f8d0401e75f5a0017e4a6ed"),
+          categoryId,
           tags: item.tags ? item.tags.split(";") : [],
           isActive: typeof item.isActive === 'string' ? item.isActive.toLowerCase() === 'true' : !!item.isActive,
           softDelete: typeof item.softDelete === 'string' ? item.softDelete.toLowerCase() === 'true' : !!item.softDelete,
           primaryVariant: typeof item.primaryVariant === 'string' ? item.primaryVariant.toLowerCase() === 'true' : !!item.primaryVariant,
         };
 
-   
         const newProduct = await Product.create(productData);
 
-      
         if (item.media && item.media.trim()) {
           const imageURLs = item.media.split(";");
           const mediaDocuments = imageURLs.map((url:string) => ({
@@ -77,7 +106,6 @@ export class ExcelService {
             path: url,
           }));
 
-       
           const createdMedia = await Media.insertMany(mediaDocuments);
           await Product.findByIdAndUpdate(newProduct._id, { $set: { media: createdMedia.map((media) => media._id) } });
         }

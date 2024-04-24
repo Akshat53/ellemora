@@ -1,46 +1,38 @@
-import React from "react";
-import CategoryAvtar from "./CategoryAvtar";
+import React, { useState } from "react";
 import "./categories.css";
-import Sale from "../../assets/images/avtar/img1.png";
-import Lehengas from "../../assets/images/avtar/img2.png";
-import Dresses from "../../assets/images/avtar/img3.png";
-import BestSeller from "../../assets/images/avtar/img4.png";
-import Basics from "../../assets/images/avtar/img5.png"
 
-const categoriesOptions = [
-  {
-    icon: Sale,
-    label: "Sale",
-  },
-  {
-    icon: Lehengas,
-    label: "Lehengas",
-  },
-  {
-    icon: Dresses,
-    label: "Dresses",
-  },
-  {
-    icon: BestSeller,
-    label: "Best Seller",
-  },
-  {
-    icon: Basics,
-    label: "Basics",
-  },
+
+const categories = [
+  { id: 1, name: "Category 1" },
+  { id: 2, name: "Category 2" },
+  { id: 3, name: "Category 1" },
+  { id: 4, name: "Category 2" },
+  { id: 5, name: "Category 1" },
+  { id: 6, name: "Category 2" },
+  { id: 7, name: "Category 1" },
+  { id: 8, name: "Category 2" },
 ];
 
-const Categories: React.FC = () => {
+const CategoriesBar = () => {
+  const [activeCategoryId, setActiveCategoryId] = useState(null);
+
+  const handleCategoryClick = (categoryId) => {
+    setActiveCategoryId(categoryId);
+  };
+
   return (
-    <div
-      className="w-auto scroll-container"
-      style={{ width: "100%", overflowX: "auto", whiteSpace: "nowrap" }}
-    >
-      {categoriesOptions.map((category, index) => (
-        <CategoryAvtar key={index} data={category} />
+    <div className="scroll-container d-flex overflow-x-auto text-nowrap  justify-content-center"  >
+      {categories.map((category) => (
+        <button
+          key={category.id}
+          className={`category-card ${category.id === activeCategoryId ? "active" : ""}`}
+          onClick={() => handleCategoryClick(category.id)}
+        >
+          {category.name}
+        </button>
       ))}
     </div>
   );
 };
 
-export default Categories;
+export default CategoriesBar;

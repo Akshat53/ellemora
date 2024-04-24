@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useMemo } from "react";
-import FilterBox from "../../../components/FilterBox";
+import FilterBox from "../../../components/FilterBar";
 import ProductCard from "../../../components/ProductCard/ProductCard";
 import { Col, Row, Spin } from "antd";
 import {
@@ -10,6 +10,16 @@ import { connect } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import InfiniteScroll from "react-infinite-scroll-component";
 import { debounce } from "lodash";
+import AppModal from "../../../components/AppModal/appModal";
+import Filter from "../../../components/Filter/Filter";
+import CategoriesBar from "../../../components/Categories";
+const categories = [
+  { id: 1, name: "Books" },
+  { id: 2, name: "Electronics" },
+  { id: 3, name: "Clothing" },
+  { id: 4, name: "Food" },
+  // Add more categories as needed
+];
 
 const ProductList: React.FC = (props) => {
   const { productActions, productStore } = props;
@@ -32,6 +42,7 @@ const ProductList: React.FC = (props) => {
   const [error, setError] = useState(null);
 
   const navigate = useNavigate();
+  const [isModalOpen, setIsModalOpen] = useState(false);
 
   useEffect(() => {
     if (productsList.length === 0) {
@@ -56,6 +67,12 @@ const ProductList: React.FC = (props) => {
     }
   };
 
+  const handleClick = () => {
+    setIsModalOpen(true);
+  };
+  const toggleModal = () => {
+    setIsModalOpen(!isModalOpen);
+  };
   const debouncedFetchData = debounce(fetchData, 100);
 
   const xhrGetProductListAction = (isFreshCall = false) => {
@@ -91,7 +108,21 @@ const ProductList: React.FC = (props) => {
 
   return (
     <div className="w-100 ">
-      <FilterBox view={view} viewChange={(value) => setView(value)} />
+      <FilterBox
+        view={view}
+        viewChange={(value) => setView(value)}
+        onClick={handleClick}
+      />
+      {isModalOpen && (
+        <AppModal onClose={toggleModal}>
+          <div className="d-flex row p-3">
+            <Filter />
+          </div>
+        </AppModal>
+      )}
+ 
+      <CategoriesBar categories={categories} />
+  
       <InfiniteScroll
         dataLength={productsList.length || limit}
         next={xhrGetProductListAction}

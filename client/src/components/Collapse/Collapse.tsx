@@ -21,8 +21,6 @@ const CustomCollapse: React.FC<CustomCollapseProps> = ({ collapseOptions }) => {
     return str ? str.toUpperCase() : "";
   };
 
-
-
   return (
     <Collapse
       bordered={false}
@@ -52,7 +50,7 @@ const CustomCollapse: React.FC<CustomCollapseProps> = ({ collapseOptions }) => {
               </Col>
             ))}
           </Row>
-          <div className="d-flex gap-2 py-3 flex-wrap"  >
+          <div className="d-flex gap-2 py-3 flex-wrap">
             {item.categories?.map((cat, index) => (
               <Tag key={index} label={[cat]} />
             ))}

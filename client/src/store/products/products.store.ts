@@ -64,7 +64,7 @@ const parseProductData = (product) => {
     discount: `${product.discount}% off`,
     description: product.description,
     discountedPrice:
-      product.price - ((product.price * product.discount) / 100).toFixed(2),
+    product.price - ((product.price * product.discount) / 100).toFixed(2),
     originalPrice: product.price.toFixed(2),
     img: product.media.map((mediaItem) => mediaItem.url),
     colorsCode: product.color.map((code) => code.code),
@@ -83,6 +83,7 @@ const parseProductData = (product) => {
     disclaimer: product.disclaimer,
     returnPolicy: product.returnPolicy,
     components: product.components.map((component) => component),
+    sizes : product.sizes
   };
 
   return parsedData;
@@ -159,6 +160,7 @@ const selectProduct = (state: any, id: string) => {
     selectedProductOptions = parseProductDataOptions(selectedProduct);
     return { selectedProduct, selectedProductOptions };
   } else return {};
+  
 };
 
 const setProduct = (data: any) => {
