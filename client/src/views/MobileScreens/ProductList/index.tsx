@@ -120,9 +120,9 @@ const ProductList: React.FC = (props) => {
           </div>
         </AppModal>
       )}
- 
+      <div className="d-flex justify-content-center">
       <CategoriesBar categories={categories} />
-  
+      </div>
       <InfiniteScroll
         dataLength={productsList.length || limit}
         next={xhrGetProductListAction}

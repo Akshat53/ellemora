@@ -1,7 +1,6 @@
 import React, { useState } from "react";
 import "./categories.css";
 
-
 const categories = [
   { id: 1, name: "Category 1" },
   { id: 2, name: "Category 2" },
@@ -21,11 +20,11 @@ const CategoriesBar = () => {
   };
 
   return (
-    <div className="scroll-container d-flex overflow-x-auto text-nowrap  justify-content-center"  >
+    <div className="scroll-container d-flex overflow-x-auto text-nowrap  p-2 ">
       {categories.map((category) => (
         <button
           key={category.id}
-          className={`category-card ${category.id === activeCategoryId ? "active" : ""}`}
+          className={`category-card p-2 m-2  ${category.id === activeCategoryId ? "active" : ""}`}
           onClick={() => handleCategoryClick(category.id)}
         >
           {category.name}
