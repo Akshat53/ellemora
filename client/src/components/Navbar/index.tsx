@@ -5,12 +5,19 @@ import ProfileIcon from "../../assets/svg/profile.svg";
 import FavIcon from "../../assets/svg/fav.svg";
 import BagIcon from "../../assets/svg/bag.svg";
 import MenuIcon from "../../assets/svg/menu.svg";
+import BuyNow from "../../views/MobileScreens/BuyNow/BuyNow";
+import { useNavigate } from "react-router-dom";
+
 
 interface NavbarProps {
   onClick: () => void;
 }
 
 const Navbar: React.FC<NavbarProps> = ({ onClick }) => {
+  const navigate = useNavigate();
+  const clickHandler = () => {
+    navigate('/cart')
+  }
   return (
     <div>
       <div style={{ backgroundColor: "white", position: "relative", zIndex: 2 }} className="appbar">
@@ -33,7 +40,7 @@ const Navbar: React.FC<NavbarProps> = ({ onClick }) => {
           <img src={SearchIcon} className="top-icon" alt="Search" />
           <img src={ProfileIcon} className="top-icon" alt="Profile" />
           <img src={FavIcon} className="top-icon" alt="Favorites" />
-          <img src={BagIcon} className="top-icon" alt="Bag" />
+          <img src={BagIcon} className="top-icon" alt="Bag" onClick={clickHandler}/>
         </div>
       </div>
     </div>

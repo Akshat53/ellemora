@@ -1,7 +1,7 @@
 import React from "react";
 import customImg from "../../../assets/images/custom-images/custom";
 import Styles from "./custom.module.css";
-import Video from '../../../assets/videos/customization website banner video 8.mp4';
+import Video from '../../../assets/videos/promo video .mp4';
 import AppButton from "../../../components/Buttons/Button";
 import HeadBar from "../../../components/HeadBar/HeadBar";
 

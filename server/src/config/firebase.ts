@@ -1,9 +1,8 @@
 import * as admin from "firebase-admin";
 
-const serviceAccount = "../../ellemora-firebase-adminsdk-pq2i2-4fc7a2eabf.json";
-
+import serviceAccount from '../../ellemora-firebase-adminsdk-pq2i2-4fc7a2eabf.json';
 admin.initializeApp({
-  credential: admin.credential.cert(serviceAccount),
+  credential: admin.credential.cert(serviceAccount as admin.ServiceAccount),
   storageBucket: "gs://ellemora.appspot.com",
 });
 

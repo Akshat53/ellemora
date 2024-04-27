@@ -3,6 +3,7 @@ import EmptyBag from '../../../components/MyBag/EmptyBag/EmptyBag';
 import FilledBag from "../../../components/MyBag/FilledBag/FillBag";
 import HeadBar from "../../../components/HeadBar/HeadBar";
 import LogCheck from "../../../components/Checkout/LoggedCheckout/LogCheck";
+import NotLogCheck from "../../../components/Checkout/NotLoggedCheckout/NotLogCheck";
 
 const BuyNow: React.FC = () => {
   return (
@@ -12,7 +13,8 @@ const BuyNow: React.FC = () => {
       {/* <FilledBag /> */}
       {/* <EmptyBag /> */}
       <HeadBar header="CHECKOUT" />
-      <LogCheck />
+      {/* <LogCheck /> */}
+      <NotLogCheck />
     </div>
   );
 };

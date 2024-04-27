@@ -7,6 +7,7 @@ const Header: React.FC = () => {
 
   const handleClick = () => {
     setOpen(!open);
+    // console.log('click');
   };
   return (
     <>

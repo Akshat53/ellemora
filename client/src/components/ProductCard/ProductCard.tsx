@@ -6,6 +6,8 @@ import wishlistIcon from "../../assets/svg/fav.svg";
 import AppButton from "../Buttons/Button";
 import ProductColors from "../Buttons/ProductColors/ProductColors";
 import SizeChart from "../SizeChart/SizeChart";
+import { useDispatch } from "react-redux";
+import { addProduct } from "../../redux/Slice/BagSlice";
 
 interface ProductCardProps {
   data: {
@@ -30,6 +32,14 @@ const ProductCard: React.FC<ProductCardProps> = ({
   colors,
 }) => {
   const [isModalOpen, setIsModalOpen] = useState(false);
+
+  console.log('data', data);
+  const dispatch = useDispatch();
+
+  const handleAddToBag = () => {
+    dispatch(addProduct(data)); // Assuming `data` contains the product information
+    console.log('added to bag');
+  };
 
   const toggleModal = () => {
     setIsModalOpen(!isModalOpen);
@@ -79,11 +89,13 @@ const ProductCard: React.FC<ProductCardProps> = ({
             className={`${Styles.btn} d-flex justify-content-evenly gap-1 py-2`}
           >
             <AppButton
-              label="Add to bag"
-              className="w-100 border-0 p-2"
-              onClick={""}
-              bgColor="#2C2C2C"
-            />
+                label="Add to Bag "
+                className="w-100 p-1 "
+                onClick={handleAddToBag} // Call handleAddToBag when the button is clicked
+                bgColor="#FBFBFB"
+                color="rgba(42, 42, 42, 1)"
+                border="0.5px solid rgba(169, 169, 169, 1)"
+              />
             <ProductColors />
           </div>
         </div>
@@ -158,12 +170,14 @@ const ProductCard: React.FC<ProductCardProps> = ({
                 </button>
               </div>
               <div className="d-flex gap-2 w-100 ">
-                <AppButton
-                  label="Add to bag"
-                  className="w-100 border-0 p-2"
-                  onClick={""}
-                  bgColor="#2C2C2C"
-                />
+              <AppButton
+                label="Add to Bag "
+                className="w-100 p-1 "
+                onClick={handleAddToBag} // Call handleAddToBag when the button is clicked
+                bgColor="#FBFBFB"
+                color="rgba(42, 42, 42, 1)"
+                border="0.5px solid rgba(169, 169, 169, 1)"
+              />
                 <AppButton
                   label="Buy Now "
                   className="w-100 border-0 p-2"
@@ -220,13 +234,13 @@ const ProductCard: React.FC<ProductCardProps> = ({
             className={`${Styles.btn} d-flex justify-content-evenly gap-1 py-2`}
           >
             <AppButton
-              label="Add to Bag "
-              className="w-100 border-0 p-2"
-              onClick={""}
-              bgColor="#FBFBFB"
-              color="#2A2A2A"
-              border="1px solid #5C5C5C"
-            />
+                label="Add to Bag "
+                className="w-100 p-1 "
+                onClick={handleAddToBag} // Call handleAddToBag when the button is clicked
+                bgColor="#FBFBFB"
+                color="rgba(42, 42, 42, 1)"
+                border="0.5px solid rgba(169, 169, 169, 1)"
+              />
           </div>
         </div>
       </>
