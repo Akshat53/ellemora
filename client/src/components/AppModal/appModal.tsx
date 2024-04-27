@@ -1,13 +1,29 @@
 import AppModalProps from "../../interface/appModal.interface";
-import styles from "./appModal.module.css";
+import { Drawer } from "antd";
 
-const AppModal: React.FC<AppModalProps> = ({ onClose, children }) => {
+const AppModal: React.FC<AppModalProps> = ({
+  onClose,
+  open,
+  children,
+  title,
+  placement = "bottom",
+}) => {
   return (
     <>
-      <div className={`${styles.appModalBackdrop}`} onClick={onClose} />
+      <Drawer
+        title={title}
+        onClose={onClose}
+        open={open}
+        placement={placement}
+        height="auto"
+       
+      >
+        {children}
+      </Drawer>
+      {/* <div className={`${styles.appModalBackdrop}`} onClick={onClose} />
       <div className={`${styles.appModal}`}>
         <div className={`${styles.appModalOptions}`}>{children}</div>
-      </div>
+      </div> */}
     </>
   );
 };

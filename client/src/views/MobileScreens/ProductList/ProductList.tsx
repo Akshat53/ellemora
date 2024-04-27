@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useMemo } from "react";
+import React, { useState, useEffect } from "react";
 import FilterBox from "../../../components/FilterBar";
 import ProductCard from "../../../components/ProductCard/ProductCard";
 import { Col, Row, Spin } from "antd";
@@ -10,9 +10,9 @@ import { connect } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import InfiniteScroll from "react-infinite-scroll-component";
 import { debounce } from "lodash";
-import AppModal from "../../../components/AppModal/appModal";
-import Filter from "../../../components/Filter/Filter";
 import CategoriesBar from "../../../components/Categories";
+import Filter2 from "../../../components/Filter/Filter2";
+import { getCategoriesListAction } from "../../../store/categories/category.actions";
 const categories = [
   { id: 1, name: "Books" },
   { id: 2, name: "Electronics" },
@@ -22,8 +22,10 @@ const categories = [
 ];
 
 const ProductList: React.FC = (props) => {
-  const { productActions, productStore } = props;
+  const { productActions, productStore, categoryStore, categoryActions } =
+    props;
   const { getProductListAction, selectProductAction } = productActions;
+  const { getCategoriesListAction } = categoryActions;
   const {
     productsList,
     page,
@@ -36,52 +38,53 @@ const ProductList: React.FC = (props) => {
     colorsId,
     hasMore,
   } = productStore;
+  const { categories } = categoryStore;
+
   const [view, setView] = useState("list");
   const [products, setProducts] = useState([]);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
 
   const navigate = useNavigate();
-  const [isModalOpen, setIsModalOpen] = useState(false);
 
   useEffect(() => {
-    if (productsList.length === 0) {
-      debouncedFetchData();
-    }
+    debouncedFetchData();
 
     return () => debouncedFetchData.cancel();
-  }, []);
+  }, [sortBy, sizes, priceRange, orderBy, categoryId, colorsId]);
 
   useEffect(() => {
     setProducts(productsList);
   });
+  useEffect(() => {
+    getCategoriesListAction();
+  }, []);
+
+  // useEffect(() => {
+  //   xhrGetProductListAction(true);
+  // }, [sortBy, sizes, priceRange, orderBy, categoryId, colorsId]);
 
   const fetchData = async () => {
+    console.log("hello bro get new products ");
     setLoading(true);
     try {
       await xhrGetProductListAction(true);
-    } catch (error) {
+    } catch (error: any) {
       setError(error.message);
     } finally {
       setLoading(false);
     }
   };
 
-  const handleClick = () => {
-    setIsModalOpen(true);
-  };
-  const toggleModal = () => {
-    setIsModalOpen(!isModalOpen);
-  };
   const debouncedFetchData = debounce(fetchData, 100);
 
   const xhrGetProductListAction = (isFreshCall = false) => {
     console.log("hello bro calling", isFreshCall);
-    let newProductList = productsList.splice();
+    let newProductsList = products;
     let newPage = page + 1;
 
     if (isFreshCall) {
-      newProductList = [];
+      newProductsList = [];
       newPage = 1;
     }
 
@@ -95,7 +98,7 @@ const ProductList: React.FC = (props) => {
       categoryId,
       colorsId,
     };
-    getProductListAction(args);
+    getProductListAction(args, newProductsList);
   };
 
   if (loading)
@@ -107,21 +110,10 @@ const ProductList: React.FC = (props) => {
   if (error) return <div>Error: {error}</div>;
 
   return (
-    <div className="w-100 ">
-      <FilterBox
-        view={view}
-        viewChange={(value) => setView(value)}
-        onClick={handleClick}
-      />
-      {isModalOpen && (
-        <AppModal onClose={toggleModal}>
-          <div className="d-flex row p-3">
-            <Filter />
-          </div>
-        </AppModal>
-      )}
+    <div className="w-100 position-relative">
+      <FilterBox view={view} viewChange={(value) => setView(value)} />
       <div className="d-flex justify-content-center">
-      <CategoriesBar categories={categories} />
+        <CategoriesBar categories={categories} />
       </div>
       <InfiniteScroll
         dataLength={productsList.length || limit}
@@ -163,6 +155,7 @@ const ProductList: React.FC = (props) => {
           ))}
         </Row>
       </InfiniteScroll>
+      <Filter2 />
     </div>
   );
 };
@@ -171,15 +164,20 @@ const mapStateToProps = (state: any) => {
   return {
     productStore: state.productStore,
     authStore: state.authStore,
+    categoryStore : state.categoryStore
   };
 };
 
 const mapDispatchToProps = (dispatch: any) => {
   return {
     productActions: {
-      getProductListAction: (params: any) =>
-        dispatch(getProductListAction(params)),
+      getProductListAction: (params: any, list: any) =>
+        dispatch(getProductListAction(params, list)),
       selectProductAction: (id: string) => dispatch(selectProductAction(id)),
+    },
+    categoryActions: {
+      getCategoriesListAction: (params: any) =>
+        dispatch(getCategoriesListAction(params)),
     },
   };
 };

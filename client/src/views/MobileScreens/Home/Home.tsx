@@ -6,7 +6,7 @@ import ShopNow from "../../../components/ShopNow/ShopNow";
 import Heading from "../../../components/Headings/Heading";
 import sliderImages from "../../../assets/images/slider1/index";
 import HomeCarousel from "../../../components/Carousel/HomeCarousel/HomeCarousel";
-// import Grid1 from "../../../components/Grids/Grid1/Grid1";
+
 import AppButton from "../../../components/Buttons/Button";
 import img1 from "../../../assets/images/home/img1.png";
 import img4 from "../../../assets/images/home/img4.png";
@@ -14,13 +14,15 @@ import video from "../../../assets/videos/customization website banner video 8.m
 import Styles from "./index.module.css";
 import demoImages from "../../../assets/images/demo-product-images";
 import CustomCarousel from "../../../components/Carousel/CustomCarousel/CustomCarousel";
-// import Customization from "../Customization/Customization";
+
 import CelebrityStyle from "../../../components/Celebrity/CelebrityStyle";
 import TailorTale from "../../../components/TailorTale/Tailor";
 import Grid2 from "../../../components/Grids/Grid2/Grid2";
 import ShopStyle from "../../../components/Carousel/ShopByStyle/ShopStyle";
 import { Link, useNavigate } from "react-router-dom";
 import celebImages from "../../../assets/images/celebstyle/index";
+import { getCategoriesListAction } from "../../../store/categories/category.actions";
+import { useEffect, useState } from "react";
 
 // const cardData = [
 //   {
@@ -136,16 +138,27 @@ const celebrityStyleProps = [
 const Home: React.FC<homeProps> = (props: any) => {
   const navigate = useNavigate();
 
+  const handleView = () => {
+    navigate("/products");
+  };
+  const { productStore, productActions, categoryStore, categoryActions } =
+    props;
+  const { getCategoriesListAction } = categoryActions;
+  const { categories } = categoryStore;
+  const [categoriess, setCategories] = useState([]);
+
+  useEffect(() => {
+    getCategoriesListAction({ name: "Mens" });
+  }, []);
+  useEffect(() => {
+    setCategories(categories);
+    console.log(categories);
+  }, [categoriess]);
+
   const handleExplore = () => {
     navigate("/customization");
   };
 
-  const handleView = () => {
-    navigate("/products");
-  };
-  const { productStore, productActions } = props;
-
-  console.log(productActions, productStore, "state with actions");
   return (
     <div className="">
       {/* <Categories /> */}
@@ -264,6 +277,7 @@ const Home: React.FC<homeProps> = (props: any) => {
 const mapStateToProps = (state: any) => {
   return {
     productStore: state.productStore,
+    categoryStore: state.categoryStore,
   };
 };
 
@@ -272,6 +286,10 @@ const mapDispatchToProps = (dispatch: any) => {
     productActions: {
       getProductListAction: (params: any) =>
         dispatch(getProductListAction(params)),
+    },
+    categoryActions: {
+      getCategoriesListAction: (params: any) =>
+        dispatch(getCategoriesListAction(params)),
     },
   };
 };

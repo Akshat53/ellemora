@@ -9,10 +9,10 @@ const initialState = {
   total: 0,
   orderBy: "desc",
   sortBy: "updatedAt",
-  priceRange: "00:3000",
-  categoryId: "",
-  sizes: "",
-  colorsId: "",
+  priceRange: null,
+  categoryId: null,
+  sizes: null,
+  colorsId: null,
   hasMore: false,
   selectedProduct: null,
   selectedProductOptions: [
@@ -64,7 +64,7 @@ const parseProductData = (product) => {
     discount: `${product.discount}% off`,
     description: product.description,
     discountedPrice:
-    product.price - ((product.price * product.discount) / 100).toFixed(2),
+      product.price - ((product.price * product.discount) / 100).toFixed(2),
     originalPrice: product.price.toFixed(2),
     img: product.media.map((mediaItem) => mediaItem.url),
     colorsCode: product.color.map((code) => code.code),
@@ -83,7 +83,7 @@ const parseProductData = (product) => {
     disclaimer: product.disclaimer,
     returnPolicy: product.returnPolicy,
     components: product.components.map((component) => component),
-    sizes : product.sizes
+    sizes: product.sizes,
   };
 
   return parsedData;
@@ -133,25 +133,28 @@ const parseProductDataOptions = (selectedProduct) => {
 };
 
 const parseList = (state, data: any) => {
-  const newProducts = data.productsList.map((product: any) =>
+  const { response, list } = data;
+  const newProducts = response.productsList.map((product: any) =>
     parseProductData(product)
   );
-  const newProductsList = [...state.productsList, ...newProducts];
+
+  const newProductsList = [...list, ...newProducts];
 
   const hasMore =
-    state.productsList.length + newProducts.length < data.totalProducts;
+  list.length + newProducts.length < response.totalProducts;
 
   let newData = {
     productsList: newProductsList,
-    total: data.totalProducts,
+    total: response.totalProducts,
     hasMore: hasMore,
-    page: data.page,
+    page: response.page,
   };
 
   return newData;
 };
 
-const selectProduct = (state: any, id: string) => {
+const selectProduct = (state: any, idObj: any) => {
+  let id = idObj.id;
   let selectedProduct = null;
   let selectedProductOptions = [];
   selectedProduct = state.productsList.filter((item) => item.id == id)[0]; // display types for product
@@ -160,7 +163,6 @@ const selectProduct = (state: any, id: string) => {
     selectedProductOptions = parseProductDataOptions(selectedProduct);
     return { selectedProduct, selectedProductOptions };
   } else return {};
-  
 };
 
 const setProduct = (data: any) => {
@@ -182,6 +184,8 @@ const reducer = (state = initialState, action: Action) => {
       return updateObject(state, selectProduct(state, action.data));
     case actions.GET_PRODUCT_DETAILS:
       return updateObject(state, setProduct(action.data));
+    case actions.SET_SORTING_FILTER:
+      return updateObject(state, action.data);
     default:
       return state;
   }

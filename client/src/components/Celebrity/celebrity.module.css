@@ -1,21 +1,5 @@
-.CContainer {
-    background-color:rgba(242, 231, 229, 1);
-    margin-top: 20px ;
-    overflow: hidden;
-  }
-  
-  .imgContainer {
-    height: 370px;
-  }
-  
-  .img2{
-    top: 8%;
-    width: 56%;
-  }
-  .img1{
-    margin-left: 50%;
-    width: 50%;
-  }
+
+
   
   .title {
     font-size: 17px;

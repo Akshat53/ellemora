@@ -1,5 +1,5 @@
 // Auth actions
-export const LOGIN_USER = 'LOGIN_USER';
+export const LOGIN_USER = "LOGIN_USER";
 
 // Products actions
 export const GET_PRODUCTS_LIST = "GET_PRODUCTS_LIST";
@@ -7,3 +7,7 @@ export const SELECT_PRODUCT = "SELECT_PRODUCT";
 export const GET_PRODUCT_DETAILS = "GET_PRODUCT_DETAILS";
 export const GET_PRODUCT_DETAILS_SUCCESS = "GET_PRODUCT_DETAILS_SUCCESS";
 export const GET_PRODUCT_DETAILS_FAIL = "GET_PRODUCT_DETAILS_FAIL";
+export const SET_SORTING_FILTER = "SET_SORTING_FILTER";
+
+// Category actions
+export const GET_CATEGORIES_LIST = "GET_CATEGORIES_LIST";

@@ -17,11 +17,17 @@ const asyncHandler = (fn: Function) => (req: Request, res: Response, next: Funct
   Promise.resolve(fn(req, res, next)).catch((error) => sendError(res, error));
 
 const getCategories = asyncHandler(async (req: Request, res: Response) => {
-  const { parentId, orderBy = "desc" } = req.query;
+  const { parentId, orderBy = "desc",name } = req.query;
+  
   const sortBy = typeof req.query.sortBy === "string" ? req.query.sortBy : ServerConstants.sortBy;
   const sortOrder = orderBy === "asc" ? ServerConstants.orderByAsc : ServerConstants.orderByDesc;
   
   const query: QueryFilters = {};
+  if (typeof name === "string" && name) {
+    query.name = {
+      $in: name.split(",").map((id) => id.trim()),
+    };
+  }
   if (typeof parentId === "string" && parentId) {
     query.parentCategory = { $in: [parentId] };
   }
@@ -47,7 +53,7 @@ const createAndUpdateCategory = asyncHandler(async (req: Request, res: Response)
   if (parentIdentifier) {
     parentCategory = mongoose.Types.ObjectId.isValid(parentIdentifier)
       ? await Category.findById(parentIdentifier)
-      : await Category.findOne({ name: parentIdentifier });
+      : null;
 
     if (!parentCategory) {
       return res.status(404).json({ error: "Parent category not found" });
@@ -55,15 +61,22 @@ const createAndUpdateCategory = asyncHandler(async (req: Request, res: Response)
     level = parentCategory.level + 1;
   }
 
-  const existingCategory = await Category.findOne({ name: name });
-  if (existingCategory) {
-    return res.status(409).json({ error: "Category with the same name already exists" });
-  }
+  const existingCategory = await Category.findOne({ name, parentCategory: parentCategory ? parentCategory._id : null });
 
-  const categoryData = { name, description, parentCategory: parentCategory ? parentCategory._id : null, level, isActive: true, softDelete: false };
-  const savedCategory = await Category.create(categoryData);
-  res.status(201).json(savedCategory);
+  if (existingCategory) {
+    // Update existing category
+    existingCategory.parentCategory = parentCategory ? parentCategory._id : existingCategory.parentCategory;
+    existingCategory.level = level; // Updating level if necessary
+    await existingCategory.save();
+    return res.status(200).json(existingCategory);
+  } else {
+    // Create new category
+    const categoryData = { name, description, parentCategory: parentCategory ? parentCategory._id : null, level, isActive: true, softDelete: false };
+    const savedCategory = await Category.create(categoryData);
+    return res.status(201).json(savedCategory);
+  }
 });
+
 
 export default {
   getCategories,

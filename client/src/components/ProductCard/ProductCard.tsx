@@ -35,7 +35,7 @@ const ProductCard: React.FC<ProductCardProps> = ({
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [sizeBackground, setSizeBackground] = useState(false);
   const [activeSizeIndex, setActiveSizeIndex] = useState(0);
-  console.log(activeSizeIndex)
+ 
 
   const toggleModal = () => {
     setIsModalOpen(!isModalOpen);
@@ -337,10 +337,9 @@ const ProductCard: React.FC<ProductCardProps> = ({
               : view == "card"
                 ? cardView()
                 : productView()}
-        {isModalOpen && (
-          <AppModal onClose={toggleModal}>
+        <AppModal onClose={toggleModal} open={isModalOpen}>
             <div className="d-flex row ">
-              {data.sizes.map((items, i) => (
+              {data.sizes && data.sizes.length > 0 && data.sizes.map((items, i) => (
                 <button
                   key={i}
                   className={`border p-4 col-4 text-dark ${
@@ -355,7 +354,6 @@ const ProductCard: React.FC<ProductCardProps> = ({
               ))}
             </div>
           </AppModal>
-        )}
       </div>
     </div>
   );

@@ -6,6 +6,7 @@
   background-color: #f6f6f6;
 
   cursor: pointer;
+  color: black;
 }
 
 .category-card.active {

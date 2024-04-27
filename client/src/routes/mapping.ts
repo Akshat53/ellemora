@@ -4,7 +4,7 @@ import FileUpload from "../views/Admin/ProductUploadeByExcel";
 import Home from "../views/MobileScreens/Home/Home";
 
 import Product from "../views/MobileScreens/Product";
-import ProductList from "../views/MobileScreens/ProductList";
+import ProductList from "../views/MobileScreens/ProductList/ProductList";
 import Customization from "../views/MobileScreens/Customization/Customization";
 import BuyNow from "../views/MobileScreens/BuyNow/BuyNow";
 

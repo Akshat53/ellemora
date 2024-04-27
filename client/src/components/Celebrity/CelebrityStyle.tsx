@@ -1,7 +1,7 @@
-import React, { useState } from "react";
-import Styles from "./celebrity.module.css";
+import React from "react";
 import { Button } from "antd";
 import Slider from "react-slick";
+import Styles from "./celebrity.module.css";
 
 interface CelebrityStyleProps {
   celebrityStyleProps: {
@@ -13,42 +13,71 @@ interface CelebrityStyleProps {
   }[];
 }
 
-const CelebrityStyle: React.FC<CelebrityStyleProps> = ({ celebrityStyleProps }) => {
+const CelebrityStyle: React.FC<CelebrityStyleProps> = ({
+  celebrityStyleProps,
+}) => {
+  const containerStyle = {
+    maxWidth: "768px",
+    margin: "auto",
+    padding: "15px",
+    boxShadow: "0 4px 8px rgba(0, 0, 0, 0.1)",
+    overflow: "hidden",
+    backgroundColor: "rgba(242, 231, 229, 1)",
+  };
 
   const settings = {
     infinite: true,
     slidesToShow: 1,
     slidesToScroll: 1,
-    autoplay: true,
+    autoplay: false,
     speed: 1500,
-    autoplaySpeed: 2000,
-    pauseOnHover: true, 
+    autoplaySpeed: 4000,
+    pauseOnHover: true,
+    arrows: false,
   };
 
   return (
-    <div
-      className={`${Styles.CContainer} py-3 w-100`}
-    >
+    <div style={containerStyle}>
       <Slider {...settings}>
-        {celebrityStyleProps.map((data, index) => (
-          <div key={index} className={`${Styles.celebritystyle} m-0`}>
+        {celebrityStyleProps.map((data, i) => (
+          <>
             <div
-              className={`col-sm-12 col-md-6 col-lg-6 position-relative ${Styles.imgContainer}`}
+              className="image-container d-flex justify-content-end w-100"
+              style={{ position: "relative" }}
             >
-              <img src={data.image1} className={`position-absolute ${Styles.img2}`} alt="Image1" />
-              <img src={data.image2} className={`${Styles.img1}`} alt="Image2" />
+              <img
+                src={data.image2}
+                alt="Celebrity Style 1"
+                className="celeb-img  p-1"
+                style={{ width: "52%" }}
+              />
+              <img
+                src={data.image1}
+                alt="Celebrity Style 2"
+                className="celeb-img "
+                style={{
+                  position: "absolute",
+                  top: "8%",
+                  left: "20%",
+                  transform: "translateX(-35%)",
+                  zIndex: "1",
+                  width: "52%",
+                }}
+              />
             </div>
-
-            <div className={`d-flex flex-column justify-content-center col-sm-12 col-md-6 px-3`}>
+            <div className="content" style={{ marginTop: "10%" }}>
               <h3 className={`${Styles.title}`}>{data.title}</h3>
               <p className={`${Styles.description} py-3`}>{data.description}</p>
               <div className="d-flex">
-                <Button href={data.link} className={`${Styles.button} px-3 border-1 bg-transparent`}>
+                <Button
+                  href={data.link}
+                  className={`${Styles.button} px-3 border-1 bg-transparent`}
+                >
                   SHOP NOW
                 </Button>
               </div>
             </div>
-          </div>
+          </>
         ))}
       </Slider>
     </div>

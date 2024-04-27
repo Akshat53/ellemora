@@ -7,6 +7,7 @@ export interface QueryFilters {
   sizes?: { $in: string[] };
   colors?: { $in: string[] };
   parentCategory?: { $in: string[] };
+  name?: { $in: string[] };
 }
 
 export interface GetOptions {
