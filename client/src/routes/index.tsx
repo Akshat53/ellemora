@@ -3,6 +3,7 @@ interface IRoutes {
     PRODUCT: string;
     PRODUCTS: string;
     BUYNOW: string;
+    GIFTCARDS: string;
   }
   
   const Routes: IRoutes = {
@@ -10,6 +11,7 @@ interface IRoutes {
     PRODUCT: "/product",
     PRODUCTS : "/products",
     BUYNOW: "/buynow",
+    GIFTCARDS: "/giftcards"
   };
   
   export default Routes;

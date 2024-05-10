@@ -12,7 +12,7 @@ const BuyNow: React.FC = () => {
       {/* {ProductList.length > 0 ? <FilledBag /> : <EmptyBag />} */}
       {/* <FilledBag /> */}
       {/* <EmptyBag /> */}
-      <HeadBar header="CHECKOUT" />
+      {/* <HeadBar header="CHECKOUT" /> */}
       {/* <LogCheck /> */}
       <NotLogCheck />
     </div>

@@ -168,8 +168,8 @@ const NotLogCheck: React.FC = () => {
           <div className='container mb-1'>
            <Modes />
           </div>
-          <div className='border-top border-bottom'>
-            <h5 className='text-center text-uppercase'>Order Summary</h5>
+          <div className='border-top'>
+            <h5 className='text-center text-uppercase mt-3'>Order Summary</h5>
             </div>
           <div className='container mt-3'>
             <Details />
